@@ -1,4 +1,4 @@
-import ColorSchemeSwitcher from '../classes/ColorSchemeSwitcher'
+import ColorSchemeSwitcher from '../modules/ColorSchemeSwitcher'
 
 export default function initColorSchemeSwitcher(): void {
   const $colorSchemeSwitchers: NodeListOf<HTMLElement> = document.querySelectorAll('[data-color-scheme-switcher="parent"]')

@@ -4,37 +4,37 @@ interface ISetActiveControlProps {
 }
 
 export default class ColorSchemeSwitcher {
-  private switcher: HTMLElement
-  private controls: NodeListOf<HTMLElement>
+  private _switcher: HTMLElement
+  private _controls: NodeListOf<HTMLElement>
 
   constructor(colorSchemeSwitcher: HTMLElement) {
-    this.switcher = colorSchemeSwitcher
+    this._switcher = colorSchemeSwitcher
 
-    if (!this.switcher) {
+    if (!this._switcher) {
       return
     }
 
-    this.controls = this.switcher.querySelectorAll('[data-color-scheme-switcher="control"]')
+    this._controls = this._switcher.querySelectorAll('[data-color-scheme-switcher="control"]')
   }
 
   public init(): void {
-    const initialColorScheme: string = this.getColorSchemeFromLocalStorage() ?? 'dark'
-    this.setColorScheme(initialColorScheme)
+    const initialColorScheme: string = this._getColorSchemeFromLocalStorage() ?? 'dark'
+    this._setColorScheme(initialColorScheme)
 
-    this.controls.forEach((control: HTMLElement) => {
-      control.addEventListener('click', this.onClickControl)
+    this._controls.forEach((control: HTMLElement) => {
+      control.addEventListener('click', this._onClickControl)
     })
   }
 
-  private getColorSchemeFromLocalStorage(): NullishString {
+  private _getColorSchemeFromLocalStorage(): NullishString {
     return localStorage.getItem('color_scheme')
   }
 
-  private saveColorSchemeToLocalStorage(colorScheme: string): void {
+  private _saveColorSchemeToLocalStorage(colorScheme: string): void {
     localStorage.setItem('color_scheme', colorScheme)
   }
 
-  private setActiveControl({ controls, colorScheme }: ISetActiveControlProps): void {
+  private _setActiveControl({ controls, colorScheme }: ISetActiveControlProps): void {
     const currActiveControl: UndefinedishHTMLElem = controls.find((control: HTMLElement) => control.classList.contains('is-active'))
     const nextActiveControl: UndefinedishHTMLElem = controls.find((control: HTMLElement) => control.getAttribute('data-color-scheme') === colorScheme)
 
@@ -42,31 +42,31 @@ export default class ColorSchemeSwitcher {
     nextActiveControl?.classList.add('is-active')
   }
 
-  private setColorScheme(colorScheme: string): void {
-    const controls: HTMLElement[] = Array.from(this.controls)
+  private _setColorScheme(colorScheme: string): void {
+    const controls: HTMLElement[] = Array.from(this._controls)
 
     document.documentElement.setAttribute('data-color-scheme', colorScheme)
 
-    this.setActiveControl({ controls, colorScheme })
-    this.saveColorSchemeToLocalStorage(colorScheme)
-    this.updateOtherSwitchers(colorScheme)
+    this._setActiveControl({ controls, colorScheme })
+    this._saveColorSchemeToLocalStorage(colorScheme)
+    this._updateOtherSwitchers(colorScheme)
   }
 
-  private updateOtherSwitchers(colorScheme: string): void {
+  private _updateOtherSwitchers(colorScheme: string): void {
     const switchers: NodeListOf<HTMLElement> = document.querySelectorAll('[data-color-scheme-switcher="parent"]')
 
     switchers.forEach((switcher: HTMLElement) => {
       const controls: HTMLElement[] = Array.from(switcher.querySelectorAll('[data-color-scheme-switcher="control"]'))
-      this.setActiveControl({ controls, colorScheme })
+      this._setActiveControl({ controls, colorScheme })
     })
   }
 
-  private onClickControl = (e: MouseEvent): void => {
+  private _onClickControl = (e: MouseEvent): void => {
     e.preventDefault()
 
     const currControl = e.currentTarget as HTMLElement
     const colorScheme: NullishString = currControl.getAttribute('data-color-scheme')
 
-    colorScheme && this.setColorScheme(colorScheme)
+    colorScheme && this._setColorScheme(colorScheme)
   }
 }

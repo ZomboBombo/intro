@@ -1,4 +1,4 @@
-import BurgerMenu from '../classes/BurgerMenu'
+import BurgerMenu from '../modules/BurgerMenu'
 
 export default function initBurgerMenu(): void {
   const $burgerMenu: NullishHTMLElem = document.querySelector('[data-burger-menu="menu"]')

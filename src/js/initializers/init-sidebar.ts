@@ -1,4 +1,4 @@
-import Sidebar from '../classes/Sidebar'
+import Sidebar from '../modules/Sidebar'
 
 export default function initSidebar(): void {
   const $sidebarElement: NullishHTMLElem = document.querySelector('[data-sidebar="sidebar"]')

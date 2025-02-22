@@ -1,12 +1,14 @@
-import initBurgerMenu from './modules/init-burger-menu'
-import initSidebar from './modules/init-sidebar'
-import initTooltip from './modules/init-tooltip'
-import initColorSchemeSwitcher from './modules/init-color-scheme-switcher'
+import initBurgerMenu from './initializers/init-burger-menu'
+import initSidebar from './initializers/init-sidebar'
+import initTooltip from './initializers/init-tooltip'
+import initColorSchemeSwitcher from './initializers/init-color-scheme-switcher'
+import initHeroTags from './initializers/init-hero-tags'
 
 document.addEventListener('DOMContentLoaded', () => {
   initBurgerMenu()
   initSidebar()
   initTooltip()
+  initHeroTags()
 })
 
 /*

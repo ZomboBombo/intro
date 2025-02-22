@@ -1,0 +1,72 @@
+interface IAllyTooltipTextProps {
+  openTxt: UndefNullishString
+  closeTxt: UndefNullishString
+}
+
+export default class Sidebar {
+  private _sidebar: HTMLElement
+  private _parent: NullishHTMLElem
+  private _trigger: NullishButton
+  private _allyTooltipText: IAllyTooltipTextProps
+
+  constructor(sidebar: HTMLElement) {
+    this._sidebar = sidebar
+
+    if (!this._sidebar) {
+      return
+    }
+
+    this._parent = this._sidebar.closest('[data-sidebar="parent"]') as NullishHTMLElem
+    this._trigger = this._sidebar.querySelector('[data-sidebar="trigger"]') as NullishButton
+
+    this._allyTooltipText = {
+      openTxt: this._trigger?.getAttribute('data-sidebar-text-open'),
+      closeTxt: this._trigger?.getAttribute('data-sidebar-text-close')
+    }
+  }
+
+  public init(): void {
+    this._trigger?.addEventListener('click', this._onClickTrigger)
+  }
+
+  private _setSidebarGapForSite(): void {
+    const sidebarWidth = this._sidebar.offsetWidth
+
+    document.documentElement.style.setProperty('--js-sidebar-width', `${sidebarWidth}px`)
+    this._parent?.classList.add('is-sidebar-open')
+
+    this._updAllyTooltipText('to-close')
+  }
+
+  private _resetSidebarGapForSite(): void {
+    document.documentElement.style.setProperty('--js-sidebar-width', '0px')
+    this._parent?.classList.remove('is-sidebar-open')
+
+    this._updAllyTooltipText('to-open')
+  }
+
+  private _updAllyTooltipText(state: string): void {
+    const { openTxt, closeTxt } = this._allyTooltipText
+
+    if (!this._trigger || !openTxt || !closeTxt) {
+      return
+    }
+
+    const hasTitleAttr = this._trigger.getAttribute('title')
+    const hasAriaLabelAttr = this._trigger.getAttribute('aria-label')
+
+    hasTitleAttr && this._trigger.setAttribute('title', state === 'to-open' ? openTxt : closeTxt)
+    hasAriaLabelAttr && this._trigger.setAttribute('aria-label', state === 'to-open' ? openTxt : closeTxt)
+  }
+
+  private _onClickTrigger = (e: MouseEvent | Event): void => {
+    e.preventDefault()
+
+    const wasSidebarOpen: boolean = this._sidebar.classList.contains('is-open')
+    this._sidebar.classList.toggle('is-open', !wasSidebarOpen)
+
+    wasSidebarOpen
+      ? this._resetSidebarGapForSite()
+      : this._setSidebarGapForSite()
+  }
+}
