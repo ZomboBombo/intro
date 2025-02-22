@@ -22,11 +22,11 @@ async function generateStackSvg({ pathToSpriteIcns, output }: IStackSvgProps): P
     return
   }
 
-  let spriteContent = '<svg xmlns="http://www.w3.org/2000/svg">\n'
+  let spriteContent = '<svg xmlns="http://www.w3.org/2000/svg">\n<style> :root svg:not(:target) { display: none } </style>\n'
 
   for (const file of files) {
-    const svgContent = await readFile(file, 'utf-8')
-    const fileName = path.basename(file, '.svg')
+    const svgContent: string = await readFile(file, 'utf-8')
+    const fileName: string = path.basename(file, '.svg')
 
     // Remove unused and redundant XML-code from <svg>
     const cleanedSvg: string = svgContent
@@ -50,9 +50,9 @@ async function generateStackSvg({ pathToSpriteIcns, output }: IStackSvgProps): P
   `)
 }
 
-export default function customStackSvgPlugin({ pathToSpriteIcns, output }: IStackSvgProps): Plugin[] {
-  return [{
+export default function customStackSvgPlugin({ pathToSpriteIcns, output }: IStackSvgProps): Plugin {
+  return {
     name: 'stack-svg-plugin',
     buildStart: async () => await generateStackSvg({ pathToSpriteIcns, output }),
-  }]
+  }
 }
