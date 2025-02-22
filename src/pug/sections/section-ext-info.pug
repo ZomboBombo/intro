@@ -1,20 +1,22 @@
 mixin section-ext-info(props = {})
-  -
-    const DataHeroTagDescrs = [
-      {id: 'tag-html', descr: 'With attention and love for semantic HTML-tags and a11y-attributes'},
-      {id: 'tag-js', descr: 'Love Vanilla-JS, respect TypeScript and other cool JS-features'},
-      {id: 'tag-flutter', descr: 'Learning the basics of mobile development with Dart & Flutter'},
-    ]
-
-  section.section-ext-info&attributes(attributes)
+  section.section-ext-info(
+    data-hero-tags="descr-list-parent"
+  )&attributes(attributes)
     h2.visually-hidden Extended info about me
 
-    ul.section-ext-info__descr-list
-      each tagDescr in DataHeroTagDescrs
-        - const { id, descr } = tagDescr
+    ul.section-ext-info__descr-list(data-hero-tags="descr-list")
+      each tagDescr, index in DataHeroTagDescrs
+        -
+          const { id, descr } = tagDescr
+          const { name, shortName } = DataHeroTags[index]
 
-        li.section-ext-info__descr-item
-          output.section-ext-info__descr-title(
-            aria-hidden="true"
-          ) HTML:
-          strong.section-ext-info__descr(id=id)= descr
+        li.section-ext-info__descr-item(data-hero-tags="descr-item")
+          strong.section-ext-info__descr-title(
+            data-hero-tags="descr-title"
+            data-short-name=shortName || ''
+          )= `${name}: `
+
+          p.section-ext-info__descr(
+            id=id
+            data-hero-tags="descr-text"
+          )= descr

@@ -52,6 +52,8 @@
   --ui-secondary-shade-3: hsl(260 90% 55%);
   // => [ui-gradients]
   --ui-gradient: linear-gradient(45deg, var(--ui-primary) 0%, var(--ui-primary-shade-1) 100%);
+  // => [ui-accent]
+  --ui-accent-focus-outline: hsl(56 100% 50%);
 
   /*
     === Media ===

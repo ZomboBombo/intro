@@ -2,5 +2,5 @@ mixin copyright(props = {})
   - const year = props.year ?? '0000'
 
   small.copyright&attributes(attributes)
-    span.copyright__text &copy; Copyright 2018–#{year}.
+    span.copyright__text.copyright__text--years &copy; Copyright 2018–#{year}.
     strong.copyright__text Made with love by Sergey Novikov.

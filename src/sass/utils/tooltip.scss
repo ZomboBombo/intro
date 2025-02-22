@@ -3,7 +3,7 @@
 .tooltip {
   $tooltip-base-gap: 1.2rem;
 
-  &:where(:hover, :focus-visible) &__text {
+  &:is(:hover, :focus-visible) &__text {
     transition-delay: 0.75s;
     visibility: visible;
     opacity: 1;
@@ -23,8 +23,8 @@
 
   &--right &__text {
     top: 50%;
-    left: calc(-1 * $tooltip-base-gap);
-    translate: -100% -50%;
+    left: calc(100% + $tooltip-base-gap);
+    transform: translateY(-50%);
   }
 
   &--bottom &__text {
@@ -35,8 +35,8 @@
 
   &--left &__text {
     top: 50%;
-    left: calc(100% + $tooltip-base-gap);
-    transform: translateY(-50%);
+    left: 0;
+    translate: calc(-100% - $tooltip-base-gap) -50%;
   }
 
   &__text {

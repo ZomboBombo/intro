@@ -17,7 +17,7 @@ mixin site-sidebar(props = {})
 
     nav.site-sidebar__nav
       menu.site-sidebar__nav-menu
-        each navItem in DataMainNavigation
+        each navItem in DataSocialsNavigation
           -
             const href = navItem.href || '#'
             const tooltip = navItem.tooltip || false

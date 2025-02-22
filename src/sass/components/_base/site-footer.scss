@@ -3,7 +3,7 @@
 
 .site-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
   gap: 3.2rem;
   margin: 0;
@@ -19,7 +19,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 1.25em;
+    gap: 0.35em;
     font-size: 2.2rem;
   }
 
@@ -81,9 +81,8 @@
     }
   }
 
-  &__copyright {
-    min-width: max-content;
-    text-align: end;
+  &__copyright.copyright {
+    display: none;
   }
 
   /*
@@ -109,8 +108,8 @@
       }
     }
 
-    &__copyright {
-      min-width: auto;
+    &__copyright.copyright {
+      display: flex;
       text-align: center;
     }
   }

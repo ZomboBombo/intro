@@ -9,7 +9,7 @@ mixin site-header(props = {})
         })
 
       ul.site-header__nav-menu(data-burger-menu="menu")
-        each navItem in DataMainNavigation
+        each navItem in DataSocialsNavigation
           -
             const href = navItem.href || '#'
             const tooltip = navItem.tooltip || false
