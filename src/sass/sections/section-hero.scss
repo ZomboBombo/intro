@@ -11,9 +11,9 @@
   gap: 1.2rem;
   width: auto;
   height: 100%;
-  margin: auto;
   padding: var(--gap-section-ver) 2.5rem;
   scroll-margin-block-start: var(--gap-section-ver);
+  container-type: inline-size;
 
   &__title {
     display: inline;
@@ -76,6 +76,19 @@
     position: absolute;
     bottom: 0;
     z-index: 1;
+  }
+
+  /*
+    === Container Queries ===
+  */
+  @container (max-width: 1024px) {
+    &__title {
+      max-width: min-content;
+    }
+
+    &__tags {
+      max-width: var(--w-520);
+    }
   }
 
   /*
