@@ -27,6 +27,7 @@ export default class BurgerMenu {
 
     this._menu.classList.toggle('is-opened', !isOpened)
     this._burger.setAttribute('aria-pressed', `${!isOpened}`)
+    this._burger.setAttribute('aria-expanded', `${!isOpened}`)
   }
 
   private _onResetState = (): void => {

@@ -59,14 +59,20 @@ export default class Sidebar {
     hasAriaLabelAttr && this._trigger.setAttribute('aria-label', state === 'to-open' ? openTxt : closeTxt)
   }
 
+  private _changeSidebarState(isOpen: boolean): void {
+    this._sidebar.classList.toggle('is-open', !isOpen)
+    this._trigger?.setAttribute('aria-pressed', `${!isOpen}`)
+    this._trigger?.setAttribute('aria-expanded', `${!isOpen}`)
+
+    isOpen
+      ? this._resetSidebarGapForSite()
+      : this._setSidebarGapForSite()
+  }
+
   private _onClickTrigger = (e: MouseEvent | Event): void => {
     e.preventDefault()
 
-    const wasSidebarOpen: boolean = this._sidebar.classList.contains('is-open')
-    this._sidebar.classList.toggle('is-open', !wasSidebarOpen)
-
-    wasSidebarOpen
-      ? this._resetSidebarGapForSite()
-      : this._setSidebarGapForSite()
+    const isSidebarOpen: boolean = this._sidebar.classList.contains('is-open')
+    this._changeSidebarState(isSidebarOpen)
   }
 }

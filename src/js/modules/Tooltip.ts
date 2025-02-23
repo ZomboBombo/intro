@@ -1,3 +1,11 @@
+/* eslint-disable no-unused-vars */
+enum TooltipPosition {
+  Top = 'top',
+  Right = 'right',
+  Bottom = 'bottom',
+  Left = 'left',
+}
+
 export default class Tooltip {
   private _tooltip: HTMLElement
   private _position: string
@@ -9,7 +17,7 @@ export default class Tooltip {
       return
     }
 
-    this._position = this._tooltip.getAttribute('data-tooltip-position') || 'right'
+    this._position = this._getTooltipPosition(this._tooltip.getAttribute('data-tooltip-position'))
   }
 
   public init(): void {
@@ -27,6 +35,18 @@ export default class Tooltip {
     })
 
     allyAttrObserver.observe(this._tooltip, { attributes: true })
+  }
+
+  private _getTooltipPosition(userPosition: NullishString): string {
+    if (!userPosition) {
+      return TooltipPosition.Right
+    }
+
+    const isValidUserPostion: boolean = Object.values(TooltipPosition).some((position) => position === userPosition)
+
+    return isValidUserPostion
+      ? userPosition
+      : TooltipPosition.Right
   }
 
   private _getTooltipText(): NullishString {
