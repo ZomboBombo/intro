@@ -1,3 +1,16 @@
+/**
+ * 'Custom-Stack-Svg-Plugin'
+ * ~~~
+ * 
+ * Custom plugin for the 'Vite.js': used to
+ * create 'Stack' SVG-sprite from project icons.
+ * ~~~
+ * 
+ * © Copyright: Sergey Novikov.
+ * All rights reserved. 2025.
+ * 
+*/
+
 import { Plugin } from 'vite'
 import path from 'path'
 import { readFile, writeFile } from 'fs/promises'
@@ -8,18 +21,26 @@ interface IStackSvgProps {
   output: string
 }
 
+/**
+ * [generateStackSvg]
+ * 
+ * @param {IStackSvgProps} {IStackSvgProps}: The main props-object
+ * @param {string} IStackSvgProps.pathToSpriteIcns: The path to SVG-icons
+ * @param {string} IStackSvgProps.output: The output directory
+ * @returns {Promise<void>}
+*/
 async function generateStackSvg({ pathToSpriteIcns, output }: IStackSvgProps): Promise<void> {
-  const files = await fastGlob(`${pathToSpriteIcns}*.svg`)
+  const files: string[] = await fastGlob(`${pathToSpriteIcns}*.svg`)
 
   if (!files.length) {
-    console.error(`
-      =--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=
+    throw `
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |
       | ❌ Wrong path to icons: ${pathToSpriteIcns}
       | Please, try to change the current path!
-      =--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=
-    `)
-
-    return
+      |
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    `
   }
 
   let spriteContent = '<svg xmlns="http://www.w3.org/2000/svg">\n<style> :root svg:not(:target) { display: none } </style>\n'
@@ -28,7 +49,7 @@ async function generateStackSvg({ pathToSpriteIcns, output }: IStackSvgProps): P
     const svgContent: string = await readFile(file, 'utf-8')
     const fileName: string = path.basename(file, '.svg')
 
-    // Remove unused and redundant XML-code from <svg>
+    // Remove unnecessary and redundant XML-code from <svg>
     const cleanedSvg: string = svgContent
       .replace(/<!DOCTYPE.*?>/g, '')
       .replace(/(xml|xmlns)=(["'])(.+?)\2/g, '')
@@ -41,18 +62,32 @@ async function generateStackSvg({ pathToSpriteIcns, output }: IStackSvgProps): P
   spriteContent += '</svg>'
 
   await writeFile(output, spriteContent, 'utf-8')
-
-  console.debug(`
-    =--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=
-    | ✅ Stack-SVG-Sprite was successfully updated!
-    | Generated file: ${output}
-    =--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=
-  `)
 }
 
 export default function customStackSvgPlugin({ pathToSpriteIcns, output }: IStackSvgProps): Plugin {
   return {
     name: 'stack-svg-plugin',
-    buildStart: async () => await generateStackSvg({ pathToSpriteIcns, output }),
+    buildStart: async () => {
+      try {
+        await generateStackSvg({ pathToSpriteIcns, output })
+      } catch (catchedErr) {
+        throw new Error(`
+          =--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=
+          ❌ Error occured inside 'stack-svg-plugin'.
+
+          ${catchedErr}
+          =--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=
+        `)
+      }
+
+      console.debug(`
+        =--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=
+        |
+        | ✅ Stack-SVG-Sprite was successfully updated!
+        | Generated file: ${output}
+        |
+        =--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=
+      `)
+    }
   }
 }
