@@ -8,7 +8,7 @@ mixin site-header(props = {})
           name: 'icn-logo',
         })
 
-      ul.site-header__nav-menu(data-burger-menu="menu")
+      ul.site-header__nav-menu(id="site-header-nav-menu" data-burger-menu="menu")
         each navItem in DataSocialsNavigation
           -
             const href = navItem.href || '#'
@@ -26,9 +26,11 @@ mixin site-header(props = {})
 
         button.site-header__burger(
           type="button"
-          aria-label="Open Nav Menu"
+          aria-label="Open Socials navigation menu"
           aria-pressed="false"
+          aria-expanded="false"
+          aria-controls="site-header-nav-menu"
           data-burger-menu="burger"
-          data-burger-tt-close="Open Nav Menu"
-          data-burger-tt-open="CLose Nav Menu"
+          data-burger-tt-close="Open Socials navigation menu"
+          data-burger-tt-open="Close menu"
         ) Nav Menu Trigger

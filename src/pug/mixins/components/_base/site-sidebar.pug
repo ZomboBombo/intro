@@ -1,9 +1,12 @@
 mixin site-sidebar(props = {})
-  aside.site-sidebar(data-sidebar="sidebar")&attributes(attributes)
+  aside.site-sidebar(id="site-sidebar" data-sidebar="sidebar")&attributes(attributes)
     button.site-sidebar__trigger(
       type="button"
       title="Open the sidebar with additional info"
       aria-label="Open the sidebar with additional info"
+      aria-pressed="false"
+      aria-expanded="false"
+      aria-controls="site-sidebar"
       data-tooltip="Open the sidebar with additional info"
       data-sidebar="trigger"
       data-sidebar-text-open="Open the sidebar with additional info"
