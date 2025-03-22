@@ -1,0 +1,11 @@
+mixin modal-skill(props = {})
+  +_basemodal()
+    section.modal-skill&attributes(attributes)
+      .modal-skill__content
+        figure.modal-skill__preview
+          img(alt="Here'll be a GIF or video-preview")
+          figcaption Skill's preview
+
+        hgroup.modal-skill__info
+          h3.modal-skill__title Skill title
+          p.modal-skill__descr Skill description

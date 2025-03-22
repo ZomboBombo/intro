@@ -1,0 +1,59 @@
+@use '../system/mixins' as *;
+
+.basemodal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modals);
+  background-color: var(--color-def-black-trans025);
+  backdrop-filter: blur(0.6rem);
+
+  &__close-trigger {
+    $t-props: scale, opacity;
+    @include trans-config($t-props);
+    @include square(6rem);
+
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.2rem;
+    margin-inline-start: auto;
+    font-size: 0;
+    background-color: var(--color-def-white-trans025);
+    border: 2px solid var(--color-def-white);
+    border-radius: 50%;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      z-index: 1;
+      display: block;
+      width: 75%;
+      height: 2px;
+      background-color: var(--color-def-white);
+      border-radius: 0.2rem;
+    }
+
+    &::before {
+      rotate: 45deg;
+    }
+
+    &::after {
+      rotate: -45deg;
+    }
+
+    &:where(:hover, :focus-visible) {
+      scale: 1.06;
+    }
+
+    &:active {
+      opacity: 0.75;
+    }
+  }
+}

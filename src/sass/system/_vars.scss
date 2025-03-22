@@ -34,7 +34,9 @@
   // Colors
   // => [default]
   --color-def-white: hsl(0 0% 100%);
+  --color-def-white-trans025: hsl(0 0% 100% / 0.25);
   --color-def-black: hsl(0 0% 0%);
+  --color-def-black-trans025: hsl(0 0% 0% / 0.25);
   --color-def-transparent: hsl(0 0% 100% / 0);
   //
   // => [ui]
