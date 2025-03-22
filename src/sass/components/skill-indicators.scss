@@ -2,18 +2,19 @@
 @use '../system/breakpoints' as *;
 
 .skill-indicators {
+  --indicator-bd-width: 0.05em;
   --indicator-bd-rad: 0.5em;
 
   flex-grow: 1;
   display: grid;
-  gap: 0.05em;
+  gap: var(--indicator-bd-width);
   font: {
     family: var(--font-primary);
     size: 6.4rem;
     weight: 700;
   }
   background-color: var(--color-def-white);
-  border: 0.05em solid var(--color-def-white);
+  border: var(--indicator-bd-width) solid var(--color-def-white);
   border-radius: var(--indicator-bd-rad);
   overflow: hidden;
 
