@@ -24,7 +24,7 @@ interface IStackSvgProps {
 /**
  * [generateStackSvg]
  * 
- * @param {IStackSvgProps} {IStackSvgProps}: The main props-object
+ * @interface {IStackSvgProps} {IStackSvgProps}: The main props-object
  * @param {string} IStackSvgProps.pathToSpriteIcns: The path to SVG-icons
  * @param {string} IStackSvgProps.output: The output directory
  * @returns {Promise<void>}
