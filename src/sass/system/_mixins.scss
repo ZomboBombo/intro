@@ -12,6 +12,9 @@
   }
 }
 
+/*
+  <...> стиль для базового "border" элемента
+*/
 @mixin base-border($border-type: '') {
   @if ($border-type != '') {
     border-#{$border-type}: {

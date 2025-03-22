@@ -1,23 +1,42 @@
 @use '../system/mixins' as *;
 
 .basemodal {
+  $t-props: z-index, opacity, backdrop-filter;
+  @include trans-config($t-props, var(--trans-long));
+
   position: fixed;
   inset: 0;
-  z-index: var(--z-modals);
+  z-index: -1;
   background-color: var(--color-def-black-trans025);
-  backdrop-filter: blur(0.6rem);
+  backdrop-filter: blur(0);
+  opacity: 0;
+  pointer-events: none;
+
+  &.is-active {
+    z-index: var(--z-modals);
+    backdrop-filter: blur(0.6rem);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &.is-active &__close-trigger {
+    transform: translateX(0);
+  }
 
   &__close-trigger {
-    $t-props: scale, opacity;
-    @include trans-config($t-props);
+    --trigger-outer-gap: 1.2rem;
+
+    $t-props: transform, scale, opacity;
+    @include trans-config($t-props, var(--trans-long));
     @include square(6rem);
 
     position: relative;
     isolation: isolate;
+    transform: translateX(calc(100% + var(--trigger-outer-gap)));
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 1.2rem;
+    margin: var(--trigger-outer-gap);
     margin-inline-start: auto;
     font-size: 0;
     background-color: var(--color-def-white-trans025);
