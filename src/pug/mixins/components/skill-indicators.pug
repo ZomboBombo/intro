@@ -1,0 +1,11 @@
+- const DataSkillIndicators = ['HTML', 'CSS', 'JS', 'Flutter']
+
+mixin skill-indicators(props = {})
+  menu.skill-indicators(data-skill-indicators)&attributes(attributes)
+    each indicator in DataSkillIndicators
+      li.skill-indicators__item
+        button.skill-indicators__btn(
+          type="button"
+          aria-label=`Open extended info about «${indicator}» skill`
+          data-skill=indicator.toLowerCase()
+        )= indicator
