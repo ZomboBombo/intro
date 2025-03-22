@@ -26,6 +26,11 @@
     --z-#{$name}: #{$value};
   }
 
+  // Fonts
+  @each $name, $value in common-var.$fonts {
+    --font-#{$name}: #{$value};
+  }
+
   // Colors
   // => [default]
   --color-def-white: hsl(0 0% 100%);
@@ -54,6 +59,15 @@
   --ui-gradient: linear-gradient(45deg, var(--ui-primary) 0%, var(--ui-primary-shade-1) 100%);
   // => [ui-accent]
   --ui-accent-focus-outline: hsl(56 100% 50%);
+  // => [ui-skills]
+  --ui-skill-html: hsl(0 100% 23%);
+  --ui-skill-html-interact: hsl(0 100% 33%);
+  --ui-skill-css: hsl(211 100% 73%);
+  --ui-skill-css-interact: hsl(211 100% 83%);
+  --ui-skill-js: hsl(51 91% 50%);
+  --ui-skill-js-interact: hsl(51 91% 60%);
+  --ui-skill-flutter: hsl(215 90% 60%);
+  --ui-skill-flutter-interact: hsl(215 90% 70%);
 
   /*
     === Media ===

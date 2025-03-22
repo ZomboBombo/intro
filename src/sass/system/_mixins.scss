@@ -98,6 +98,16 @@
   height: $size;
 }
 
+@mixin text-outline($color, $outlineWidth: 1px, $shadowSpreadRad: 0) {
+  $negativeOutlineWidth: calc(-1 * $outlineWidth);
+
+  text-shadow:
+    $negativeOutlineWidth $negativeOutlineWidth $shadowSpreadRad $color,
+    $outlineWidth $negativeOutlineWidth $shadowSpreadRad $color,
+    $outlineWidth $outlineWidth $shadowSpreadRad $color,
+    $negativeOutlineWidth $outlineWidth $shadowSpreadRad $color;
+}
+
 /*
   [SPECIAL]
   <...> для установки высоты блока,
