@@ -29,7 +29,7 @@
   }
 
   &__btn {
-    $t-props: scale, background-color;
+    $t-props: scale, background-color, opacity;
     @include trans-config($t-props);
 
     width: 100%;
@@ -41,6 +41,10 @@
 
     &:where(:hover, :focus-visible) {
       scale: 1.06;
+    }
+
+    &:active {
+      opacity: 0.75;
     }
 
     &[data-skill='html'] {
