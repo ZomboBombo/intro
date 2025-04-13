@@ -1,0 +1,12 @@
+{
+  "html": {
+    "title": "HTML",
+    "descr": "Semantics is a very important thing that modern frontend is built on, but which, unfortunately, is neglected by many developers.",
+    "tags": [
+      "semantics",
+      "a11y",
+      "pug",
+      "nunjucks"
+    ]
+  }
+}
