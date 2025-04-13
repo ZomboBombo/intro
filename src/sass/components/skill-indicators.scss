@@ -7,6 +7,7 @@
 
   flex-grow: 1;
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--indicator-bd-width);
   font: {
     family: var(--font-primary);
@@ -19,18 +20,54 @@
   overflow: hidden;
 
   &__item {
-    @include text-outline(var(--color-def-black));
+    $t-props: background-color;
+    @include trans-config($t-props);
 
     display: flex;
-    align-items: center;
+    flex-direction: column;
     margin: 0;
     padding: 0;
     overflow: hidden;
+
+    // [START]: Setup for 'skill-indicators' background
+    &:has(> [data-skill='html']) {
+      background-color: var(--ui-skill-html);
+    }
+
+    &:has(> [data-skill='html']:where(:hover, :focus-visible)) {
+      background-color: var(--ui-skill-html-interact);
+    }
+
+    &:has(> [data-skill='css']) {
+      background-color: var(--ui-skill-css);
+    }
+
+    &:has(> [data-skill='css']:where(:hover, :focus-visible)) {
+      background-color: var(--ui-skill-css-interact);
+    }
+
+    &:has(> [data-skill='js']) {
+      background-color: var(--ui-skill-js);
+    }
+
+    &:has(> [data-skill='js']:where(:hover, :focus-visible)) {
+      background-color: var(--ui-skill-js-interact);
+    }
+
+    &:has(> [data-skill='flutter']) {
+      background-color: var(--ui-skill-flutter);
+    }
+
+    &:has(> [data-skill='flutter']:where(:hover, :focus-visible)) {
+      background-color: var(--ui-skill-flutter-interact);
+    }
+    // [END]: Setup for 'skill-indicators' background
   }
 
   &__btn {
-    $t-props: scale, background-color, opacity;
+    $t-props: scale, opacity;
     @include trans-config($t-props);
+    @include text-outline(var(--color-def-black));
 
     width: 100%;
     height: 100%;
@@ -46,46 +83,47 @@
     &:active {
       opacity: 0.75;
     }
+  }
 
-    &[data-skill='html'] {
-      background-color: var(--ui-skill-html);
+  &__tags-list {
+    $tags-list-gap: 1.2rem;
 
-      &:where(:hover, :focus-visible) {
-        background-color: var(--ui-skill-html-interact);
-      }
+    display: flex;
+    flex-wrap: wrap-reverse;
+    align-items: center;
+    gap: $tags-list-gap;
+    padding: $tags-list-gap;
+  }
+
+  &__tag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: {
+      size: 1.8rem;
+      weight: 700;
     }
-
-    &[data-skill='css'] {
-      background-color: var(--ui-skill-css);
-
-      &:where(:hover, :focus-visible) {
-        background-color: var(--ui-skill-css-interact);
-      }
-    }
-
-    &[data-skill='js'] {
-      background-color: var(--ui-skill-js);
-
-      &:where(:hover, :focus-visible) {
-        background-color: var(--ui-skill-js-interact);
-      }
-    }
-
-    &[data-skill='flutter'] {
-      background-color: var(--ui-skill-flutter);
-
-      &:where(:hover, :focus-visible) {
-        background-color: var(--ui-skill-flutter-interact);
-      }
-    }
+    line-height: 1;
+    color: var(--color-def-black);
+    padding: 0.6rem 1.2rem;
+    background-color: var(--color-def-white-trans050);
+    border-radius: 0.25em;
   }
 
   /*
     === Media ===
   */
+  @include media(w768) {
+    grid-template-columns: 1fr;
+  }
+
   @include media(w520) {
     &__item {
       font-size: 4.8rem;
+    }
+
+    &__tags-list {
+      display: none;
     }
   }
 }

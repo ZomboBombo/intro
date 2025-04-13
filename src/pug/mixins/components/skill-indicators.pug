@@ -1,12 +1,36 @@
-- const DataSkillIndicators = ['HTML', 'CSS', 'JS', 'Flutter']
+-
+  const DataSkillIndicatorsJson = [
+    {
+      name: 'HTML',
+      tags: ['semantics', 'a11y', 'pug', 'nunjucks'],
+    },
+    {
+      name: 'CSS',
+      tags: ['bem', 'sass'],
+    },
+    {
+      name: 'JS',
+      tags: ['typescript', 'vue'],
+    },
+    {
+      name: 'Flutter',
+      tags: ['basics', 'dart'],
+    },
+  ]
 
 mixin skill-indicators(props = {})
   menu.skill-indicators(data-skill-indicators)&attributes(attributes)
-    each indicator in DataSkillIndicators
+    each indicator in DataSkillIndicatorsJson
+      - const { name, tags } = indicator
+
       li.skill-indicators__item
         button.skill-indicators__btn(
           type="button"
-          aria-label=`Open extended info about «${indicator}» skill`
-          data-skill=indicator.toLowerCase()
+          aria-label=`Open extended info about «${name}» skill`
+          data-skill=name.toLowerCase()
           data-open-modal="modal-skill"
-        )= indicator
+        )= name
+
+        ol.skill-indicators__tags-list
+          each tag in tags
+            li.skill-indicators__tag= tag
