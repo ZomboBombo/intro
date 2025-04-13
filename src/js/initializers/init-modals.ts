@@ -2,42 +2,55 @@ import type { NullishHTMLElem } from '../types'
 import Modal from '../modules/Modal'
 
 /**
+ * Function [_setupModalTriggers]
+ * ~~~
  * 
- * [TODO]:
+ * Base 'modal-triggers' setup to add event-listeners
+ * for all triggers to open Modals.
  * 
- * 1) Подумать над тем, как можно упростить
- * логику присваивания обработчиков событий
- * для «опенеров» модалок;
- * 
- * 2) Попытаться упростить всю логику:
- * возможно, как-то нужно перенести функционал
- * «опенеров» внутрь класса [Modal];
+ * @returns {void}
 */
-export default function initModals(): void {
-  const modalOpeners: NodeListOf<HTMLButtonElement> = document.querySelectorAll('[data-open-modal]')
+function _setupModalTriggers(): void {
+  const modalTriggers: NodeListOf<HTMLButtonElement> = document.querySelectorAll('[data-open-modal]')
 
-  if (!modalOpeners.length) {
+  if (!modalTriggers.length) {
     return
   }
 
-  modalOpeners.forEach((modalOpener: HTMLButtonElement) => {
-    const modalId: string = modalOpener.getAttribute('data-open-modal')!
-    const modalWindow: NullishHTMLElem = document.getElementById(modalId)
+  modalTriggers.forEach((trigger: HTMLButtonElement) => {
+    const modalId: string = trigger.getAttribute('data-open-modal')!
+    const modal: NullishHTMLElem = document.getElementById(modalId)
 
-    if (!modalWindow) {
+    if (!modal) {
       return
     }
 
-    modalOpener.onclick = (e: MouseEvent) => {
+    trigger.onclick = (e: MouseEvent) => {
       e.preventDefault()
-      modalWindow.classList.add('is-active')
+      modal.classList.add('is-active')
     }
   })
+}
 
+/**
+ * Function [_setupModals]
+ * ~~~
+ * 
+ * Base Modals setup.
+ * 
+ * @returns {void}
+*/
+function _setupModals(): void {
   const modals: NodeListOf<HTMLElement> = document.querySelectorAll('[data-modal="window"]')
 
   modals.forEach((modalWindow: HTMLElement) => {
     const modal = new Modal(modalWindow)
     modal.init()
   })
+}
+
+
+export default function initModals(): void {
+  _setupModalTriggers()
+  _setupModals()
 }
