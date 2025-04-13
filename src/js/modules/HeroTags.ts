@@ -1,3 +1,5 @@
+import type { UndefNullishHTMLElem, NullishHTMLElem, NullishButton } from '../types'
+
 type TChangeHeroTagStateReturn = {
   resetToInitial(): void
   setToActive(): void

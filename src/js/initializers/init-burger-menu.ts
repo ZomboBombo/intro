@@ -1,3 +1,4 @@
+import type { NullishHTMLElem } from '../types'
 import BurgerMenu from '../modules/BurgerMenu'
 
 export default function initBurgerMenu(): void {

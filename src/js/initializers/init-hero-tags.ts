@@ -1,3 +1,4 @@
+import type { NullishHTMLElem } from '../types'
 import HeroTags from '../modules/HeroTags'
 
 export default function initHeroTags(): void {

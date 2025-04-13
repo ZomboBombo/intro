@@ -1,3 +1,5 @@
+import type { NullishString, NullishHTMLElem } from '../types'
+
 /* eslint-disable no-unused-vars */
 enum TooltipPosition {
   Top = 'top',

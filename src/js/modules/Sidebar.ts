@@ -1,3 +1,5 @@
+import type { UndefNullishString, NullishHTMLElem, NullishButton } from '../types'
+
 interface IAllyTooltipTextProps {
   openTxt: UndefNullishString
   closeTxt: UndefNullishString

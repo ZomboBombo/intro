@@ -1,3 +1,5 @@
+import type { NullishString, UndefinedishHTMLElem } from '../types'
+
 interface ISetActiveControlProps {
   controls: HTMLElement[]
   colorScheme: string

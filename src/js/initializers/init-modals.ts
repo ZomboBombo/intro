@@ -1,3 +1,4 @@
+import type { NullishHTMLElem } from '../types'
 import Modal from '../modules/Modal'
 
 /**

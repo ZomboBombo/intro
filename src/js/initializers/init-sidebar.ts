@@ -1,3 +1,4 @@
+import type { NullishHTMLElem } from '../types'
 import Sidebar from '../modules/Sidebar'
 
 export default function initSidebar(): void {
