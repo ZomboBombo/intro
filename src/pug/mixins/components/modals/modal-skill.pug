@@ -2,10 +2,16 @@ mixin modal-skill(props = {})
   +_basemodal({ id: 'modal-skill' })
     section.modal-skill&attributes(attributes)
       .modal-skill__content
-        figure.modal-skill__preview
+        figure.modal-skill__preview(data-skill-modal="figure")
           img(alt="Here'll be a GIF or video-preview")
           figcaption Skill's preview
 
-        hgroup.modal-skill__info
-          h3.modal-skill__title Skill title
-          p.modal-skill__descr Skill description
+        .modal-skill__info
+          hgroup.modal-skill__text
+            h3.modal-skill__title(data-skill-modal="title") Skill title
+            p.modal-skill__descr(data-skill-modal="descr") Skill description
+
+          ol.modal-skill__tags(data-skill-modal="tags")
+            li 1
+            li 2
+            li 3

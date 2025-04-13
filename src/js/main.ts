@@ -4,12 +4,14 @@ import initTooltip from './initializers/init-tooltip'
 import initColorSchemeSwitcher from './initializers/init-color-scheme-switcher'
 import initHeroTags from './initializers/init-hero-tags'
 import initModals from './initializers/init-modals'
+import initSkillsLogic from './initializers/init-skills-logic'
 
 document.addEventListener('DOMContentLoaded', () => {
   initBurgerMenu()
   initSidebar()
   initTooltip()
   initHeroTags()
+  initSkillsLogic()
 })
 
 /*
