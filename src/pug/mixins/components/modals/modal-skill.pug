@@ -11,7 +11,8 @@ mixin modal-skill(props = {})
             h3.modal-skill__title(data-skill-modal="title") Skill title
             p.modal-skill__descr(data-skill-modal="descr") Skill description
 
-          ol.modal-skill__tags(data-skill-modal="tags")
-            li 1
-            li 2
-            li 3
+          ol.modal-skill__tags-list(data-skill-modal="tags" aria-hidden="true")
+            li.modal-skill__tag skill-tag-li
+
+          template(data-skill-modal="tags-li-template")
+            li.modal-skill__tag skill-tag-li-template

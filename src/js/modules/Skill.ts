@@ -1,4 +1,4 @@
-import type { NullishHTMLElem, NullishString } from '../types'
+import type { NullishHTMLElem } from '../types'
 
 interface ISkillModalProps {
   title: string
@@ -9,17 +9,19 @@ interface ISkillModalProps {
 export default class Skill {
   private _trigger: HTMLButtonElement
   private _modal: NullishHTMLElem
+  private _data: JSON | null
 
   constructor(trigger: HTMLButtonElement) {
     this._modal = document.getElementById('modal-skill')
     this._trigger = trigger
   }
 
-  public init(): void {
+  public async init(): Promise<void> {
     if (!this._modal) {
       return
     }
 
+    this._data = await this._fetchSkillsData()
     this._trigger.addEventListener('click', this._onClick)
   }
 
@@ -27,8 +29,6 @@ export default class Skill {
     if (!this._modal) {
       return
     }
-
-    this._modal.classList.add('is-active')
 
     const { title, descr, tags } = skillModalProps
 
@@ -38,6 +38,21 @@ export default class Skill {
 
     smTitle.textContent = title
     smDescr.textContent = descr
+    smTags.innerHTML = ''
+    smTags.removeAttribute('aria-hidden')
+
+    for (const tag of tags) {
+      const smTagsLiClone: Node = (this._modal.querySelector('[data-skill-modal="tags-li-template"]') as HTMLTemplateElement)!
+        .content
+        .cloneNode(true)
+
+      const smTagsLi = (smTagsLiClone as HTMLElement).querySelector('li')!
+
+      smTagsLi.textContent = tag
+      smTags.append(smTagsLiClone)
+    }
+
+    this._modal.classList.add('is-active')
   }
 
   private async _fetchSkillsData(): Promise<JSON | null> {
@@ -71,13 +86,12 @@ export default class Skill {
 
     const currTrigger = e.currentTarget as HTMLButtonElement
     const skillId: string = currTrigger.getAttribute('data-skill')!
-    const data = await this._fetchSkillsData()
 
-    if (!data || !data[skillId]) {
+    if (!this._data || !this._data[skillId]) {
       return
     }
 
-    const { title, descr, tags } = data[skillId]
+    const { title, descr, tags } = this._data[skillId]
     this._openSkillModal({ title, descr, tags })
   }
 }
