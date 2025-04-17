@@ -1,12 +1,36 @@
 {
   "html": {
     "title": "HTML",
-    "descr": "Semantics is a very important thing that modern frontend is built on, but which, unfortunately, is neglected by many developers.",
+    "descr": "The variety of HTML-tags is amazing. I consider it blasphemy to neglect it by using exclusively <div> and <span> everywhere to display all the web-content.",
     "tags": [
       "semantics",
       "a11y",
       "pug",
       "nunjucks"
+    ]
+  },
+  "css": {
+    "title": "CSS",
+    "descr": "Who among us doesn't like when «beautiful and modern»? I love it very much, so I follow the trends of the CSS world to make my web-apps not only beautiful, but also modern!",
+    "tags": [
+      "bem",
+      "sass"
+    ]
+  },
+  "js": {
+    "title": "JS",
+    "descr": "JavaScript: the gift and curse of web-development. So simple, but so complex. So flat, but so multifaceted. JavaScript. I love you. I hate you.",
+    "tags": [
+      "typescript",
+      "vue"
+    ]
+  },
+  "flutter": {
+    "title": "Flutter",
+    "descr": "Flutter is a multiplatform framework for mobile development. Under the hood it uses a «Dart», which was supposed to be a «JavaScript killer» (haha, very funny). By the way, the process of creating a frontend in mobile development is also called «layout».",
+    "tags": [
+      "basics",
+      "dart"
     ]
   }
 }
