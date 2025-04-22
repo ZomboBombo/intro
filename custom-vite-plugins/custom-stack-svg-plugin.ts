@@ -34,12 +34,12 @@ async function generateStackSvg({ pathToSpriteIcns, output }: IStackSvgProps): P
 
   if (!files.length) {
     throw `
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      =--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=
       |
       | ❌ Wrong path to icons: ${pathToSpriteIcns}
       | Please, try to change the current path!
       |
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      =--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=
     `
   }
 
@@ -80,7 +80,7 @@ export default function customStackSvgPlugin({ pathToSpriteIcns, output }: IStac
         `)
       }
 
-      console.debug(`
+      console.log(`
         =--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=
         |
         | ✅ Stack-SVG-Sprite was successfully updated!
