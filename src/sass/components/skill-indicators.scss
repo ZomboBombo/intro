@@ -113,8 +113,18 @@
   /*
     === Media ===
   */
+  @include media(w1024) {
+    &__btn {
+      font-size: 4.8rem;
+    }
+  }
+
   @include media(w768) {
     grid-template-columns: 1fr;
+
+    &__btn {
+      font-size: 6.4rem;
+    }
 
     &__tags-list {
       display: none;
@@ -123,6 +133,10 @@
 
   @include media(w520) {
     &__item {
+      font-size: 4.8rem;
+    }
+
+    &__btn {
       font-size: 4.8rem;
     }
   }

@@ -60,12 +60,16 @@
     border-radius: var(--nm-brd-rad);
   }
 
+  &__nav-menu-item:not(:last-child) {
+    border-block-end: 1px solid var(--ui-secondary);
+  }
+
   &__nav-menu-link {
     $t-props: color, background-color;
     @include trans-config($t-props);
 
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     margin: 0;
     padding: var(--nm-link-gap) 5rem;
@@ -216,9 +220,9 @@
     }
 
     &__nav-menu-link {
-      padding: {
-        block-start: 2.5rem;
-        block-end: 2.5rem;
+      padding-block: {
+        start: 2.5rem;
+        end: 2.5rem;
       }
       border-radius: 0;
     }

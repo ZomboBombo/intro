@@ -41,7 +41,7 @@
     @include trans-config($t-props);
 
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     margin: 0;
     font-size: 3.2rem;
