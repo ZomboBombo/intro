@@ -3,6 +3,7 @@
     "title": "HTML",
     "descr": "The variety of HTML-tags is amazing. I consider it blasphemy to neglect it by using exclusively <div> and <span> everywhere to display all the web-content.",
     "preview": "./video/html.mp4",
+    "caption": "«Semantic and clean HTML-code»",
     "tags": [
       "semantics",
       "a11y",
@@ -14,6 +15,7 @@
     "title": "CSS",
     "descr": "Who among us doesn't like when «beautiful and modern»? I love it very much, so I follow the trends of the CSS world to make my web-apps not only beautiful, but also modern!",
     "preview": "./video/css.mp4",
+    "caption": "«Modern CSS by the BEM rules»",
     "tags": [
       "bem",
       "sass"
@@ -23,6 +25,7 @@
     "title": "JS",
     "descr": "JavaScript: the gift and curse of web-development. So simple, but so complex. So flat, but so multifaceted. JavaScript. I love you. I hate you.",
     "preview": "./video/js.mp4",
+    "caption": "«Vanilla JS with split into modules imitation»",
     "tags": [
       "typescript",
       "vue"
@@ -31,6 +34,8 @@
   "flutter": {
     "title": "Flutter",
     "descr": "Flutter is a multiplatform framework for mobile development. Under the hood it uses a «Dart», which was supposed to be a «JavaScript killer» (haha, very funny). By the way, the process of creating a frontend in mobile development is also called «layouting» (process of turning designs into real working UI, just like in Web).",
+    "preview": "./video/flutter.mp4",
+    "caption": "«Just basic Flutter-App example»",
     "tags": [
       "basics",
       "dart"
