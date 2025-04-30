@@ -68,7 +68,7 @@
     @include base-gradient-bg;
 
     position: absolute;
-    top: 1rem;
+    top: var(--gap-site-container-def);
     left: 100%;
     z-index: 1;
     padding: 0.8rem;

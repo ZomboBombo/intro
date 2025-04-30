@@ -16,6 +16,7 @@
 
   &__nav-menu {
     @include reset-list;
+
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -29,7 +30,6 @@
     $l-brd-rad: calc($l-gap-vertical * 4);
 
     position: relative;
-    isolation: isolate;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,8 +41,22 @@
     border-radius: $l-brd-rad;
     overflow: hidden;
 
+    &:not([href]) {
+      color: var(--ui-secondary);
+      background-color: var(--ui-primary);
+
+      &::before,
+      &::after {
+        content: '';
+        display: none;
+      }
+    }
+
     &::before,
     &::after {
+      $t-props: transform;
+      @include trans-config($t-props, var(--trans-base));
+
       content: attr(data-value);
       position: absolute;
       inset: 0;
@@ -53,9 +67,6 @@
       width: 100%;
       height: 100%;
       padding-inline: $l-gap-horizontal;
-
-      $t-props: transform;
-      @include trans-config($t-props, var(--trans-base));
     }
 
     &::before {
@@ -70,7 +81,7 @@
       background-color: var(--ui-primary);
     }
 
-    &:where(:hover, :focus-visible) {
+    &[href]:where(:hover, :focus-visible) {
       &::before {
         transform: translateY(-100%);
       }
@@ -102,6 +113,8 @@
     }
 
     &__nav-menu-link {
+      justify-content: start;
+
       &::before,
       &::after {
         justify-content: start;

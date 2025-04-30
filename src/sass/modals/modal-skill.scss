@@ -9,7 +9,7 @@
 // [END]: Outer Modal Styles
 
 .modal-skill {
-  --modal-skill-bd-rad: 1.2rem;
+  --modal-skill-brd-rad: 1.2rem;
 
   $t-props: transform;
   @include trans-config($t-props, var(--trans-long));
@@ -32,8 +32,8 @@
     border: 2px solid var(--color-def-white);
     border: {
       bottom: none;
-      top-right-radius: var(--modal-skill-bd-rad);
-      top-left-radius: var(--modal-skill-bd-rad);
+      top-right-radius: var(--modal-skill-brd-rad);
+      top-left-radius: var(--modal-skill-brd-rad);
     }
     overflow-y: auto;
   }
@@ -45,13 +45,13 @@
     height: max-content;
     background-color: var(--color-def-white);
     border: 2px solid var(--color-def-white);
-    border-radius: var(--modal-skill-bd-rad);
+    border-radius: var(--modal-skill-brd-rad);
     overflow: hidden;
 
     video {
       width: 100%;
       height: auto;
-      border-radius: var(--modal-skill-bd-rad);
+      border-radius: var(--modal-skill-brd-rad);
     }
   }
 

@@ -3,7 +3,7 @@
 
 .skill-indicators {
   --indicator-bd-width: 0.05em;
-  --indicator-bd-rad: 0.5em;
+  --indicator-brd-rad: 0.5em;
 
   flex-grow: 1;
   display: grid;
@@ -16,7 +16,7 @@
   }
   background-color: var(--color-def-white);
   border: var(--indicator-bd-width) solid var(--color-def-white);
-  border-radius: var(--indicator-bd-rad);
+  border-radius: var(--indicator-brd-rad);
   overflow: hidden;
 
   &__item {

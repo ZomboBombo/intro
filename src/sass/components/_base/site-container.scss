@@ -25,6 +25,30 @@
     height: auto;
   }
 
+  &__back-link {
+    $t-props: color, background-color;
+    @include trans-config($t-props);
+
+    position: absolute;
+    top: var(--gap-site-container-def);
+    right: var(--gap-site-container-def);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 1.2rem;
+    font-size: 1.8rem;
+    color: var(--ui-secondary);
+    background-color: var(--ui-primary);
+    border: 0.2rem solid var(--ui-secondary);
+    border-radius: 1.5em;
+
+    &:where(:hover, :focus-visible) {
+      color: var(--ui-primary);
+      background-color: var(--ui-secondary);
+    }
+  }
+
   /*
     === Media ===
   */
@@ -40,6 +64,10 @@
 
     &__content {
       flex-grow: 1;
+    }
+
+    &__back-link {
+      display: none;
     }
   }
 }
