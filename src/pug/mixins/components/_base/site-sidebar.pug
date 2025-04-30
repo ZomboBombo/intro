@@ -28,6 +28,8 @@ mixin site-sidebar(props = {})
           li.site-sidebar__nav-menu-item
             a.site-sidebar__nav-menu-link(
               href=href
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label=tooltip
             )= navItem.text
 

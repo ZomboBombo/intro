@@ -21,6 +21,8 @@ mixin site-header(props = {})
           li.site-header__nav-menu-item
             a.site-header__nav-menu-link(
               href=href
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label=tooltip
               data-burger-menu="link"
             )= navItem.text
