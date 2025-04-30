@@ -1,14 +1,18 @@
 mixin site-header(props = {})
   header.site-header&attributes(attributes)
     nav.site-header__nav
-      a.site-header__logo(href="/")
+      a.site-header__logo(
+        href="/"
+        title="Back to Main page"
+        aria-label="Back to Main page"
+      )
         +icon({
           width: 100,
           height: 100,
           name: 'icn-logo',
         })
 
-      ul.site-header__nav-menu(id="site-header-nav-menu" data-burger-menu="menu")
+      ul.site-header__nav-menu#site-header-nav-menu(data-burger-menu="menu")
         each navItem in DataSocialsNavigation
           -
             const href = navItem.href || '#'
