@@ -34,9 +34,9 @@ export default class Skill {
   */
   private static CNST_DESCR_TYPING_DELAY = 600
 
+  private _data: JSON | null
   private _trigger: HTMLButtonElement
   private _modal: NullishHTMLElem
-  private _data: JSON | null
 
   constructor(trigger: HTMLButtonElement) {
     this._modal = document.getElementById('modal-skill')

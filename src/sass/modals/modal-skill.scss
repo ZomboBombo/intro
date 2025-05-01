@@ -124,9 +124,14 @@
     }
   }
 
-  @include media(w1024) {
+  @include media(w1152) {
     &__preview {
       position: static;
+      order: 1;
+
+      video {
+        width: 200%;
+      }
     }
 
     &__tags-list {
