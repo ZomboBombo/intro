@@ -86,6 +86,10 @@
     }
   }
 
+  &__content {
+    overflow: hidden;
+  }
+
   // ===[ MEDIA ]===
   @include media(w768) {
     &__close-trigger {

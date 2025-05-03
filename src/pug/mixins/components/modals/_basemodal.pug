@@ -8,4 +8,5 @@ mixin _basemodal(props = {})
       data-modal="close-trigger"
     ) Close
 
-    block
+    .basemodal__content(data-modal="window-content")
+      block
