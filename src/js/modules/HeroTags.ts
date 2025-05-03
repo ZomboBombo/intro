@@ -1,3 +1,11 @@
+/**
+ * [TODO]:
+ * 
+ * Разбить 'HeroTags' на подмодули:
+ * – вынести типы и интерфейсы в подмодуль 'config.ts'
+ * 
+*/
+
 import type { UndefNullishHTMLElem, NullishHTMLElem, NullishButton } from '../types'
 
 type TChangeHeroTagStateReturn = {
@@ -67,32 +75,17 @@ export default class HeroTags {
   }
 
   /**
-   * ============================================================
-   * 
-   * The init {public} method.
-   * ~~~
-   * 
-   * The main class initialization method
-   * ~~~
-   * 
+   * Public method: [init()]
    * @returns {void}
-   * 
-   * ============================================================
   */
   public init(): void {
     this._tagsParent.addEventListener('click', this._onClick)
   }
 
   /**
-   * ============================================================
-   * 
-   * The _getHeroTagData {private} method.
-   * ~~~
-   * 
+   * Private method: [_getHeroTagData()]
    * @param {HTMLButtonElement} tag
    * @returns {IHeroTagData}
-   * 
-   * ============================================================
   */
   private _getHeroTagData(tag: HTMLButtonElement): IHeroTagData {
     const id: string = tag.getAttribute('aria-describedby') ?? ''
@@ -107,43 +100,25 @@ export default class HeroTags {
   }
 
   /**
-   * ============================================================
-   * 
-   * The _getActiveHeroTag {private} method.
-   * ~~~
-   * 
+   * Private method: [_getActiveHeroTag()]
    * @returns {NullishButton}
-   * 
-   * ============================================================
   */
   private _getActiveHeroTag(): NullishButton {
     return this._tagsParent.querySelector('[data-hero-active-tag]')
   }
 
   /**
-   * ============================================================
-   * 
-   * The _getActiveHeroTagDescrItem {private} method.
-   * ~~~
-   * 
-   * @returns {NullishButton}
-   * 
-   * ============================================================
+   * Private method: [_getActiveHeroTagDescrItem()]
+   * @returns {NullishHTMLElem}
   */
   private _getActiveHeroTagDescrItem(): NullishHTMLElem {
     return this._descrList.querySelector('[data-hero-tags="descr-item"].is-active')
   }
 
   /**
-   * ============================================================
-   * 
-   * The _changeHeroTagState {private} method.
-   * ~~~
-   * 
+   * Private method: [_resetHeroTagsSetup()]
    * @param {HTMLButtonElement} tag
    * @returns {TChangeHeroTagStateReturn}
-   * 
-   * ============================================================
   */
   private _changeHeroTagState(tag: HTMLButtonElement): TChangeHeroTagStateReturn {
     const {
@@ -164,14 +139,8 @@ export default class HeroTags {
   }
 
   /**
-   * ============================================================
-   * 
-   * The _resetHeroTagsSetup {private} method.
-   * ~~~
-   * 
+   * Private method: [_resetHeroTagsSetup()]
    * @returns {void}
-   * 
-   * ============================================================
   */
   private _resetHeroTagsSetup(): void {
     const currActiveTag: NullishButton = this._getActiveHeroTag()
@@ -181,21 +150,17 @@ export default class HeroTags {
   }
 
   /**
-   * ============================================================
-   * 
-   * The _isClickOnAllowedOuterTarget {private} method.
+   * Private method: [_isClickOnAllowedOuterTarget()]
    * ~~~
    * 
    * Used to check allowability of 'outer-target' click.
-   * 
+   *
    * Allowed target list: {this._allowedOuterClickTargets}
    * Allowed target selectors: {this._CNST_ALLOWED_OUTER_TARGET_SELECTORS}
    * ~~~
-   * 
+   *
    * @param {TAllowedOuterTarget} clickTarget
    * @returns {boolean}
-   * 
-   * ============================================================
   */
   private _isClickOnAllowedOuterTarget(clickTarget: TAllowedOuterTarget): boolean {
     const allowedTargetCb = (allowedTarget: TAllowedOuterTarget): boolean => {
@@ -215,15 +180,9 @@ export default class HeroTags {
   }
 
   /**
-   * ============================================================
-   * 
-   * The _onClick {private} method.
-   * ~~~
-   * 
-   * @param {MouseEvent} e (event)
+   * Private callback: [_onClick]
+   * @param {MouseEvent} e
    * @returns {void}
-   * 
-   * ============================================================
   */
   private _onClick = (e: MouseEvent): void => {
     e.preventDefault()
@@ -255,15 +214,9 @@ export default class HeroTags {
   }
 
   /**
-   * ============================================================
-   * 
-   * The _onOuterClick {private} method.
-   * ~~~
-   * 
-   * @param {MouseEvent} e (event)
+   * Private callback: [_onOuterClick]
+   * @param {MouseEvent} e
    * @returns {void}
-   * 
-   * ============================================================
   */
   private _onOuterClick = (e: MouseEvent): void => {
     const isAllowedOuterClick: boolean = this._isClickOnAllowedOuterTarget(e.target as TAllowedOuterTarget)
