@@ -1,6 +1,18 @@
+import { NullishButton } from '../types'
+
+/**
+ * Class [Modal]
+ * ~~~
+ * 
+ * Used for creating 'modal-windows'.
+ * ~~~~
+ * 
+ * Constructor:
+ * @param {HTMLElement} modal
+*/
 export default class Modal {
   private _modal: HTMLElement
-  private _modalCloseTrigger: HTMLButtonElement
+  private _modalCloseTrigger: NullishButton
 
   constructor(modal: HTMLElement) {
     this._modal = modal
@@ -9,16 +21,97 @@ export default class Modal {
       return
     }
 
-    this._modalCloseTrigger = this._modal.querySelector('[data-modal="close-trigger"]')!
+    this._modalCloseTrigger = this._modal.querySelector('[data-modal="close-trigger"]')
   }
 
+  /**
+   * Public method: [init()]
+   * @returns {void}
+  */
   public init(): void {
-    this._modalCloseTrigger.addEventListener('click', this._onCloseModal)
+    this._modalCloseTrigger && this._modalCloseTrigger.addEventListener('click', this._onClickCloseTrigger)
+    document.addEventListener('keydown', this._onEscPress)
+    this._watchModalStateChange()
   }
 
-  private _onCloseModal = (e: MouseEvent): void => {
+  /**
+   * Private method: [_watchModalStateChange()]
+   * ~~~
+   * 
+   * The {MutationObserver} watched 'class' attr changes
+   * on the {this._modal} element.
+   * 
+   * Necessary to correctly add [document] event listeners.
+   * ~~~
+   * 
+   * @returns {void}
+  */
+  private _watchModalStateChange(): void {
+    const modalStateChangeObserver = new MutationObserver((mutatioRecs) => {
+      const classMutatationRec: MutationRecord = mutatioRecs.find((mutation) => mutation.attributeName === 'class')!
+      const isModalOpened: boolean = !classMutatationRec!.oldValue!.includes('is-active')
+
+      if (isModalOpened) {
+        document.addEventListener('keydown', this._onEscPress)
+        setTimeout(() => document.addEventListener('click', this._onClickOutside))
+      }
+    })
+
+    modalStateChangeObserver.observe(this._modal, { attributes: true, attributeOldValue: true })
+  }
+
+  /**
+   * Private method: [_closeModal()]
+   * ~~~
+   * 
+   * Common 'close-modal' logic for all closing ways.
+   * ~~~
+   * 
+   * @returns {void}
+  */
+  private _closeModal(): void {
+    this._modal.classList.remove('is-active')
+  }
+
+  /**
+   * Private callback: [_onClickCloseTrigger]
+   * @param {MouseEvent} e
+   * @returns {void}
+  */
+  private _onClickCloseTrigger = (e: MouseEvent): void => {
+    e.preventDefault()
+    this._closeModal()
+    document.removeEventListener('click', this._onClickOutside)
+  }
+
+  /**
+   * Private callback: [_onEscPress]
+   * @param {KeyboardEvent} e
+   * @returns {void}
+  */
+  private _onEscPress = (e: KeyboardEvent): void => {
+    const isEscPressed: boolean = e.key === 'Escape' || e.code === 'Escape'
+
+    isEscPressed && this._closeModal()
+
+    document.removeEventListener('keydown', this._onEscPress)
+    document.removeEventListener('click', this._onClickOutside)
+  }
+
+  /**
+   * Private callback: [_onClickOutside]
+   * @param {MouseEvent} e
+   * @returns {void}
+  */
+  private _onClickOutside = (e: MouseEvent): void => {
     e.preventDefault()
 
-    this._modal.classList.remove('is-active')
+    const isModalOpened: boolean = this._modal.classList.contains('is-active')
+    const isClosingTarget: boolean = (e.target as HTMLElement).closest('[data-modal="window-content"]') === null
+
+    if (isModalOpened && isClosingTarget) {
+      this._closeModal()
+      document.removeEventListener('click', this._onClickOutside)
+    }
   }
 }

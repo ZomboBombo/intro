@@ -4,10 +4,11 @@ import Modal from '../modules/Modal'
 /**
  * Function [_setupModalTriggers]
  * ~~~
- * 
+ *
  * Base 'modal-triggers' setup to add event-listeners
  * for all triggers to open Modals.
- * 
+ * ~~~
+ *
  * @returns {void}
 */
 function _setupModalTriggers(): void {
@@ -35,9 +36,10 @@ function _setupModalTriggers(): void {
 /**
  * Function [_setupModals]
  * ~~~
- * 
+ *
  * Base Modals setup.
- * 
+ * ~~~
+ *
  * @returns {void}
 */
 function _setupModals(): void {
