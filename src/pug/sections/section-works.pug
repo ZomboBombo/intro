@@ -1,0 +1,28 @@
+mixin section-works(props = {})
+  -
+    const works = [
+      {
+        name: 'Work #1',
+        tags: ['work', 'web'],
+      },
+      {
+        name: 'Work #2',
+        tags: ['pet', 'web'],
+      },
+      {
+        name: 'Work #3',
+        tags: ['pet', 'mobile'],
+      },
+    ]
+
+  section.section-works&attributes(attributes)
+    header.section-works__header
+      h1.ui-title.ui-title--h1.ui-code.section-works__title Works
+      +work-filters()
+
+    ol.section-works__list
+      each work in works
+        - const {name, tags} = work
+
+        li.section-works__item
+          +work-card({name: name, tags: tags})

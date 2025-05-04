@@ -1,0 +1,39 @@
+mixin work-card(props = {})
+  -
+    const {pic, name, descr, tags} = props
+    const picName = pic?.name || 'content/pic-placeholder'
+    const picExt = pic?.ext || 'png'
+    const picAlt = pic?.alt || false
+
+  article.work-card&attributes(attributes)
+    +picture({
+      width: 350,
+      height: 350,
+      name: picName,
+      ext: picExt,
+      alt: picAlt,
+    }).work-card__preview
+
+    hgroup.work-card__head
+      h3.work-card__title= name
+      p.work-card__descr= descr
+
+    .work-card__links
+      a.work-card__link(
+        href="#"
+        aria-label="Go to repo with «Work» sources"
+      ) Goto repo
+
+      a.work-card__link(
+        href="#"
+        aria-label="Go to «Work» demonstration"
+      ) Watch demo
+
+      a.work-card__link(
+        href="#"
+        aria-label="Go to «Work» demonstration"
+      ) Open Work
+
+    ul.work-card__tags-list
+      each tag in tags
+        li.work-card__tag= tag

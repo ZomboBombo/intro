@@ -1,0 +1,119 @@
+@use '../system/mixins' as *;
+@use '../system/breakpoints' as *;
+
+.work-filters {
+  --wf-panel-padding: 0.2rem;
+  --wf-trigger-padding-ver: 0.6rem;
+  --wf-trigger-padding-hor: 1.2rem;
+  --wf-fs: 2.4rem;
+  --wf-brd-size-def: 0.2rem;
+  --wf-brd-rad-def: 1em;
+  --wf-reset-trig-total-size: calc(
+    (var(--wf-panel-padding) * 2) + (var(--wf-trigger-padding-ver) * 2) + (var(--wf-brd-size-def) * 2) + var(--wf-fs)
+  );
+
+  display: flex;
+  align-items: center;
+  column-gap: 0.4rem;
+
+  &:has(input:checked, input[checked], input[aria-selected='true']) &__reset-trigger {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__reset-trigger {
+    $t-props: background-color, border-color, opacity;
+    @include trans-config($t-props);
+    @include square(var(--wf-reset-trig-total-size));
+
+    position: relative;
+    display: flex;
+    padding: 1.2rem;
+    font-size: 0;
+    background-color: var(--ui-secondary);
+    border: var(--wf-brd-size-def) solid var(--ui-secondary);
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      z-index: 1;
+      display: block;
+      width: 75%;
+      height: 0.2rem;
+      background-color: var(--ui-primary);
+      border-radius: 0.2rem;
+    }
+
+    &::before {
+      rotate: 45deg;
+    }
+
+    &::after {
+      rotate: -45deg;
+    }
+
+    &:where(:hover, :focus-visible) {
+      background-color: var(--ui-secondary-trans050);
+    }
+
+    &:active {
+      background-color: var(--ui-secondary-trans025);
+      border-color: var(--ui-secondary-trans025);
+    }
+
+    &:disabled,
+    &[disabled] {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  &__panel {
+    display: flex;
+    align-items: center;
+    column-gap: 0.2rem;
+    margin: 0;
+    padding: 0.2rem;
+    font-size: var(--wf-fs);
+    border: var(--wf-brd-size-def) solid var(--ui-secondary);
+    border-radius: var(--wf-brd-rad-def);
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__trigger {
+    $t-props: color, background-color, opacity;
+    @include trans-config($t-props);
+
+    padding: var(--wf-trigger-padding-ver) var(--wf-trigger-padding-hor);
+    line-height: 1;
+    color: var(--ui-secondary);
+    border-radius: var(--wf-brd-rad-def);
+    cursor: pointer;
+
+    &:has(input:checked, input[checked], input[aria-selected='true']) {
+      color: var(--ui-primary);
+      background-color: var(--ui-secondary);
+    }
+
+    &:where(:hover, :focus-visible, :focus-within) {
+      background-color: var(--ui-secondary-trans025);
+    }
+
+    &:active {
+      opacity: 0.75;
+    }
+  }
+}
