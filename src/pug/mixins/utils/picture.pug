@@ -21,9 +21,10 @@ mixin picture(props = {})
   else
     picture&attributes(attributes)
       source(type="image/webp" srcset=`./img/${name}.webp, ./img/${name}@2x.webp 2x`)
+      source(type=`image/${ext}` srcset=`./img/${name}.${ext}, ./img/${name}@2x.${ext} 2x`)
       img(
         src=`./img/${name}.${ext}`
-        srcset=`./img/${name}@2x.${ext}`
+        srcset=`./img/${name}@2x.${ext} 2x`
         class=imgClass
         width=width
         height=height
