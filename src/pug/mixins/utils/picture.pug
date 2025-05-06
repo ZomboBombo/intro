@@ -5,7 +5,7 @@ mixin picture(props = {})
     const imgClass = props.imgClass || false
     const name = props.name || 'content/pic-placeholder'
     const ext = props.ext || 'png'
-    const alt = props.alt || false
+    const alt = props.alt || ''
     const isSVG = props.ext === 'svg'
 
   if isSVG
