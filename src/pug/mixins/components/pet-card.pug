@@ -24,16 +24,16 @@ mixin pet-card(props = {})
 
         .pet-card__links
           +link({
-            isExternal: true,
             href: hrefRepo,
+            isExternal: true,
             tooltip: 'Open project\'s repo',
             text: '> Goto repo',
           }).pet-card__link
 
           if hrefDemo
             +link({
-              isExternal: true,
               href: hrefDemo,
+              isExternal: true,
               tooltip: 'Open project\'s demo',
               text: '> Watch Demo',
             }).pet-card__link

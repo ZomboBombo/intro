@@ -1,11 +1,14 @@
 mixin link(props = {})
   -
-    const isExternal = props.isExternal
-    const hasVisibleTooltip = props.hasVisibleTooltip
-    const href = props.href
+    const {
+      href,
+      isExternal,
+      hasVisibleTooltip,
+      tooltip,
+      text,
+    } = props
     const target = isExternal && '_blank'
     const rel = isExternal && 'noopener noreferrer'
-    const tooltip = props.tooltip || false
 
   a(
     href=href
@@ -13,4 +16,4 @@ mixin link(props = {})
     rel=rel
     title=hasVisibleTooltip && tooltip
     aria-label=tooltip
-  )&attributes(attributes)= props.text
+  )&attributes(attributes)= text
