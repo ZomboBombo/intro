@@ -1,39 +1,60 @@
 mixin work-card(props = {})
   -
-    const {pic, name, descr, tags} = props
+    const {
+      pic,
+      name,
+      descr,
+      tags,
+      repoLink = false,
+      demoLink = false,
+      realLink = false,
+    } = props
     const picName = pic?.name || 'content/pic-placeholder'
     const picExt = pic?.ext || 'png'
     const picAlt = pic?.alt || false
 
-  article.work-card&attributes(attributes)
+  article.work-card(data-work-card="parent")&attributes(attributes)
     +picture({
-      width: 350,
-      height: 350,
+      width: 300,
+      height: 300,
       name: picName,
       ext: picExt,
       alt: picAlt,
     }).work-card__preview
 
-    hgroup.work-card__head
-      h3.work-card__title= name
-      p.work-card__descr= descr
+    .work-card__info
+      hgroup.work-card__head
+        h3.work-card__title= name
+        p.work-card__descr= descr
 
-    .work-card__links
-      a.work-card__link(
-        href="#"
-        aria-label="Go to repo with «Work» sources"
-      ) Goto repo
+      menu.work-card__links-list
+        if repoLink
+          li
+            +link({
+              href: repoLink,
+              isExternal: true,
+              tooltip: `Go to the repository with the «${name}» sources`,
+              text: '> Goto repo',
+            }).work-card__link
 
-      a.work-card__link(
-        href="#"
-        aria-label="Go to «Work» demonstration"
-      ) Watch demo
+        if demoLink
+          li
+            +link({
+              href: demoLink,
+              isExternal: true,
+              tooltip: `Go to the «${name}» demonstration`,
+              text: '> Watch demo',
+            }).work-card__link
 
-      a.work-card__link(
-        href="#"
-        aria-label="Go to «Work» demonstration"
-      ) Open Work
+        if realLink
+          li
+            +link({
+              href: realLink,
+              isExternal: true,
+              tooltip: `Open the «${name}» real project`,
+              text: '> Open Work',
+            }).work-card__link
 
-    ul.work-card__tags-list
-      each tag in tags
-        li.work-card__tag= tag
+      ul.work-card__tags-list
+        each tag in tags
+          li.work-card__tag(data-work-card="tag")= tag

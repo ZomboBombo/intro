@@ -1,11 +1,69 @@
+@use '../system/mixins' as *;
+@use '../system/breakpoints' as *;
+
 .section-works {
+  --card-min-width: 36rem;
+
   display: grid;
+  row-gap: 3.6rem;
   padding: var(--gap-section-ver) 6rem;
+  container-type: inline-size;
 
   &__header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    column-gap: 1.2rem;
+    gap: 1.2rem;
+  }
+
+  &__filters {
+    align-self: end;
+    margin-inline-start: auto;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--card-min-width), 1fr));
+    gap: 3.6rem;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // ===[ MEDIA ]===
+  @container (width < 1024px) {
+    &__header {
+      flex-direction: column;
+      row-gap: 6.4rem;
+    }
+  }
+
+  @include media(w1152) {
+    --card-min-width: 32rem;
+
+    &__header {
+      flex-direction: column;
+      row-gap: 6.4rem;
+    }
+  }
+
+  @include media(w1024) {
+    --card-min-width: 30rem;
+
+    &__list {
+      gap: 1.2rem;
+    }
+  }
+
+  @include media(w768) {
+    padding-inline: var(--gap-def-hor);
+
+    &__filters {
+      align-self: auto;
+      margin-inline-start: 0;
+    }
   }
 }

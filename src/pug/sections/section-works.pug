@@ -3,26 +3,32 @@ mixin section-works(props = {})
     const works = [
       {
         name: 'Work #1',
+        descr: 'Work #1: Descr Descr Descr',
         tags: ['work', 'web'],
+        repoLink: '#work-1:repo',
+        demoLink: '#work-1:demo',
+        realLink: '#work-1:real',
       },
       {
         name: 'Work #2',
+        descr: 'Work #2: Descr Descr Descr',
         tags: ['pet', 'web'],
+        demoLink: '#work-2',
       },
       {
         name: 'Work #3',
+        descr: 'Work #3: Descr Descr Descr',
         tags: ['pet', 'mobile'],
+        realLink: '#work-3',
       },
     ]
 
   section.section-works&attributes(attributes)
     header.section-works__header
       h1.ui-title.ui-title--h1.ui-code.section-works__title Works
-      +work-filters()
+      +work-filters().section-works__filters
 
     ol.section-works__list
       each work in works
-        - const {name, tags} = work
-
         li.section-works__item
-          +work-card({name: name, tags: tags})
+          +work-card(work)

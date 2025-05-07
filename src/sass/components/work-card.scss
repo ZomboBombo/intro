@@ -1,0 +1,135 @@
+@use '../system/mixins' as *;
+@use '../system/breakpoints' as *;
+
+.work-card {
+  --wc-fs-title: 4.8rem;
+  --wc-fs-descr: 3rem;
+  --wc-fs-link: 2.4rem;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--ui-primary);
+  border: 0.2rem solid var(--ui-secondary);
+  border-radius: 2.4rem;
+  overflow: hidden;
+
+  &__preview {
+    width: 100%;
+    height: auto;
+
+    img {
+      @include pictured-image;
+    }
+  }
+
+  &__info {
+    display: grid;
+    row-gap: 2.4rem;
+    padding: 1.2rem;
+    height: 100%;
+  }
+
+  &__head {
+    display: grid;
+    row-gap: 0.4rem;
+  }
+
+  &__title {
+    font: {
+      size: var(--wc-fs-title);
+      weight: 700;
+    }
+    line-height: 1;
+  }
+
+  &__descr {
+    font: {
+      size: var(--wc-fs-descr);
+      weight: 400;
+    }
+    line-height: 1;
+  }
+
+  &__links-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.4rem;
+  }
+
+  &__link {
+    $t-props: padding, color, opacity;
+    @include trans-config($t-props, var(--trans-base));
+
+    position: relative;
+    isolation: isolate;
+    padding: 0.2rem 0.4rem;
+    font-size: var(--wc-fs-link);
+    border-radius: 0.25em;
+
+    &::before {
+      $t-props: width;
+      @include trans-config($t-props, var(--trans-base));
+
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      z-index: -1;
+      display: block;
+      width: 0;
+      height: 100%;
+      background-color: var(--ui-secondary);
+      border-radius: inherit;
+    }
+
+    &:where(:hover, :focus-visible) {
+      padding-inline-start: 0.8rem;
+      color: var(--ui-primary);
+
+      &::before {
+        right: auto;
+        left: 0;
+        width: 100%;
+      }
+    }
+
+    &:active {
+      opacity: 0.75;
+    }
+  }
+
+  &__tags-list {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 1.2rem;
+    margin-block-start: auto;
+  }
+
+  &__tag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    line-height: 1;
+    color: var(--ui-primary);
+    padding: 0.4rem 0.8rem;
+    background-color: var(--ui-secondary);
+    border-radius: 0.5em;
+
+    &::before {
+      content: '#';
+    }
+  }
+
+  // ===[ MEDIA ]===
+  @include media(w768) {
+    --wc-fs-title: 3.2rem;
+    --wc-fs-descr: 2.4rem;
+    --wc-fs-link: 1.8rem;
+  }
+}

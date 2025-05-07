@@ -39,6 +39,9 @@
 
     &::before,
     &::after {
+      $t-props: background-color;
+      @include trans-config($t-props);
+
       content: '';
       position: absolute;
       top: 50%;
@@ -62,6 +65,11 @@
 
     &:where(:hover, :focus-visible) {
       background-color: var(--ui-secondary-trans050);
+    }
+
+    &:where(:focus-visible) {
+      outline: 0.2rem solid var(--ui-accent-focus-outline);
+      outline-offset: 0.2rem;
     }
 
     &:active {
@@ -91,12 +99,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
   }
 
   &__trigger {
     $t-props: color, background-color, opacity;
     @include trans-config($t-props);
 
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     padding: var(--wf-trigger-padding-ver) var(--wf-trigger-padding-hor);
     line-height: 1;
     color: var(--ui-secondary);
@@ -114,6 +129,39 @@
 
     &:active {
       opacity: 0.75;
+    }
+  }
+
+  // ===[ MEDIA ]===
+  @include media(w768) {
+    width: 100%;
+    max-width: calc(100dvw - var(--gap-def-hor) * 2);
+
+    &:has(input:checked, input[checked], input[aria-selected='true']) &__reset-trigger {
+      background-color: var(--ui-secondary);
+      opacity: 1;
+      pointer-events: all;
+
+      &::before,
+      &::after {
+        background-color: var(--ui-primary);
+      }
+    }
+
+    &__reset-trigger {
+      min-width: var(--wf-reset-trig-total-size);
+      background-color: var(--color-def-transparent);
+      opacity: 0.75;
+
+      &::before,
+      &::after {
+        background-color: var(--ui-secondary);
+      }
+    }
+
+    &__panel {
+      width: 100%;
+      overflow-x: auto;
     }
   }
 }
