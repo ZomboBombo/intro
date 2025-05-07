@@ -12,13 +12,13 @@ import Modal from '../modules/Modal'
  * @returns {void}
 */
 function _setupModalTriggers(): void {
-  const modalTriggers: NodeListOf<HTMLButtonElement> = document.querySelectorAll('[data-open-modal]')
+  const $modalTriggers: NodeListOf<HTMLButtonElement> = document.querySelectorAll('[data-open-modal]')
 
-  if (!modalTriggers.length) {
+  if (!$modalTriggers.length) {
     return
   }
 
-  modalTriggers.forEach((trigger: HTMLButtonElement) => {
+  $modalTriggers.forEach((trigger: HTMLButtonElement) => {
     const modalId: string = trigger.getAttribute('data-open-modal')!
     const modal: NullishHTMLElem = document.getElementById(modalId)
 
@@ -43,9 +43,9 @@ function _setupModalTriggers(): void {
  * @returns {void}
 */
 function _setupModals(): void {
-  const modals: NodeListOf<HTMLElement> = document.querySelectorAll('[data-modal="window"]')
+  const $modals: NodeListOf<HTMLElement> = document.querySelectorAll('[data-modal="window"]')
 
-  modals.forEach((modalWindow: HTMLElement) => {
+  $modals.forEach((modalWindow: HTMLElement) => {
     const modal = new Modal(modalWindow)
     modal.init()
   })
