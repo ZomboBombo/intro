@@ -2,8 +2,8 @@
   Media
 */
 $media-w1440: 1440px;
-$media-w1152: 1152px;
 $media-w1280: 1280px;
+$media-w1152: 1152px;
 $media-w1024: 1024px;
 $media-w768: 768px;
 $media-w520: 520px;
@@ -16,12 +16,12 @@ $media-w520: 520px;
     @media only screen and (max-width: calc($media-w1440)) {
       @content;
     }
-  } @else if $media == w1152 {
-    @media only screen and (max-width: calc($media-w1152)) {
-      @content;
-    }
   } @else if $media == w1280 {
     @media only screen and (max-width: calc($media-w1280)) {
+      @content;
+    }
+  } @else if $media == w1152 {
+    @media only screen and (max-width: calc($media-w1152)) {
       @content;
     }
   } @else if $media == w1024 {
