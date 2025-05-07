@@ -6,6 +6,7 @@
   @include trans-config(grid-template-columns, var(--trans-base));
 
   position: relative;
+  contain: paint;
   display: grid;
   grid-template-columns: 0 1fr;
   width: 100%;
@@ -13,7 +14,6 @@
   min-height: calc(100dvh - 3.2rem);
   margin: auto;
   padding: 0;
-  overflow-x: hidden;
 
   &.is-sidebar-open {
     grid-template-columns: var(--js-sidebar-width) 1fr;
