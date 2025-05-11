@@ -13,7 +13,7 @@ mixin work-card(props = {})
     const picExt = pic?.ext || 'png'
     const picAlt = pic?.alt || false
 
-  article.work-card(data-work-card="parent")&attributes(attributes)
+  article.work-card(data-work-filters="work-card")&attributes(attributes)
     +picture({
       width: 300,
       height: 300,
@@ -57,4 +57,4 @@ mixin work-card(props = {})
 
       ul.work-card__tags-list
         each tag in tags
-          li.work-card__tag(data-work-card="tag")= tag
+          li.work-card__tag(data-work-filters="work-card-tag")= tag

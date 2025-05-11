@@ -1,10 +1,10 @@
 mixin work-filters(props = {})
   -
     const filters = [
-      {text: 'pets', label: 'Pets', id: 'pets'},
-      {text: 'works', label: 'Works', id: 'works'},
-      {text: 'webs', label: 'Webs', id: 'webs'},
-      {text: 'mobiles', label: 'Mobiles', id: 'mobiles'},
+      {text: 'pets', label: 'Pets', id: 'pet'},
+      {text: 'works', label: 'Works', id: 'work'},
+      {text: 'webs', label: 'Webs', id: 'web'},
+      {text: 'mobiles', label: 'Mobiles', id: 'mobile'},
     ]
 
   form.work-filters(data-work-filters="parent")&attributes(attributes)
@@ -20,13 +20,14 @@ mixin work-filters(props = {})
         - const {text, label, id} = filter
 
         li.work-filters__item
-          label.work-filters__trigger= text
+          label.work-filters__trigger(
+            data-work-filters="trigger"
+            data-work-filter-id=id
+          )= text
             input.visually-hidden(
               type="radio"
               name="work-filters"
               title=`Sort by «${label}»`
               aria-label=`Sort by «${label}»`
               aria-selected="false"
-              data-work-filters="trigger"
-              data-work-filter-id=id
             )

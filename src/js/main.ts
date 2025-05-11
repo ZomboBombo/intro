@@ -5,6 +5,7 @@ import initColorSchemeSwitcher from './initializers/init-color-scheme-switcher'
 import initHeroTags from './initializers/init-hero-tags'
 import initModals from './initializers/init-modals'
 import initSkillsLogic from './initializers/init-skills-logic'
+import initWorkFilters from './initializers/init-work-filters'
 
 document.addEventListener('DOMContentLoaded', () => {
   initBurgerMenu()
@@ -21,4 +22,5 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('load', () => {
   initColorSchemeSwitcher()
   initModals()
+  initWorkFilters()
 })

@@ -24,7 +24,7 @@
 
   &__list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--card-min-width), 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 3.6rem;
   }
 
@@ -48,6 +48,10 @@
       flex-direction: column;
       row-gap: 6.4rem;
     }
+
+    &__list {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   @include media(w1024) {
@@ -64,6 +68,12 @@
     &__filters {
       align-self: auto;
       margin-inline-start: 0;
+    }
+  }
+
+  @include media(w520) {
+    &__list {
+      grid-template-columns: 1fr;
     }
   }
 }
