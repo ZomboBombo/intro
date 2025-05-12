@@ -52,5 +52,50 @@ $sizes: (
   Fonts
 */
 $fonts: (
-  'primary': "'Inconsolata', monospace, system-ui"
+  'primary': "'Inconsolata', monospace, system-ui",
+  'special': "'Chivo-Var', monospace, system-ui"
+);
+
+/*
+  Work-Cards
+  ~~~
+  Color schemes for the 'Work-Cards'.
+*/
+$work-cards: (
+  'prime': (
+    'text': hsl(71 100% 59%),
+    'bg': hsl(0 0% 3%)
+  ),
+  'vtt': (
+    'text': hsl(0 0% 100%),
+    'bg': hsl(217 91% 47%)
+  ),
+  'onlyme': (
+    'text': hsl(352 100% 42%),
+    'bg': hsl(0 0% 100%)
+  ),
+  'plonq': (
+    'text': hsl(0 0% 100%),
+    'bg': hsl(0 0% 5%)
+  ),
+  'askona': (
+    'text': hsl(0 0% 100%),
+    'bg': hsl(182 100% 37%)
+  ),
+  'pixel-art-app': (
+    'text': hsl(0 0% 100%),
+    'bg': hsl(271 76% 53%)
+  ),
+  'calorie-counter': (
+    'text': hsl(0 0% 100%),
+    'bg': hsl(275 67% 11%)
+  ),
+  'u-dice-roller': (
+    'text': hsl(40 11% 11%),
+    'bg': hsl(38 100% 50%)
+  ),
+  'u-quiz-app': (
+    'text': hsl(264 45% 84%),
+    'bg': hsl(270 84% 36%)
+  )
 );

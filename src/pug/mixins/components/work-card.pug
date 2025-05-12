@@ -1,31 +1,55 @@
 mixin work-card(props = {})
   -
     const {
-      pic,
+      preview,
       name,
       descr,
+      datetimes,
       tags,
       repoLink = false,
       demoLink = false,
       realLink = false,
     } = props
-    const picName = pic?.name || 'content/pic-placeholder'
-    const picExt = pic?.ext || 'png'
-    const picAlt = pic?.alt || false
 
-  article.work-card(data-work-filters="work-card")&attributes(attributes)
-    +picture({
-      width: 300,
-      height: 300,
-      name: picName,
-      ext: picExt,
-      alt: picAlt,
-    }).work-card__preview
+  article.work-card(
+    data-work-filters="work-card"
+    data-work-card-color-scheme=preview && preview.colorScheme
+  )&attributes(attributes)
+    span.work-card__preview(aria-hidden="true")= preview ? preview.text : 'Work-Preview'
 
     .work-card__info
+      if datetimes
+        -
+          const isOnlyYear = datetimes.length === 1
+          const datetimeTooltip = isOnlyYear ? 'Year of project participation' : 'Years of project participation'
+
+        strong.work-card__time(
+          title=datetimeTooltip
+          aria-label=datetimeTooltip
+        )
+          if isOnlyYear
+            - const dtOnly = datetimes[0]
+
+            time(
+              datetime=dtOnly
+            )= dtOnly
+
+          else
+            - const [dtStart, dtEnd] = datetimes
+
+            time(
+              datetime=dtStart
+              aria-label="Project participation start date"
+            )= dtStart
+            | –
+            time(
+              datetime=dtEnd
+              aria-label="Project participation end date"
+            )= dtEnd
+
       hgroup.work-card__head
         h3.work-card__title= name
-        p.work-card__descr= descr
+        p.work-card__descr!= descr
 
       menu.work-card__links-list
         if repoLink

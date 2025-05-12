@@ -1,3 +1,5 @@
+@use 'sass:map';
+@use '../system/config/common-vars.scss' as common-var;
 @use '../system/mixins' as *;
 @use '../system/breakpoints' as *;
 
@@ -5,6 +7,10 @@
   --wc-fs-title: 4.8rem;
   --wc-fs-descr: 3rem;
   --wc-fs-link: 2.4rem;
+  --wc-def-brd: 0.2rem solid var(--ui-secondary);
+  --wc-preview-text: hsl(0 0% 100%);
+  --wc-preview-bg: hsl(0 0% 0%);
+  --wc-info-gap: 1.2rem;
 
   display: flex;
   flex-direction: column;
@@ -12,24 +18,72 @@
   margin: 0;
   padding: 0;
   background-color: var(--ui-primary);
-  border: 0.2rem solid var(--ui-secondary);
+  border: var(--wc-def-brd);
   border-radius: 2.4rem;
   overflow: hidden;
 
-  &__preview {
-    width: 100%;
-    height: auto;
-
-    img {
-      @include pictured-image;
+  @each $wcName, $wcVal in common-var.$work-cards {
+    &[data-work-card-color-scheme='#{$wcName}'] {
+      --wc-preview-text: #{map.get($wcVal, text)};
+      --wc-preview-bg: #{map.get($wcVal, bg)};
     }
   }
 
-  &__info {
-    display: grid;
-    row-gap: 2.4rem;
+  &[data-work-card-color-scheme] &__preview {
+    color: var(--wc-preview-text);
+    background-color: var(--wc-preview-bg);
+  }
+
+  &__preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    min-height: 30rem;
     padding: 1.2rem;
+    font: {
+      family: var(--font-special);
+      size: 5.6rem;
+      variation-settings: 'wght' 840;
+    }
+    letter-spacing: 0.09em;
+    text: {
+      align: center;
+      transform: uppercase;
+    }
+    overflow: hidden;
+  }
+
+  &__info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    row-gap: 3.6rem;
+    padding: var(--wc-info-gap);
     height: 100%;
+    border-block-start: var(--wc-def-brd);
+  }
+
+  &__time {
+    position: absolute;
+    top: 0;
+    right: var(--wc-info-gap);
+    transform: translateY(calc(-100% - var(--wc-info-gap)));
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    margin-inline-start: auto;
+    padding: 0.25em 0.5em;
+    font: {
+      size: 1.5rem;
+      weight: 400;
+    }
+    line-height: 1;
+    color: var(--ui-secondary);
+    background-color: var(--ui-primary);
+    border: var(--wc-def-brd);
+    border-radius: 0.25em;
   }
 
   &__head {
@@ -51,12 +105,23 @@
       weight: 400;
     }
     line-height: 1;
+
+    i {
+      display: block;
+      padding-block: 1.6rem;
+      font: {
+        size: 0.75em;
+        style: italic;
+      }
+      opacity: 0.65;
+    }
   }
 
   &__links-list {
     display: flex;
     flex-direction: column;
     row-gap: 0.4rem;
+    margin-block-start: auto;
   }
 
   &__link {
@@ -107,7 +172,6 @@
     align-items: center;
     justify-content: end;
     gap: 1.2rem;
-    margin-block-start: auto;
   }
 
   &__tag {
