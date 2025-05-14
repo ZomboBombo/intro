@@ -56,8 +56,8 @@
   }
 
   &__tag {
-    $trans-props: opacity;
-    @include trans-config($trans-props);
+    $t-props: opacity;
+    @include trans-config($t-props);
 
     display: inline;
     justify-content: center;

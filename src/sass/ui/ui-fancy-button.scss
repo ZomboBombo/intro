@@ -1,10 +1,10 @@
-@use "../system/vars" as *;
-@use "../system/mixins" as *;
+@use '../system/vars' as *;
+@use '../system/mixins' as *;
 
 .ui-fancy-button {
   $ui-fancy-button-gap--vertical: 0.8rem;
   $ui-fancy-button-gap--horizontal: 1.2rem;
-  $ui-fancy-button-brd-radius: calc( $ui-fancy-button-gap--vertical * 4 );
+  $ui-fancy-button-brd-radius: calc($ui-fancy-button-gap--vertical * 4);
 
   position: relative;
   isolation: isolate;
@@ -12,20 +12,18 @@
   justify-content: center;
   align-items: center;
   margin: 0;
-  padding:
-    $ui-fancy-button-gap--vertical
-    $ui-fancy-button-gap--horizontal;
+  padding: $ui-fancy-button-gap--vertical $ui-fancy-button-gap--horizontal;
   font: {
     size: 1.8rem;
     weight: 300;
-  };
+  }
   color: var(--color-def-transparent);
   background-color: var(--ui-contrast-primary);
   border-radius: $ui-fancy-button-brd-radius;
   cursor: pointer;
   overflow: hidden;
-  $trans-props: opacity;
-  @include trans-config($trans-props);
+  $t-props: opacity;
+  @include trans-config($t-props);
 
   &::before,
   &::after {
@@ -42,11 +40,11 @@
     font: {
       size: 1.8rem;
       weight: 300;
-    };
+    }
     color: var(--ui-bg-primary);
     pointer-events: none;
-    $trans-props: translate;
-    @include trans-config($trans-props);
+    $t-props: translate;
+    @include trans-config($t-props);
   }
   &::before {
     translate: 0 0;
