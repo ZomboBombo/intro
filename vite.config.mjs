@@ -1,4 +1,6 @@
 // Core Plugins
+import { appType, version } from './package.json'
+
 import vituum from 'vituum'
 import pages from 'vituum/plugins/pages'
 import pug from '@vituum/vite-plugin-pug'
@@ -12,6 +14,10 @@ import imageminPngquant from 'imagemin-pngquant'
 import customStackSvgPlugin from './custom-vite-plugins/custom-stack-svg-plugin'
 
 export default {
+  define: {
+    __APP_TYPE__: JSON.stringify(appType),
+    __APP_VER__: JSON.stringify(version)
+  },
   base: './',
   server: {
     open: true,

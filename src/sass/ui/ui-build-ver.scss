@@ -1,0 +1,13 @@
+.ui-build-ver {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  max-width: max-content;
+  padding: 0.2rem 0.6rem;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--ui-secondary);
+  background-color: var(--ui-secondary-trans025);
+  border-radius: 0.25em;
+}

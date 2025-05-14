@@ -1,5 +1,6 @@
 {
   "name": "intro",
+  "appType": "static",
   "version": "4.0.1",
   "description": "Sergey Novikov's Intro",
   "type": "module",
