@@ -151,7 +151,7 @@
     &__reset-trigger {
       min-width: var(--wf-reset-trig-total-size);
       background-color: var(--color-def-transparent);
-      opacity: 0.75;
+      opacity: 0.25;
 
       &::before,
       &::after {
