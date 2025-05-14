@@ -1,0 +1,10 @@
+mixin ui-loader(props = {})
+  - const {loaderPos} = props
+
+  .ui-loader(
+    class=loaderPos && `ui-loader--${loaderPos}-loader-pos`
+    aria-hidden="true"
+  )&attributes(attributes)
+    ul.ui-loader__tiles-box
+      - for (let i = 0; i < 8; i++)
+        li.ui-loader__tile

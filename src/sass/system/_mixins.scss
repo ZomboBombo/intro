@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use 'vars' as *;
 
 /*
@@ -76,24 +77,6 @@
 }
 
 /*
-  <...> для улучшения UX после :hover
-  на тач-устройствах
-*/
-@mixin media-touch-hover($element) {
-  @media (hover: hover) {
-    #{$element}:is(:hover, :focus-visible) {
-      @content;
-    }
-  }
-
-  @media (hover: none) {
-    #{$element}:active {
-      @content;
-    }
-  }
-}
-
-/*
   <...> для установки "квадратного" размера
 */
 @mixin square($size) {
@@ -101,6 +84,9 @@
   height: $size;
 }
 
+/*
+  <...> для "outline" по контуру текста
+*/
 @mixin text-outline($color, $outlineWidth: 1px, $shadowSpreadRad: 0) {
   $negativeOutlineWidth: calc(-1 * $outlineWidth);
 
@@ -119,4 +105,92 @@
 @mixin base-container-content-height {
   min-height: calc(var(--s-site-container-height-min) - var(--s-bd-base) * 2);
   max-height: calc(var(--s-site-container-height-base) - var(--s-bd-base) * 2);
+}
+
+/*
+  [SPECIAL]
+  <...> для улучшения UX после :hover
+  на тач-устройствах
+*/
+@mixin media-touch-hover($element) {
+  @media (hover: hover) {
+    #{$element}:is(:hover, :focus-visible) {
+      @content;
+    }
+  }
+
+  @media (hover: none) {
+    #{$element}:active {
+      @content;
+    }
+  }
+}
+
+/*
+  [SPECIAL]
+  <...> для добавления '@keyframes'
+  для компонента 'ui-loader()'
+*/
+// @mixin ui-loader-keyframes($animationName, $tileShiftPrimary, $isReflected: 'false') {
+@mixin ui-loader-keyframes($props) {
+  $animationName: map.get($props, animationName);
+  $tileShiftPrimary: map.get($props, tileShiftPrimary);
+  $tileShiftSecondary: if(map.get($props, tileShiftSecondary) != null, map.get($props, tileShiftSecondary), 0);
+  $isReflected: if(map.get($props, isReflected) != null, map.get($props, isReflected), 'false');
+
+  @if ($isReflected == 'true') {
+    @keyframes #{$animationName} {
+      0%,
+      100% {
+        translate: 0 0;
+      }
+
+      10%,
+      50% {
+        translate: $tileShiftPrimary $tileShiftSecondary;
+      }
+
+      20%,
+      70% {
+        translate: $tileShiftSecondary $tileShiftPrimary;
+      }
+
+      30%,
+      60% {
+        translate: (-$tileShiftSecondary) (-$tileShiftPrimary);
+      }
+
+      40%,
+      80% {
+        translate: (-$tileShiftPrimary) (-$tileShiftSecondary);
+      }
+    }
+  } @else {
+    @keyframes #{$animationName} {
+      0%,
+      100% {
+        translate: 0 0;
+      }
+
+      10%,
+      50% {
+        translate: $tileShiftSecondary $tileShiftPrimary;
+      }
+
+      20%,
+      70% {
+        translate: $tileShiftPrimary $tileShiftSecondary;
+      }
+
+      30%,
+      60% {
+        translate: (-$tileShiftPrimary) (-$tileShiftSecondary);
+      }
+
+      40%,
+      80% {
+        translate: (-$tileShiftSecondary) (-$tileShiftPrimary);
+      }
+    }
+  }
 }
