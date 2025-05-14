@@ -25,13 +25,13 @@
     transform: translateX(0);
   }
 
-  &__nav-menu {
+  &__nav-list {
     display: flex;
     flex-direction: column;
     row-gap: 0.4rem;
   }
 
-  &__nav-menu-link {
+  &__nav-link {
     $t-props: color, background-color, opacity;
     @include trans-config($t-props);
 

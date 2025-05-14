@@ -19,19 +19,11 @@ mixin site-sidebar(props = {})
       })
 
     nav.site-sidebar__nav
-      menu.site-sidebar__nav-menu
-        each navItem in DataSocialsNavigation
-          -
-            const href = navItem.href || '#'
-            const tooltip = navItem.tooltip || false
-
-          li.site-sidebar__nav-menu-item
-            a.site-sidebar__nav-menu-link(
-              href=href
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label=tooltip
-            )= navItem.text
+      +socials-list({
+        listClass: 'site-sidebar__nav-list',
+        listLinkClass: 'site-sidebar__nav-link',
+        links: DataSocialsNavigation,
+      })
 
     footer.site-sidebar__footer
       +color-scheme-switcher()

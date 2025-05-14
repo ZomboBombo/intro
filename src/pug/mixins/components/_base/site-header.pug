@@ -12,20 +12,12 @@ mixin site-header(props = {})
           name: 'icn-logo',
         })
 
-      ul.site-header__nav-menu#site-header-nav-menu(data-burger-menu="menu")
-        each navItem in DataSocialsNavigation
-          -
-            const href = navItem.href || '#'
-            const tooltip = navItem.tooltip || false
-
-          li.site-header__nav-menu-item
-            a.site-header__nav-menu-link(
-              href=href
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label=tooltip
-              data-burger-menu="link"
-            )= navItem.text
+      +socials-list({
+        listClass: 'site-header__nav-list',
+        listItemClass: 'site-header__nav-item',
+        listLinkClass: 'site-header__nav-link',
+        links: DataSocialsNavigation,
+      })#site-header-nav-menu(data-burger-menu="menu")
 
       .site-header__controls
         +color-scheme-switcher()
