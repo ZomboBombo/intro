@@ -3,6 +3,12 @@
 @use '../system/mixins' as *;
 @use '../system/breakpoints' as *;
 
+html[data-color-scheme='light'] {
+  .work-card {
+    color: var(--ui-secondary);
+  }
+}
+
 .work-card {
   --wc-fs-title: 4.8rem;
   --wc-fs-descr: 3rem;
@@ -17,6 +23,7 @@
   height: 100%;
   margin: 0;
   padding: 0;
+  color: var(--color-def-white);
   background-color: var(--ui-primary);
   border: var(--wc-def-brd);
   border-radius: 2.4rem;
