@@ -9,6 +9,7 @@ import initHeroTags from './initializers/init-hero-tags'
 import initModals from './initializers/init-modals'
 import initSkillsLogic from './initializers/init-skills-logic'
 import initWorkFilters from './initializers/init-work-filters'
+import initConsoleEasterEggs from './initializers/init-console-easter-eggs'
 
 /**
  * Service-func: [setupBuildVersion]
@@ -49,6 +50,7 @@ window.addEventListener('load', () => {
   initColorSchemeSwitcher()
   initModals()
   initWorkFilters()
+  initConsoleEasterEggs()
 
   setupBuildVersion()
 })
