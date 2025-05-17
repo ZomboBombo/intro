@@ -60,7 +60,6 @@
   &__trigger {
     $t-props: color, background-color;
     @include trans-config($t-props);
-    @include base-gradient-bg;
 
     position: absolute;
     top: var(--gap-site-container-def);
@@ -72,7 +71,6 @@
       width: 0.2rem;
       style: solid;
       color: var(--ui-secondary);
-      left: none;
       top-right-radius: 1.2rem;
       bottom-right-radius: 1.2rem;
     }
@@ -80,14 +78,12 @@
 
     &:where(:hover, :focus-visible) {
       color: var(--ui-secondary-shade-1);
+      background-color: var(--ui-primary-shade-1);
     }
 
     &:active {
       color: var(--ui-primary);
-      background: {
-        color: var(--ui-secondary);
-        image: none;
-      }
+      background-color: var(--ui-secondary);
     }
   }
 
