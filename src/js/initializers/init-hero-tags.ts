@@ -1,5 +1,5 @@
 import type { NullishHTMLElem } from '../types'
-import HeroTags from '../modules/HeroTags'
+import HeroTags from '../modules/hero-tags'
 
 export default function initHeroTags(): void {
   const $heroTagsParent: NullishHTMLElem = document.querySelector('[data-hero-tags="tags-parent"]')

@@ -1,41 +1,13 @@
-/**
- * [TODO]:
- * 
- * Разбить 'HeroTags' на подмодули:
- * – вынести типы и интерфейсы в подмодуль 'config.ts'
- * 
-*/
 
-import type { UndefNullishHTMLElem, NullishHTMLElem, NullishButton } from '../types'
-
-type TChangeHeroTagStateReturn = {
-  resetToInitial(): void
-  setToActive(): void
-}
-
-type TAllowedOuterTarget = HTMLElement | HTMLButtonElement
-
-interface IHeroTagsClassConstructor {
-  tagsParent: HTMLElement
-  descrListParent: HTMLElement
-  descrList: HTMLElement
-}
-
-interface IHeroTagData {
-  id: string
-  descrItem: UndefNullishHTMLElem
-  descrTextEntity: NullishHTMLElem
-}
+import * as _ from '../config'
+import type { UndefNullishHTMLElem, NullishHTMLElem, NullishButton } from '../../../types'
 
 
 /**
  * Class [HeroTags]
- * ~~~
- * 
- * Used for 'Hero-Tags' logic initializtion.
  * ~~~~
  * 
- * Constructor params has {IHeroTagsClassConstructor}
+ * Constructor params has {_.IHeroTagsClassConstructor}
  * initialization type:
  * 
  * @param {HTMLElement} tagsParent
@@ -43,7 +15,7 @@ interface IHeroTagData {
  * @param {HTMLElement} descrList
 */
 export default class HeroTags {
-  private _CNST_ALLOWED_OUTER_TARGET_SELECTORS = new Set([
+  private static readonly _CNST_ALLOWED_OUTER_TARGET_SELECTORS = new Set([
     '[data-hero-tags="tags-parent"]',
     '[data-hero-tags="tag"]',
     '[data-hero-tags="descr-list-parent"]',
@@ -58,7 +30,7 @@ export default class HeroTags {
   private _descrList: HTMLElement
   private _allowedOuterClickTargets: HTMLElement[]
 
-  constructor({ tagsParent, descrListParent, descrList }: IHeroTagsClassConstructor) {
+  constructor({ tagsParent, descrListParent, descrList }: _.IHeroTagsClassConstructor) {
     this._tagsParent = tagsParent
     this._descrListParent = descrListParent
     this._descrList = descrList
@@ -85,9 +57,9 @@ export default class HeroTags {
   /**
    * Private method: [_getHeroTagData()]
    * @param {HTMLButtonElement} tag
-   * @returns {IHeroTagData}
+   * @returns {_.IHeroTagData}
   */
-  private _getHeroTagData(tag: HTMLButtonElement): IHeroTagData {
+  private _getHeroTagData(tag: HTMLButtonElement): _.IHeroTagData {
     const id: string = tag.getAttribute('aria-describedby') ?? ''
     const descrTextEntity: NullishHTMLElem = this._descrList.querySelector(`#${id}`)
     const descrItem: UndefNullishHTMLElem = descrTextEntity?.closest('[data-hero-tags="descr-item"]') ?? descrTextEntity?.parentElement
@@ -104,7 +76,7 @@ export default class HeroTags {
    * @returns {NullishButton}
   */
   private _getActiveHeroTag(): NullishButton {
-    return this._tagsParent.querySelector('[data-hero-active-tag]')
+    return this._tagsParent.querySelector('[data-hero-tag-active]')
   }
 
   /**
@@ -118,21 +90,21 @@ export default class HeroTags {
   /**
    * Private method: [_resetHeroTagsSetup()]
    * @param {HTMLButtonElement} tag
-   * @returns {TChangeHeroTagStateReturn}
+   * @returns {_.TChangeHeroTagStateReturn}
   */
-  private _changeHeroTagState(tag: HTMLButtonElement): TChangeHeroTagStateReturn {
+  private _changeHeroTagState(tag: HTMLButtonElement): _.TChangeHeroTagStateReturn {
     const {
       descrItem: tagDescrItem
     } = this._getHeroTagData(tag)
 
     return {
       resetToInitial(): void {
-        tag.removeAttribute('data-hero-active-tag')
+        tag.removeAttribute('data-hero-tag-active')
         tagDescrItem?.classList.remove('is-active')
       },
 
       setToActive(): void {
-        tag.setAttribute('data-hero-active-tag', '')
+        tag.setAttribute('data-hero-tag-active', '')
         tagDescrItem?.classList.add('is-active')
       },
     }
@@ -151,22 +123,21 @@ export default class HeroTags {
 
   /**
    * Private method: [_isClickOnAllowedOuterTarget()]
-   * ~~~
    * 
    * Used to check allowability of 'outer-target' click.
    *
    * Allowed target list: {this._allowedOuterClickTargets}
-   * Allowed target selectors: {this._CNST_ALLOWED_OUTER_TARGET_SELECTORS}
+   * Allowed target selectors: {HeroTags._CNST_ALLOWED_OUTER_TARGET_SELECTORS}
    * ~~~
    *
-   * @param {TAllowedOuterTarget} clickTarget
+   * @param {_.TAllowedOuterTarget} clickTarget
    * @returns {boolean}
   */
-  private _isClickOnAllowedOuterTarget(clickTarget: TAllowedOuterTarget): boolean {
-    const allowedTargetCb = (allowedTarget: TAllowedOuterTarget): boolean => {
+  private _isClickOnAllowedOuterTarget(clickTarget: _.TAllowedOuterTarget): boolean {
+    const allowedTargetCb = (allowedTarget: _.TAllowedOuterTarget): boolean => {
       let isAllowedTarget = false
 
-      for (const selector of this._CNST_ALLOWED_OUTER_TARGET_SELECTORS) {
+      for (const selector of HeroTags._CNST_ALLOWED_OUTER_TARGET_SELECTORS) {
         if (clickTarget.closest(selector) === allowedTarget) {
           isAllowedTarget = true
           break
@@ -219,7 +190,7 @@ export default class HeroTags {
    * @returns {void}
   */
   private _onOuterClick = (e: MouseEvent): void => {
-    const isAllowedOuterClick: boolean = this._isClickOnAllowedOuterTarget(e.target as TAllowedOuterTarget)
+    const isAllowedOuterClick: boolean = this._isClickOnAllowedOuterTarget(e.target as _.TAllowedOuterTarget)
 
     if (isAllowedOuterClick) {
       return

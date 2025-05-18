@@ -40,7 +40,7 @@
       Styles for the ':hover' and ':focus'
       effects for the '.section-hero__tag' buttons
     */
-    &:has(button[data-hero-active-tag]) button:not([data-hero-active-tag]) {
+    &:has(button[data-hero-tag-active]) button:not([data-hero-tag-active]) {
       opacity: 0.6;
     }
 
