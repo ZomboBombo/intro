@@ -32,7 +32,7 @@ export default class Sidebar {
   }
 
   /**
-   * @description Used to initiate the 'Sidebar' logic.
+   * @description Initiates the 'Sidebar' logic.
    * @returns {void}
   */
   public init(): void {

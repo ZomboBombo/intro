@@ -28,7 +28,7 @@ export default class Skill {
   }
 
   /**
-   * @description Used to initiate the 'Skill' logic.
+   * @description Initiates the 'Skill' logic.
    * @returns {void}
   */
   public async init(): Promise<void> {

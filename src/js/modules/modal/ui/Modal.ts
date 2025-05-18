@@ -24,7 +24,7 @@ export default class Modal {
   }
 
   /**
-   * @description Used to initiate the 'Modal' logic.
+   * @description Initiates the 'Modal' logic.
    * @returns {void}
   */
   public init(): void {

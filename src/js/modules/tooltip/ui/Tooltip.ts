@@ -25,7 +25,7 @@ export default class Tooltip {
   }
 
   /**
-   * @description Used to initiate the 'Tooltip' logic.
+   * @description Initiates the 'Tooltip' logic.
    * @returns {void}
   */
   public init(): void {

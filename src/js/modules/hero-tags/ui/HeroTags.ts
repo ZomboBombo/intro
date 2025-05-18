@@ -45,7 +45,7 @@ export default class HeroTags {
   }
 
   /**
-   * @description Used to initiate the 'Hero-Tags' logic.
+   * @description Initiates the 'Hero-Tags' logic.
    * @returns {void}
   */
   public init(): void {

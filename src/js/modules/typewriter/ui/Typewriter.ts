@@ -25,7 +25,7 @@ export default class Typewriter {
   }
 
   /**
-   * @description Used to initiate the 'Typewriter' logic.
+   * @description Initiates the 'Typewriter' logic.
    * @returns {void}
   */
   public init(): void {
