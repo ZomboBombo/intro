@@ -12,6 +12,7 @@
 
 # Project sources
 _assets/
+_drafts/
 build/
 node_modules/
 npm-debug.*
