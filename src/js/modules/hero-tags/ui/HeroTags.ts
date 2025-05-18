@@ -1,6 +1,6 @@
 
 import * as _ from '../config'
-import type { UndefNullishHTMLElem, NullishHTMLElem, NullishButton } from '../../../types'
+import type { UndefNullishHTMLElem, NullishHTMLElem, NullishButton } from '../../../_core/types'
 
 /**
  * @class

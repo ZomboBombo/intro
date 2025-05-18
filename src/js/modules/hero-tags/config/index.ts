@@ -1,4 +1,4 @@
-import type { UndefNullishHTMLElem, NullishHTMLElem } from '../../../types'
+import type { UndefNullishHTMLElem, NullishHTMLElem } from '../../../_core/types'
 
 export type TChangeHeroTagStateReturn = {
   resetToInitial(): void

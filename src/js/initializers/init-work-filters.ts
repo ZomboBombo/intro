@@ -1,4 +1,4 @@
-import { NullishHTMLElem } from '../types'
+import { NullishHTMLElem } from '../_core/types'
 import WorkFilters from '../modules/work-filters'
 
 export default function initWorkFilters() {

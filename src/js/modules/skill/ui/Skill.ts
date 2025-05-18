@@ -1,5 +1,5 @@
 import * as _ from '../config'
-import type { NullishHTMLElem } from '../../../types'
+import type { NullishHTMLElem } from '../../../_core/types'
 import Typewriter from '../../typewriter'
 
 /**

@@ -1,4 +1,4 @@
-import type { UndefNullishString } from '../../../types'
+import type { UndefNullishString } from '../../../_core/types'
 
 export interface IAllyTooltipTextProps {
   openTxt: UndefNullishString

@@ -1,4 +1,4 @@
-import { NullishButton } from '../../../types'
+import { NullishButton } from '../../../_core/types'
 
 /**
  * @class

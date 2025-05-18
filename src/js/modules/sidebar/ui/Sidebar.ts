@@ -1,5 +1,5 @@
 import * as _ from '../config'
-import type { NullishHTMLElem, NullishButton } from '../../../types'
+import type { NullishHTMLElem, NullishButton } from '../../../_core/types'
 
 /**
  * @class
