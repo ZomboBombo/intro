@@ -7,7 +7,7 @@ import type { UndefNullishHTMLElem, NullishHTMLElem, NullishButton } from '../..
  * @module HeroTags
 */
 export default class HeroTags {
-  private static readonly _CNST_ALLOWED_OUTER_TARGET_SELECTORS = new Set([
+  private static readonly CNST_ALLOWED_OUTER_TARGET_SELECTORS = new Set([
     '[data-hero-tags="tags-parent"]',
     '[data-hero-tags="tag"]',
     '[data-hero-tags="descr-list-parent"]',
@@ -125,7 +125,7 @@ export default class HeroTags {
    * Used to check allowability of 'outer-target' click.
    *
    * Allowed target list: {this._allowedOuterClickTargets}
-   * Allowed target selectors: {HeroTags._CNST_ALLOWED_OUTER_TARGET_SELECTORS}
+   * Allowed target selectors: {HeroTags.CNST_ALLOWED_OUTER_TARGET_SELECTORS}
    * ~~~
    *
    * @param {_.TAllowedOuterTarget} clickTarget
@@ -135,7 +135,7 @@ export default class HeroTags {
     const allowedTargetCb = (allowedTarget: _.TAllowedOuterTarget): boolean => {
       let isAllowedTarget = false
 
-      for (const selector of HeroTags._CNST_ALLOWED_OUTER_TARGET_SELECTORS) {
+      for (const selector of HeroTags.CNST_ALLOWED_OUTER_TARGET_SELECTORS) {
         if (clickTarget.closest(selector) === allowedTarget) {
           isAllowedTarget = true
           break
