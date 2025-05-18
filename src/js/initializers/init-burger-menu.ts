@@ -1,5 +1,5 @@
 import type { NullishHTMLElem } from '../types'
-import BurgerMenu from '../modules/BurgerMenu'
+import BurgerMenu from '../modules/burger-menu'
 
 export default function initBurgerMenu(): void {
   const $burgerMenu: NullishHTMLElem = document.querySelector('[data-burger-menu="menu"]')
