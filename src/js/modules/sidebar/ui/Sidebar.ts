@@ -1,16 +1,20 @@
-import type { UndefNullishString, NullishHTMLElem, NullishButton } from '../types'
+import * as _ from '../config'
+import type { NullishHTMLElem, NullishButton } from '../../../types'
 
-interface IAllyTooltipTextProps {
-  openTxt: UndefNullishString
-  closeTxt: UndefNullishString
-}
-
+/**
+ * @class
+ * @module Sidebar
+*/
 export default class Sidebar {
   private _sidebar: HTMLElement
   private _parent: NullishHTMLElem
   private _trigger: NullishButton
-  private _allyTooltipText: IAllyTooltipTextProps
+  private _allyTooltipText: _.IAllyTooltipTextProps
 
+  /**
+   * @constructor
+   * @param {HTMLElement} sidebar
+  */
   constructor(sidebar: HTMLElement) {
     this._sidebar = sidebar
 
@@ -27,10 +31,18 @@ export default class Sidebar {
     }
   }
 
+  /**
+   * @description Used to initiate the 'Sidebar' logic.
+   * @returns {void}
+  */
   public init(): void {
     this._trigger?.addEventListener('click', this._onClickTrigger)
   }
 
+  /**
+   * Private method: [_setSidebarGapForSite()]
+   * @returns {void}
+  */
   private _setSidebarGapForSite(): void {
     const sidebarWidth = this._sidebar.offsetWidth
 
@@ -40,6 +52,10 @@ export default class Sidebar {
     this._updAllyTooltipText('to-close')
   }
 
+  /**
+   * Private method: [_resetSidebarGapForSite()]
+   * @returns {void}
+  */
   private _resetSidebarGapForSite(): void {
     document.documentElement.style.setProperty('--js-sidebar-width', '0px')
     this._parent?.classList.remove('is-sidebar-open')
@@ -47,6 +63,11 @@ export default class Sidebar {
     this._updAllyTooltipText('to-open')
   }
 
+  /**
+   * Private method: [_updAllyTooltipText()]
+   * @param {string} state
+   * @returns {void}
+  */
   private _updAllyTooltipText(state: string): void {
     const { openTxt, closeTxt } = this._allyTooltipText
 
@@ -61,6 +82,11 @@ export default class Sidebar {
     hasAriaLabelAttr && this._trigger.setAttribute('aria-label', state === 'to-open' ? openTxt : closeTxt)
   }
 
+  /**
+   * Private method: [_updAllyTooltipText()]
+   * @param {boolean} isOpen
+   * @returns {void}
+  */
   private _changeSidebarState(isOpen: boolean): void {
     this._sidebar.classList.toggle('is-open', !isOpen)
     this._trigger?.setAttribute('aria-pressed', `${!isOpen}`)
@@ -71,6 +97,13 @@ export default class Sidebar {
       : this._setSidebarGapForSite()
   }
 
+  /**
+   * @callback
+   * Private callback: [_onClickTrigger]
+   *
+   * @param {MouseEvent | Event} e
+   * @returns {void}
+  */
   private _onClickTrigger = (e: MouseEvent | Event): void => {
     e.preventDefault()
 

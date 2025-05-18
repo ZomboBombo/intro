@@ -1,5 +1,5 @@
 import type { NullishHTMLElem } from '../types'
-import Sidebar from '../modules/Sidebar'
+import Sidebar from '../modules/sidebar'
 
 export default function initSidebar(): void {
   const $sidebarElement: NullishHTMLElem = document.querySelector('[data-sidebar="sidebar"]')
