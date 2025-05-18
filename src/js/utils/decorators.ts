@@ -2,6 +2,7 @@
 /* eslint-disable space-before-function-paren */
 type TDecoratorReturn<T extends (...args: any[]) => void> = (...args: Parameters<T>) => void
 
+
 /**
  * @function debounce()
  * @description Decorator-func. Used to optimize function calls.
