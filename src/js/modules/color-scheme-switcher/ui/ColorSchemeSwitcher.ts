@@ -98,7 +98,7 @@ export default class ColorSchemeSwitcher {
 
   /**
    * @callback
-   * Private method: [_onClickControl]
+   * Private callback: [_onClickControl]
    *
    * @param {MouseEvent} e
    * @returns {void}

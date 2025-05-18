@@ -45,7 +45,9 @@ export default class BurgerMenu {
   }
 
   /**
-   * Private handler: [_onResetState]
+   * @callback
+   * Private callback: [_onResetState]
+   *
    * @returns {void}
   */
   private _onResetState = (): void => {
@@ -59,7 +61,7 @@ export default class BurgerMenu {
 
   /**
    * @callback
-   * Private handler: [_onClickBurger]
+   * Private callback: [_onClickBurger]
    * 
    * @param {MouseEvent} e
    * @returns {void}
@@ -71,7 +73,7 @@ export default class BurgerMenu {
 
   /**
    * @callback
-   * Private handler: [_onClickBurger]
+   * Private callback: [_onClickBurger]
    * 
    * @param {MouseEvent} e
    * @returns {void}
@@ -90,7 +92,7 @@ export default class BurgerMenu {
 
   /**
    * @callback
-   * Private handler: [_onClickBurger]
+   * Private callback: [_onClickBurger]
    * 
    * @param {MouseEvent} e
    * @returns {void}
