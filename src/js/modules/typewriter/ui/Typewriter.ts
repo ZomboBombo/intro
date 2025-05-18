@@ -1,31 +1,23 @@
-/**
- * Interface [ITypewriterOptions]
- * 
- * @interface {ITypewriterOptions}
- * - @prop {number} typewritingDelayCoeff
-*/
-interface ITypewriterOptions {
-  typewritingDelayCoeff?: number
-}
+import * as _ from '../config'
 
 /**
- * Class [Typewriter]
- * 
- * Utility feature. Used to create a 'typewriting'
- * animation.
- * 
- * Constructor:
- * @param {HTMLElement} textBlock
- * @param {ITypewriterOptions} options
+ * @class
+ * @module Typewriter
+ * @description Utility feature. Used to create a 'typewriting' animation.
 */
 export default class Typewriter {
   private static CNST_TYPEWRITING_DELAY_DEF_COEFF = 15
 
   private _textBlock: HTMLElement
-  private _options: ITypewriterOptions
+  private _options: _.ITypewriterOptions
   private _delayCoeff: number
 
-  constructor(textBlock: HTMLElement, options?: ITypewriterOptions) {
+  /**
+   * @constructor
+   * @param {HTMLElement} textBlock
+   * @param {ITypewriterOptions} options
+  */
+  constructor(textBlock: HTMLElement, options?: _.ITypewriterOptions) {
     this._textBlock = textBlock
     this._options = options ?? {}
 
@@ -33,7 +25,7 @@ export default class Typewriter {
   }
 
   /**
-   * Public method: [init()].
+   * @description Used to initiate the 'Typewriter' logic.
    * @returns {void}
   */
   public init(): void {
@@ -41,7 +33,7 @@ export default class Typewriter {
   }
 
   /**
-   * Public method: [type()].
+   * @description Used to manually enable the 'typing' logic.
    * @returns {void}
   */
   public type(): void {
