@@ -1,4 +1,4 @@
-import Skill from '../modules/Skill'
+import Skill from '../modules/skill'
 
 export default function initSkillsLogic(): void {
   const $skillTriggers: NodeListOf<HTMLButtonElement> = document.querySelectorAll('[data-skill]')

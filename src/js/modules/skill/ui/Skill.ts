@@ -1,31 +1,11 @@
-import type { NullishHTMLElem } from '../types'
-import Typewriter from './Typewriter'
+import * as _ from '../config'
+import type { NullishHTMLElem } from '../../../types'
+import Typewriter from '../../Typewriter'
 
 /**
- * Interface [ISkillModalProps]
- * 
- * @interface {ISkillModalProps}
- * - @prop {string} title
- * - @prop {string} descr
- * - @prop {string} preview
- * - @prop {string} caption
- * - @prop {string[]} tags
-*/
-interface ISkillModalProps {
-  title: string
-  descr: string
-  preview: string
-  caption: string
-  tags: string[]
-}
-
-/**
- * Class [Skill]
- * 
- * Used to create a 'Skill' instance for the «Skills» page.
- * 
- * Constructor:
- * @param {HTMLButtonElement} trigger
+ * @class
+ * @module Skill
+ * @description Create a 'Skill' instance for the «Skills» page.
 */
 export default class Skill {
   /**
@@ -38,14 +18,18 @@ export default class Skill {
   private _trigger: HTMLButtonElement
   private _modal: NullishHTMLElem
 
+  /**
+   * @constructor
+   * @param {HTMLButtonElement} trigger
+  */
   constructor(trigger: HTMLButtonElement) {
     this._modal = document.getElementById('modal-skill')
     this._trigger = trigger
   }
 
   /**
-   * Public method: [init()].
-   * @returns {Promise<void>}
+   * @description Used to initiate the 'Skill' logic.
+   * @returns {void}
   */
   public async init(): Promise<void> {
     if (!this._modal) {
@@ -57,11 +41,11 @@ export default class Skill {
   }
 
   /**
-   * Private method: [_openSkillModal()].
+   * Private method: [_openSkillModal()]
    * @param {ISkillModalProps} skillModalProps
    * @returns {void}
   */
-  private _openSkillModal(skillModalProps: ISkillModalProps): void {
+  private _openSkillModal(skillModalProps: _.ISkillModalProps): void {
     if (!this._modal) {
       return
     }
@@ -104,7 +88,7 @@ export default class Skill {
   }
 
   /**
-   * Private method: [_setSkillPreview()].
+   * Private method: [_setSkillPreview()]
    * @param {HTMLElement} previewBlock
    * @param {string} previewSrc
    * @returns {void}
@@ -122,7 +106,7 @@ export default class Skill {
   }
 
   /**
-   * Private method: [_typeDescrText()].
+   * Private method: [_typeDescrText()]
    * @param {HTMLElement} descrBlock
    * @returns {void}
   */
@@ -138,7 +122,7 @@ export default class Skill {
   }
 
   /**
-   * Private method: [_fetchSkillsData()].
+   * Private method: [_fetchSkillsData()]
    * @returns {Promise<JSON | null>}
   */
   private async _fetchSkillsData(): Promise<JSON | null> {
@@ -167,7 +151,9 @@ export default class Skill {
   }
 
   /**
-   * Private callback: [_onClick].
+   * @callback
+   * Private callback: [_onClick]
+   *
    * @param {MouseEvent} e
    * @returns {Promise<void>}
   */
@@ -182,7 +168,7 @@ export default class Skill {
       return
     }
 
-    const skillData: ISkillModalProps = this._data[skillId]
+    const skillData: _.ISkillModalProps = this._data[skillId]
     this._openSkillModal(skillData)
   }
 }
