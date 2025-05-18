@@ -12,7 +12,7 @@
   "includeVersion": true,
   "readme": "README.md",
   "tsconfig": "./tsconfig.json",
-  "excludePrivate": false,
+  "excludePrivate": true,
   "excludeProtected": false,
   "excludeInternal": false,
   "sort": [
