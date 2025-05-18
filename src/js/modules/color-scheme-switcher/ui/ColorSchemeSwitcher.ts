@@ -24,7 +24,7 @@ export default class ColorSchemeSwitcher {
   }
 
   /**
-   * @description Public method init(). Used to initiate the 'Color-Scheme-Switcher' logic.
+   * @description Used to initiate the 'Color-Scheme-Switcher' logic.
    * @returns {void}
   */
   public init(): void {

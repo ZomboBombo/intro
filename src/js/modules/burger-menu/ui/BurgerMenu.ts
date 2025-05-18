@@ -19,7 +19,7 @@ export default class BurgerMenu {
   }
 
   /**
-   * @description Public method init(). Used to initiate the 'Burger-Menu' logic.
+   * @description Used to initiate the 'Burger-Menu' logic.
    * @returns {void}
   */
   public init(): void {
