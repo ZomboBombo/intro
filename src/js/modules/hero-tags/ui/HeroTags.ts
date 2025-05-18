@@ -2,13 +2,8 @@
 import * as _ from '../config'
 import type { UndefNullishHTMLElem, NullishHTMLElem, NullishButton } from '../../../types'
 
-
 /**
- * Class [HeroTags]
- * ~~~~
- * 
- * Constructor params has {_.IHeroTagsClassConstructor}
- * initialization type:
+ * @module HeroTags
  * 
  * @param {HTMLElement} tagsParent
  * @param {HTMLElement} descrListParent
@@ -47,7 +42,7 @@ export default class HeroTags {
   }
 
   /**
-   * Public method: [init()]
+   * @description Public method init(). Used to initiate the 'Hero-Tags' logic.
    * @returns {void}
   */
   public init(): void {
