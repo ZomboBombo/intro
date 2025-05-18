@@ -157,7 +157,6 @@ export default class Skill {
    * @param {MouseEvent} e
    * @returns {Promise<void>}
   */
-  // eslint-disable-next-line space-before-function-paren
   private _onClick = async (e: MouseEvent): Promise<void> => {
     e.preventDefault()
 
