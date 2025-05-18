@@ -1,19 +1,10 @@
 /* eslint-disable no-console */
-
-interface IConsoleGroup {
-  title: string | string[]
-  content: string | string[]
-}
-
-interface ICreateConsoleGroupFunc extends IConsoleGroup {
-  innerGroups?: IConsoleGroup[]
-}
+import * as _ from '../config'
 
 /**
- * Class [ConsoleEasterEggs]
- * 
- * The «Console Easter Eggs» interactions with users!
- * ~~~
+ * @class
+ * @module ConsoleEasterEggs
+ * @description The «Console Easter Eggs» interactions with users!
 */
 export default class ConsoleEasterEggs {
   private static readonly _uiColors = {
@@ -43,6 +34,9 @@ export default class ConsoleEasterEggs {
   private _titleStyles: string
   private _contentStyles: string
 
+  /**
+   * @constructor
+  */
   constructor() {
     this._titleStyles = this._getStylesStringFromMap(this._titleStylesMap)
     this._contentStyles = this._getStylesStringFromMap(this._contentStylesMap)
@@ -97,6 +91,7 @@ export default class ConsoleEasterEggs {
    * 
    * Used to get CSS-valid styles string from 'Styles-Map' structure.
    * ~~~
+   *
    * @param {Map<string, string>} stylesMap
    * @returns {string}
   */
@@ -111,10 +106,11 @@ export default class ConsoleEasterEggs {
    * 
    * Main logic of 'console.group()' with inner log-content creation.
    * ~~~
+   *
    * @param {ICreateConsoleGroupFunc} props
    * @returns {void}
   */
-  private _createConsoleGroup({ title, content, innerGroups }: ICreateConsoleGroupFunc): void {
+  private _createConsoleGroup({ title, content, innerGroups }: _.ICreateConsoleGroupFunc): void {
     console.group(...title)
     console.log(...content)
     if (innerGroups) {
