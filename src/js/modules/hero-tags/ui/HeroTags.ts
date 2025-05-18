@@ -3,11 +3,8 @@ import * as _ from '../config'
 import type { UndefNullishHTMLElem, NullishHTMLElem, NullishButton } from '../../../types'
 
 /**
+ * @class
  * @module HeroTags
- * 
- * @param {HTMLElement} tagsParent
- * @param {HTMLElement} descrListParent
- * @param {HTMLElement} descrList
 */
 export default class HeroTags {
   private static readonly _CNST_ALLOWED_OUTER_TARGET_SELECTORS = new Set([
@@ -25,6 +22,12 @@ export default class HeroTags {
   private _descrList: HTMLElement
   private _allowedOuterClickTargets: HTMLElement[]
 
+  /**
+   * @constructor
+   * @param {HTMLElement} IHeroTagsClassConstructor.tagsParent
+   * @param {HTMLElement} IHeroTagsClassConstructor.descrListParent
+   * @param {HTMLElement} IHeroTagsClassConstructor.descrList
+  */
   constructor({ tagsParent, descrListParent, descrList }: _.IHeroTagsClassConstructor) {
     this._tagsParent = tagsParent
     this._descrListParent = descrListParent
@@ -146,7 +149,9 @@ export default class HeroTags {
   }
 
   /**
+   * @callback
    * Private callback: [_onClick]
+   *
    * @param {MouseEvent} e
    * @returns {void}
   */
@@ -180,7 +185,9 @@ export default class HeroTags {
   }
 
   /**
+   * @callback
    * Private callback: [_onOuterClick]
+   *
    * @param {MouseEvent} e
    * @returns {void}
   */
