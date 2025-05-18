@@ -13,8 +13,9 @@
 # Project sources
 _assets/
 _drafts/
-build/
 node_modules/
+build/
+docs/
 npm-debug.*
 
 # Lock-files
