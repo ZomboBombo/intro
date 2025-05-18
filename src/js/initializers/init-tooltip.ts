@@ -1,4 +1,4 @@
-import Tooltip from '../modules/Tooltip'
+import Tooltip from '../modules/tooltip'
 
 export default function initTooltip() {
   const $tooltips: NodeListOf<HTMLElement> = document.querySelectorAll('[data-tooltip]')

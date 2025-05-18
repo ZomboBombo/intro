@@ -1,17 +1,19 @@
-import type { NullishString, NullishHTMLElem } from '../types'
+import * as _ from '../config'
+import type { NullishString, NullishHTMLElem } from '../../../types'
 
-/* eslint-disable no-unused-vars */
-enum TooltipPosition {
-  Top = 'top',
-  Right = 'right',
-  Bottom = 'bottom',
-  Left = 'left',
-}
-
+/**
+ * @class
+ * @module Tooltip
+ * @description Creates a 'Tooltip' based on the specified optional 'position' prop.
+*/
 export default class Tooltip {
   private _tooltip: HTMLElement
   private _position: string
 
+  /**
+   * @constructor
+   * @param {HTMLElement} tooltip
+  */
   constructor(tooltip: HTMLElement) {
     this._tooltip = tooltip
 
@@ -22,6 +24,10 @@ export default class Tooltip {
     this._position = this._getTooltipPosition(this._tooltip.getAttribute('data-tooltip-position'))
   }
 
+  /**
+   * @description Used to initiate the 'Tooltip' logic.
+   * @returns {void}
+  */
   public init(): void {
     const text: NullishString = this._getTooltipText()
 
@@ -39,18 +45,27 @@ export default class Tooltip {
     allyAttrObserver.observe(this._tooltip, { attributes: true })
   }
 
+  /**
+   * Private method: [_getTooltipPosition()]
+   * @param {NullishString} userPosition
+   * @returns {string}
+  */
   private _getTooltipPosition(userPosition: NullishString): string {
     if (!userPosition) {
-      return TooltipPosition.Right
+      return _.TooltipPosition.Right
     }
 
-    const isValidUserPostion: boolean = Object.values(TooltipPosition).some((position) => position === userPosition)
+    const isValidUserPostion: boolean = Object.values(_.TooltipPosition).some((position) => position === userPosition)
 
     return isValidUserPostion
       ? userPosition
-      : TooltipPosition.Right
+      : _.TooltipPosition.Right
   }
 
+  /**
+   * Private method: [_getTooltipText()]
+   * @returns {NullishString}
+  */
   private _getTooltipText(): NullishString {
     const allyAttr: NullishString = this._tooltip.getAttribute('aria-label') ?? this._tooltip.getAttribute('title')
     const dataTooltip: NullishString = this._tooltip.getAttribute('data-tooltip')
@@ -58,6 +73,11 @@ export default class Tooltip {
     return allyAttr || dataTooltip
   }
 
+  /**
+   * Private method: [_setTooltip()]
+   * @param {string} text
+   * @returns {void}
+  */
   private _setTooltip(text: string): void {
     const tooltipTextElem: HTMLElement = document.createElement('span')
     tooltipTextElem.classList.add('tooltip__text')
@@ -77,6 +97,11 @@ export default class Tooltip {
     hasTitleAttr && this._tooltip.removeAttribute('title')
   }
 
+  /**
+   * Private method: [_updTooltipText()]
+   * @param {string} text
+   * @returns {void}
+  */
   private _updTooltipText(text: string): void {
     const currTooltipTextElem = this._tooltip.querySelector('[data-tooltip-text]') as NullishHTMLElem
     currTooltipTextElem && (currTooltipTextElem.textContent = text)
