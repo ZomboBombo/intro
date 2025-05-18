@@ -1,19 +1,18 @@
-import { NullishButton } from '../types'
+import { NullishButton } from '../../../types'
 
 /**
- * Class [Modal]
- * ~~~
- * 
- * Used for creating 'modal-windows'.
- * ~~~~
- * 
- * Constructor:
- * @param {HTMLElement} modal
+ * @class
+ * @module Modal
+ * @description Used for creating 'modal-windows'.
 */
 export default class Modal {
   private _modal: HTMLElement
   private _modalCloseTrigger: NullishButton
 
+  /**
+   * @constructor
+   * @param {HTMLElement} modal
+  */
   constructor(modal: HTMLElement) {
     this._modal = modal
 
@@ -25,7 +24,7 @@ export default class Modal {
   }
 
   /**
-   * Public method: [init()]
+   * @description Public method init(). Used to initiate the 'Modal' logic.
    * @returns {void}
   */
   public init(): void {
@@ -36,7 +35,6 @@ export default class Modal {
 
   /**
    * Private method: [_watchModalStateChange()]
-   * ~~~
    * 
    * The {MutationObserver} watched 'class' attr changes
    * on the {this._modal} element.
@@ -62,7 +60,6 @@ export default class Modal {
 
   /**
    * Private method: [_closeModal()]
-   * ~~~
    * 
    * Common 'close-modal' logic for all closing ways.
    * ~~~
@@ -74,7 +71,9 @@ export default class Modal {
   }
 
   /**
+   * @callback
    * Private callback: [_onClickCloseTrigger]
+   *
    * @param {MouseEvent} e
    * @returns {void}
   */
@@ -85,7 +84,9 @@ export default class Modal {
   }
 
   /**
+   * @callback
    * Private callback: [_onEscPress]
+   *
    * @param {KeyboardEvent} e
    * @returns {void}
   */
@@ -99,7 +100,9 @@ export default class Modal {
   }
 
   /**
+   * @callback
    * Private callback: [_onClickOutside]
+   *
    * @param {MouseEvent} e
    * @returns {void}
   */

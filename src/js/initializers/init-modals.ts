@@ -1,9 +1,8 @@
 import type { NullishHTMLElem } from '../types'
-import Modal from '../modules/Modal'
+import Modal from '../modules/modal'
 
 /**
- * Function [_setupModalTriggers]
- * ~~~
+ * @function _setupModalTriggers()
  *
  * Base 'modal-triggers' setup to add event-listeners
  * for all triggers to open Modals.
@@ -34,8 +33,7 @@ function _setupModalTriggers(): void {
 }
 
 /**
- * Function [_setupModals]
- * ~~~
+ * @function _setupModals()
  *
  * Base Modals setup.
  * ~~~
@@ -50,7 +48,6 @@ function _setupModals(): void {
     modal.init()
   })
 }
-
 
 export default function initModals(): void {
   _setupModalTriggers()
