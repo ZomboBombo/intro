@@ -7,13 +7,13 @@ import initTooltip from './initializers/init-tooltip'
 import initColorSchemeSwitcher from './initializers/init-color-scheme-switcher'
 import initHeroTags from './initializers/init-hero-tags'
 import initModals from './initializers/init-modals'
-import initSkillsLogic from './initializers/init-skills-logic'
+import initSkills from './initializers/init-skills'
 import initWorkFilters from './initializers/init-work-filters'
 import initConsoleEasterEggs from './initializers/init-console-easter-eggs'
 
 /**
- * Service-func: [setupBuildVersion]
- * 
+ * @function setupBuildVersion()
+ *
  * Setup the 'build-version' from 'package.json' data. 
  * ~~~
  * 
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSidebar()
   initTooltip()
   initHeroTags()
-  initSkillsLogic()
+  initSkills()
 })
 
 /*
