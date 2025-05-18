@@ -3,9 +3,8 @@
 type TDecoratorReturn<T extends (...args: any[]) => void> = (...args: Parameters<T>) => void
 
 /**
- * Decorator [debounce]
- * 
- * Used to optimize function calls.
+ * @function debounce()
+ * @description Decorator-func. Used to optimize function calls.
  * ~~~
  * 
  * @param {T extends (...args: any[]) => void} callee
@@ -27,10 +26,8 @@ export function debounce<T extends (...args: any[]) => void>(
 
 
 /**
- * Decorator [throttle]
- * 
- * Used to reduce the number of calls
- * to the frequently called function.
+ * @function throttle()
+ * @description Used to reduce the number of calls to the frequently called function.
  * ~~~
  * 
  * @param {T extends (...args: any[]) => void} callee

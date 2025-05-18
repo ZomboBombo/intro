@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 /**
  * When 'null' can be returned:
  * @type {null}
@@ -19,8 +17,8 @@ export type UndefinedishButton = HTMLButtonElement | undefined
 export type UndefinedishHTMLElemOrButton = HTMLElement | HTMLButtonElement | undefined
 
 /**
- * When 'null | undefined' can be returned:
- * @type {null | undefined}
+ * When 'undefined | null' can be returned:
+ * @type {undefined | null}
 */
 export type UndefNullishString = string | undefined | null
 export type UndefNullishHTMLElem = HTMLElement | undefined | null
