@@ -1,17 +1,22 @@
 mixin site-footer(props = {})
+  - const {pageId} = props
+
   footer.site-footer&attributes(attributes)
     nav.site-footer__nav
       menu.site-footer__nav-menu
-        each navItem in DataSocialsNavigation          
-          - const {href, tooltip, text, isAction} = navItem
+        each navItem in DataMainNavigation          
+          -
+            const {dataPageId, href, tooltip, text} = navItem
+            const isCurrentPage = dataPageId === pageId
 
-          li.site-footer__nav-menu-item
-            a.site-footer__nav-menu-link(
-              href=href || '#'
-              target=!isAction && "_blank"
-              rel=!isAction && "noopener noreferrer"
+          li.site-footer__nav-item
+            a.site-footer__nav-link(
+              href=isCurrentPage ? false : (href || '#')
+              aria-current=isCurrentPage ? 'page' : false
               aria-label=tooltip
               data-value=text
             )= text
 
-    +copyright({year: '2025'}).site-footer__copyright
+    .site-footer__extra-info
+      +copyright({year: '2025'}).site-footer__copyright
+      +ui-build-ver()

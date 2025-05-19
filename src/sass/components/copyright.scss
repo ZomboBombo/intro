@@ -7,6 +7,10 @@
   font-size: 1.6rem;
   color: var(--ui-secondary);
 
+  &__text--years {
+    min-width: max-content;
+  }
+
   /*
     === Media ===
   */

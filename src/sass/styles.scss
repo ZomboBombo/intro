@@ -21,26 +21,26 @@
 /***
 ** 3. UI
 ***/
-@forward 'ui/ui-fancy-button';
-@forward 'ui/ui-code';
-@forward 'ui/ui-title';
-@forward 'ui/ui-wip-gears';
+@use 'ui';
 
 /***
 ** 4. Project styles
 ***/
 
 // 4.1 Components
-@forward 'components';
+@use 'components';
 
 // 4.2: Sections
-@forward 'sections';
+@use 'sections';
 
 // 4.3: Blocks
-@forward 'blocks';
+@use 'blocks';
+
+// 4.4: Blocks
+@use 'modals';
 
 /***
-** 6. "Exclusives"
+** 5. "Exclusives"
 ***/
 /*
  * --- Used only on service pages of project

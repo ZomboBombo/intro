@@ -1,0 +1,35 @@
+-
+  const DataSkillIndicatorsJson = [
+    {
+      name: 'HTML',
+      tags: ['semantics', 'a11y', 'pug', 'nunjucks'],
+    },
+    {
+      name: 'CSS',
+      tags: ['bem', 'sass'],
+    },
+    {
+      name: 'JS',
+      tags: ['typescript', 'vue'],
+    },
+    {
+      name: 'Flutter',
+      tags: ['basics', 'dart'],
+    },
+  ]
+
+mixin skill-indicators(props = {})
+  menu.skill-indicators(data-skill-indicators)&attributes(attributes)
+    each indicator in DataSkillIndicatorsJson
+      - const { name, tags } = indicator
+
+      li.skill-indicators__item
+        button.skill-indicators__btn(
+          type="button"
+          aria-label=`Open extended info about «${name}» skill`
+          data-skill=name.toLowerCase()
+        )= name
+
+        ol.skill-indicators__tags-list
+          each tag in tags
+            li.skill-indicators__tag= tag

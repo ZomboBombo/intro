@@ -3,8 +3,24 @@
   "extends": "stylelint-config-recommended-scss",
   "rules": {
     "declaration-no-important": true,
-    "indentation": [2, {
-      "ignore": ["inside-parens"]
-    }]
+    "indentation": [
+      2,
+      {
+        "ignore": [
+          "inside-parens"
+        ]
+      }
+    ],
+    "no-descending-specificity": null,
+    "scss/comment-no-empty": null,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": [
+          "/modal/",
+          "modal"
+        ]
+      }
+    ]
   }
 }

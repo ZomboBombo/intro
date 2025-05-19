@@ -1,0 +1,148 @@
+@use 'sass:map';
+@use '../system/vars' as *;
+@use '../system/mixins' as *;
+
+.ui-loader {
+  $tiles-config: (
+    '8n - 7': (
+      'name': ui-loader-tile-movement-1n,
+      'shiftPrimary': 75%,
+      'shiftSecondary': -75%
+    ),
+    '8n - 6': (
+      'name': ui-loader-tile-movement-2n,
+      'shiftPrimary': 75%,
+      'shiftSecondary': 75%,
+      'isReflected': 'true'
+    ),
+    '8n - 5': (
+      'name': ui-loader-tile-movement-3n,
+      'shiftPrimary': -75%,
+      'shiftSecondary': -75%
+    ),
+    '8n - 4': (
+      'name': ui-loader-tile-movement-4n,
+      'shiftPrimary': 75%,
+      'shiftSecondary': -75%,
+      'isReflected': 'true'
+    ),
+    '8n - 3': (
+      'name': ui-loader-tile-movement-5n,
+      'shiftPrimary': 150%
+    ),
+    '8n - 2': (
+      'name': ui-loader-tile-movement-6n,
+      'shiftPrimary': 150%,
+      'isReflected': 'true'
+    ),
+    '8n - 1': (
+      'name': ui-loader-tile-movement-7n,
+      'shiftPrimary': -150%
+    ),
+    '8n': (
+      'name': ui-loader-tile-movement-8n,
+      'shiftPrimary': -150%,
+      'isReflected': 'true'
+    )
+  );
+
+  --ui-loader-parent-size: 12rem;
+  --ui-loader-tile-size: calc(var(--ui-loader-parent-size) / 6);
+
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-modals);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 4.8rem;
+  background-color: var(--color-def-transparent);
+  border-radius: 2.4rem;
+  backdrop-filter: blur(3rem);
+
+  &--top-loader-pos {
+    align-items: start;
+  }
+
+  &__tiles-box {
+    @include square(var(--ui-loader-parent-size));
+
+    position: relative;
+    isolation: isolate;
+    background-color: var(--ui-primary);
+    border: 0.2rem solid var(--ui-secondary);
+    border-radius: 0.75em;
+    animation: {
+      name: ui-loader-rotation;
+      duration: 6s;
+      timing-function: ease;
+      iteration-count: infinite;
+    }
+  }
+
+  &__tile {
+    @include square(var(--ui-loader-tile-size));
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    display: block;
+    background-color: var(--ui-secondary);
+    border-radius: 0.25em;
+    animation: {
+      duration: 6s;
+      timing-function: ease;
+      iteration-count: infinite;
+    }
+
+    @each $tcKey, $tcVal in $tiles-config {
+      $name: map.get($tcVal, name);
+      $shiftPrimary: map.get($tcVal, shiftPrimary);
+      $shiftSecondary: map.get($tcVal, shiftSecondary);
+      $isReflected: map.get($tcVal, isReflected);
+
+      &:nth-child(#{$tcKey}) {
+        @include ui-loader-keyframes(
+          (
+            'animationName': $name,
+            'tileShiftPrimary': $shiftPrimary,
+            'tileShiftSecondary': $shiftSecondary,
+            'isReflected': $isReflected
+          )
+        );
+
+        & {
+          animation-name: $name;
+        }
+      }
+    }
+  }
+}
+
+// ===[ 'ui-loader' @keyframes ]===
+@keyframes ui-loader-rotation {
+  0%,
+  100% {
+    rotate: 0deg;
+  }
+
+  20% {
+    rotate: 180deg;
+  }
+
+  40% {
+    rotate: -180deg;
+  }
+
+  60% {
+    rotate: 180deg;
+  }
+
+  80% {
+    rotate: -180deg;
+  }
+}

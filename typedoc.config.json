@@ -1,0 +1,23 @@
+{
+  "entryPoints": [
+    "./src"
+  ],
+  "entryPointStrategy": "expand",
+  "out": "./docs",
+  "exclude": [
+    "**/node_modules/**",
+    "./src/js/main.ts",
+    "./src/js/initializers/**"
+  ],
+  "includeVersion": true,
+  "readme": "README.md",
+  "tsconfig": "./tsconfig.json",
+  "excludePrivate": true,
+  "excludeProtected": false,
+  "excludeInternal": false,
+  "sort": [
+    "source-order"
+  ],
+  "plugin": [],
+  "categorizeByGroup": false
+}

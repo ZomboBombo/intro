@@ -1,8 +1,11 @@
 @use '../system/mixins' as *;
+@use '../system/breakpoints' as *;
 
 .section-ext-info {
-  $trans-props: transform;
-  @include trans-config($trans-props, 0.5s);
+  $fs-w1024: clamp(2.4rem, 4.685vw, 4.8rem);
+
+  $t-props: transform;
+  @include trans-config($t-props, 0.5s);
 
   position: absolute;
   bottom: 0;
@@ -30,8 +33,8 @@
   }
 
   &__descr-item {
-    $trans-props: opacity;
-    @include trans-config($trans-props);
+    $t-props: opacity;
+    @include trans-config($t-props);
 
     grid-row-start: 1;
     grid-column-start: 1;
@@ -41,6 +44,42 @@
     }
     line-height: 1;
     opacity: 0;
+    pointer-events: none;
     transition-delay: 0.3s;
+
+    &.is-active {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &__descr {
+    display: inline;
+  }
+
+  /*
+    === Media ===
+  */
+  @include media(w1024) {
+    &__descr-item {
+      font-size: $fs-w1024;
+    }
+  }
+
+  @include media(w768) {
+    &__descr-item {
+      font-size: 2.4rem;
+    }
+  }
+
+  @include media(w520) {
+    &__descr-title {
+      font-size: 0;
+
+      &::after {
+        content: attr(data-short-name) ': ';
+        font-size: 2.4rem;
+      }
+    }
   }
 }

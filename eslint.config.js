@@ -3,12 +3,12 @@ import typescriptEslintParser from '@typescript-eslint/parser'
 
 export default [
   {
-    files: ["src/js/**/*.ts"],
+    files: ['src/js/**/*.ts'],
     ignores: [
-      "build/**/*.js",
-      "src/pug/scripts/*.js",
-      "**/*.config.js",
-      "!**/eslint.config.js",
+      'build/**/*.js',
+      'src/pug/scripts/*.js',
+      '**/*.config.js',
+      '!**/eslint.config.js',
     ],
     plugins: {
       '@stylistic/js': stylisticJs,
@@ -18,7 +18,11 @@ export default [
       'no-unused-vars': 'warn',
       'quotes': ['error', 'single', { allowTemplateLiterals: true }],
       'no-unused-expressions': ['error', { allowTernary: true, allowShortCircuit: true }],
-      'space-before-function-paren': ['error', 'never'],
+      'space-before-function-paren': ['error', {
+        'anonymous': 'always',
+        'named': 'never',
+        'asyncArrow': 'always'
+      }],
       'semi': ['error', 'never'],
       'object-curly-spacing': ['error', 'always'],
     },

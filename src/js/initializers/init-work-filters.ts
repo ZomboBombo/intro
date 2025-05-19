@@ -1,0 +1,13 @@
+import { NullishHTMLElem } from '../_core/types'
+import WorkFilters from '../modules/work-filters'
+
+export default function initWorkFilters() {
+  const $workFiltersParent: NullishHTMLElem = document.querySelector('[data-work-filters="parent"]')
+
+  if (!$workFiltersParent) {
+    return
+  }
+
+  const workFilters = new WorkFilters($workFiltersParent)
+  workFilters.init()
+}

@@ -1,0 +1,20 @@
+mixin socials-list(props = {})
+  - const {listClass, listItemClass, listLinkClass, links} = props
+
+  ul(class=listClass)&attributes(attributes)
+    each link in links
+      -
+        const {
+          href = '#',
+          tooltip,
+          text,
+          isAction,
+        } = link
+
+      li(class=listItemClass)
+        +link({
+          href: href,
+          tooltip: tooltip,
+          text: text,
+          isExternal: !isAction,
+        })(class=listLinkClass)

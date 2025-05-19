@@ -1,0 +1,12 @@
+extends ../base/layout
+
+append variables
+  -
+    pageId = 'page-skills'
+    const title = 'SN: Skills'
+
+block main
+  +section-skills()
+
+block modals
+  +modal-skill()

@@ -45,7 +45,7 @@
     gap: 3.2rem;
   }
 
-  &__nav-menu {
+  &__nav-list {
     @include trans-config(transform, var(--trans-long));
     @include reset-list;
 
@@ -60,12 +60,16 @@
     border-radius: var(--nm-brd-rad);
   }
 
-  &__nav-menu-link {
+  &__nav-item:not(:last-child) {
+    border-block-end: 1px solid var(--ui-secondary);
+  }
+
+  &__nav-link {
     $t-props: color, background-color;
     @include trans-config($t-props);
 
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     margin: 0;
     padding: var(--nm-link-gap) 5rem;
@@ -192,7 +196,7 @@
       }
     }
 
-    &__nav-menu {
+    &__nav-list {
       position: absolute;
       inset: 0;
       top: 100%;
@@ -211,14 +215,14 @@
       }
     }
 
-    &__nav-menu-item {
+    &__nav-item {
       width: 100%;
     }
 
-    &__nav-menu-link {
-      padding: {
-        block-start: 2.5rem;
-        block-end: 2.5rem;
+    &__nav-link {
+      padding-block: {
+        start: 2.5rem;
+        end: 2.5rem;
       }
       border-radius: 0;
     }

@@ -1,11 +1,12 @@
-doctype html
 include ./components
 
 block variables
   -
-    var hasHeader = true
-    var hasFooter = true
+    let pageId = ''
+    let hasHeader = true
+    let hasFooter = true
 
+doctype html
 html(lang="en")
   head
     title= title
@@ -29,6 +30,16 @@ html(lang="en")
         main.site-main
           block main
 
-        +site-footer()
+          unless pageId === 'page-main'
+            a.site-container__back-link(
+              href="/"
+              title="Back to Main page"
+              aria-label="Back to Main page"
+            ) Back to Main
+
+        +site-footer({pageId: pageId})
+
+    .site-modals(aria-hidden="true")
+      block modals
 
     script(src="/src/js/main.ts" type="module")

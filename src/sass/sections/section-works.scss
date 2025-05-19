@@ -1,0 +1,85 @@
+@use '../system/mixins' as *;
+@use '../system/breakpoints' as *;
+
+.section-works {
+  display: grid;
+  row-gap: 3.6rem;
+  padding: var(--gap-section-ver) 9rem;
+  container-type: inline-size;
+
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  &__filters {
+    align-self: end;
+    margin-inline-start: auto;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.6rem;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // ===[ MEDIA ]===
+  @container (width < 1152px) {
+    &__header {
+      flex-direction: column;
+      row-gap: 6.4rem;
+    }
+
+    &__list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @include media(w1152) {
+    &__header {
+      flex-direction: column;
+      row-gap: 6.4rem;
+    }
+
+    &__list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @container (width < 768px) {
+      &__list {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  @include media(w1024) {
+    padding-inline: 1.2rem;
+
+    &__list {
+      gap: 1.2rem;
+    }
+  }
+
+  @include media(w768) {
+    padding-inline: var(--gap-def-hor);
+
+    &__filters {
+      align-self: auto;
+      margin-inline-start: 0;
+    }
+  }
+
+  @include media(w520) {
+    &__list {
+      grid-template-columns: 1fr;
+    }
+  }
+}

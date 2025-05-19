@@ -1,0 +1,12 @@
+mixin _basemodal(props = {})
+  - const { id } = props
+
+  .basemodal(data-modal="window" id=id)
+    button.basemodal__close-trigger(
+      type="button"
+      aria-label="Close modal window"
+      data-modal="close-trigger"
+    ) Close
+
+    .basemodal__content(data-modal="window-content")
+      block

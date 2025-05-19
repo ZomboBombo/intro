@@ -1,10 +1,18 @@
 .ui-title {
-    &--sem-section {
-        margin: 0;
-        padding: 0;
-        font: {
-            size: clamp(4rem, 8.5vw, 16rem);
-            weight: 700;
-        };
+  margin: 0;
+  padding: 0;
+
+  &--h1 {
+    font: {
+      size: clamp(4rem, 8.5vw, 16rem);
+      weight: 700;
     }
+  }
+
+  &--sem-section {
+    font: {
+      size: clamp(4rem, 8.5vw, 16rem);
+      weight: 700;
+    }
+  }
 }

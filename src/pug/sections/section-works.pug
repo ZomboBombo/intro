@@ -1,0 +1,10 @@
+mixin section-works(props = {})
+  section.section-works&attributes(attributes)
+    header.section-works__header
+      h1.ui-title.ui-title--h1.ui-code.section-works__title Works
+      +work-filters().section-works__filters
+
+    ol.section-works__list
+      each work in DataWorks
+        li.section-works__item
+          +work-card(work)

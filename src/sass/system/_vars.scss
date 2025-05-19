@@ -26,10 +26,18 @@
     --z-#{$name}: #{$value};
   }
 
+  // Fonts
+  @each $name, $value in common-var.$fonts {
+    --font-#{$name}: #{$value};
+  }
+
   // Colors
   // => [default]
   --color-def-white: hsl(0 0% 100%);
+  --color-def-white-trans025: hsl(0 0% 100% / 0.25);
+  --color-def-white-trans050: hsl(0 0% 100% / 0.5);
   --color-def-black: hsl(0 0% 0%);
+  --color-def-black-trans025: hsl(0 0% 0% / 0.25);
   --color-def-transparent: hsl(0 0% 100% / 0);
   //
   // => [ui]
@@ -52,6 +60,17 @@
   --ui-secondary-shade-3: hsl(260 90% 55%);
   // => [ui-gradients]
   --ui-gradient: linear-gradient(45deg, var(--ui-primary) 0%, var(--ui-primary-shade-1) 100%);
+  // => [ui-accent]
+  --ui-accent-focus-outline: hsl(56 100% 50%);
+  // => [ui-skills]
+  --ui-skill-html: hsl(12 78% 52%);
+  --ui-skill-html-interact: hsl(12 78% 42%);
+  --ui-skill-css: hsl(274 55% 41%);
+  --ui-skill-css-interact: hsl(274 55% 61%);
+  --ui-skill-js: hsl(52 84% 63%);
+  --ui-skill-js-interact: hsl(42 84% 63%);
+  --ui-skill-flutter: hsl(194 98% 63%);
+  --ui-skill-flutter-interact: hsl(194 98% 43%);
 
   /*
     === Media ===

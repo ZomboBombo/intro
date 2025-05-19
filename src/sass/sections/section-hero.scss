@@ -11,10 +11,9 @@
   gap: 1.2rem;
   width: auto;
   height: 100%;
-  margin: 0;
-  margin-inline: auto;
   padding: var(--gap-section-ver) 2.5rem;
   scroll-margin-block-start: var(--gap-section-ver);
+  container-type: inline-size;
 
   &__title {
     display: inline;
@@ -37,14 +36,28 @@
     gap: 0.8rem;
     width: 100%;
 
-    &:has(button:hover) button:not(:hover) {
-      opacity: 0.25;
+    /**
+      Styles for the ':hover' and ':focus'
+      effects for the '.section-hero__tag' buttons
+    */
+    &:has(button[data-hero-tag-active]) button:not([data-hero-tag-active]) {
+      opacity: 0.6;
+    }
+
+    &:has(button:is(:hover, :focus-visible)) {
+      button:is(:hover, :focus-visible) {
+        opacity: 1;
+      }
+
+      button:is(:not(:hover, :focus-visible)) {
+        opacity: 0.25;
+      }
     }
   }
 
   &__tag {
-    $trans-props: opacity;
-    @include trans-config($trans-props);
+    $t-props: opacity;
+    @include trans-config($t-props);
 
     display: inline;
     justify-content: center;
@@ -53,12 +66,29 @@
     font-size: 2.4rem;
     white-space: wrap;
     cursor: pointer;
+
+    &:where(:focus-visible) {
+      outline: 0.2rem solid var(--ui-accent-focus-outline);
+    }
   }
 
   &__tag-descrs {
     position: absolute;
     bottom: 0;
     z-index: 1;
+  }
+
+  /*
+    === Container Queries ===
+  */
+  @container (max-width: 1024px) {
+    &__title {
+      max-width: min-content;
+    }
+
+    &__tags {
+      max-width: var(--w-520);
+    }
   }
 
   /*
@@ -86,7 +116,7 @@
       font-size: 0;
 
       &::after {
-        content: attr(data-short-text);
+        content: attr(data-short-name);
         font-size: 2.4rem;
       }
     }
