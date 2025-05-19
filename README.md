@@ -26,8 +26,6 @@ A short guide how to explore this repo:
 
 - `src/`: a directory that needs no special _**intro**_; the most important part of the project – contains _everything_:
   
-    <br>
-
   - `/js/`: script files with proj's business-logic:
     
     - `/_core/`: _service directory_; contains modules that don't generate any business-logic, but keep important utilities such as _global types_, _interfaces_ and the like.
@@ -41,7 +39,6 @@ A short guide how to explore this repo:
     - `/main.ts`: entry point of the business-logic.
 
     <hr>
-    <br>
 
   - `/pug/`: markup templates made with _«Pug»_:
 
@@ -56,7 +53,6 @@ A short guide how to explore this repo:
     - `/to-html/`: entry points for template includes; actually, it's an proj's _Pages_.
 
     <hr>
-    <br>
 
   - `/sass/`: stylesheets made with _SCSS-syntax_:
 
@@ -79,12 +75,10 @@ A short guide how to explore this repo:
 <hr>
 
 ### Made with ♥ and:
-<ul style="display: flex; gap: 6px; maring: 0; padding: 0; list-style: none;">
-  <li><img src="public/img/icons/_readme-logo-pug.svg">
-  <li><img src="public/img/icons/_readme-logo-sass.svg">
-  <li><img src="public/img/icons/_readme-logo-ts.svg">
-  <li><img src="public/img/icons/_readme-logo-vite.svg">
-</ul>
+<img src="public/img/icons/_readme-logo-pug.svg">
+<img src="public/img/icons/_readme-logo-sass.svg">
+<img src="public/img/icons/_readme-logo-ts.svg">
+<img src="public/img/icons/_readme-logo-vite.svg">
 
 <hr>
 <br>
@@ -169,11 +163,9 @@ A short guide how to explore this repo:
 <hr>
 
 ### Сделано с ♥ и:
-<ul style="display: flex; gap: 6px; maring: 0; padding: 0; list-style: none;">
-  <li><img src="public/img/icons/_readme-logo-pug.svg">
-  <li><img src="public/img/icons/_readme-logo-sass.svg">
-  <li><img src="public/img/icons/_readme-logo-ts.svg">
-  <li><img src="public/img/icons/_readme-logo-vite.svg">
-</ul>
+<img src="public/img/icons/_readme-logo-pug.svg">
+<img src="public/img/icons/_readme-logo-sass.svg">
+<img src="public/img/icons/_readme-logo-ts.svg">
+<img src="public/img/icons/_readme-logo-vite.svg">
 
 <hr>
