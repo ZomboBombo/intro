@@ -75,10 +75,10 @@ A short guide how to explore this repo:
 <hr>
 
 ### Made with ♥ and:
-<img src="public/img/icons/_readme-logo-pug.svg">
-<img src="public/img/icons/_readme-logo-sass.svg">
-<img src="public/img/icons/_readme-logo-ts.svg">
-<img src="public/img/icons/_readme-logo-vite.svg">
+![Pug](public/img/icons/_readme-logo-pug.svg)
+![Sass](public/img/icons/_readme-logo-sass.svg)
+![TypeScript](public/img/icons/_readme-logo-ts.svg)
+![Vite](public/img/icons/_readme-logo-vite.svg)
 
 <hr>
 <br>
@@ -163,9 +163,9 @@ A short guide how to explore this repo:
 <hr>
 
 ### Сделано с ♥ и:
-<img src="public/img/icons/_readme-logo-pug.svg">
-<img src="public/img/icons/_readme-logo-sass.svg">
-<img src="public/img/icons/_readme-logo-ts.svg">
-<img src="public/img/icons/_readme-logo-vite.svg">
+![Pug](public/img/icons/_readme-logo-pug.svg)
+![Sass](public/img/icons/_readme-logo-sass.svg)
+![TypeScript](public/img/icons/_readme-logo-ts.svg)
+![Vite](public/img/icons/_readme-logo-vite.svg)
 
 <hr>
