@@ -22,15 +22,16 @@ interface IStackSvgProps {
 }
 
 /**
- * [generateStackSvg]
+ * @function generateStackSvg()
+ * @description Custom Vite-plugin to generate the 'Stack-SVG-Sprite'.
+ * ~~~
  * 
- * @interface {IStackSvgProps} {IStackSvgProps}: The main props-object
- * @param {string} IStackSvgProps.pathToSpriteIcns: The path to SVG-icons
+ * @param {string} IStackSvgProps.pathToSpriteIcns: Path to SVGs
  * @param {string} IStackSvgProps.output: The output directory
  * @returns {Promise<void>}
 */
 async function generateStackSvg({ pathToSpriteIcns, output }: IStackSvgProps): Promise<void> {
-  const files: string[] = await fastGlob(`${pathToSpriteIcns}*.svg`)
+  let files: string[] = await fastGlob(`${pathToSpriteIcns}*.svg`)
 
   if (!files.length) {
     throw `
@@ -42,6 +43,9 @@ async function generateStackSvg({ pathToSpriteIcns, output }: IStackSvgProps): P
       =--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=
     `
   }
+
+  // Exclude '_readme-*' specific SVGs from generation logic
+  files = files.filter((file: string) => !file.includes('_readme-'))
 
   let spriteContent = '<svg xmlns="http://www.w3.org/2000/svg">\n<style> :root svg:not(:target) { display: none } </style>\n'
 
