@@ -115,9 +115,11 @@
           )
         );
 
+        /*stylelint-disable*/
         & {
           animation-name: $name;
         }
+        /*stylelint-enable*/
       }
     }
   }

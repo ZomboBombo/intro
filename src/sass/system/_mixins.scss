@@ -131,7 +131,6 @@
   <...> для добавления '@keyframes'
   для компонента 'ui-loader()'
 */
-// @mixin ui-loader-keyframes($animationName, $tileShiftPrimary, $isReflected: 'false') {
 @mixin ui-loader-keyframes($props) {
   $animationName: map.get($props, animationName);
   $tileShiftPrimary: map.get($props, tileShiftPrimary);
