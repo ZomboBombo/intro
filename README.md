@@ -163,5 +163,3 @@ A short guide how to explore this repo:
 ![Sass](public/img/icons/_readme-logo-sass.svg)
 ![TypeScript](public/img/icons/_readme-logo-ts.svg)
 ![Vite](public/img/icons/_readme-logo-vite.svg)
-
-<hr>
