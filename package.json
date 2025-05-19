@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "stylelint": "stylelint \"src/sass/**/*.scss\" --custom-syntax postcss-scss",
     "eslint": "eslint src/js/",
-    "test": "npm run stylelint && npm run eslint",
+    "test": "yarn stylelint && yarn eslint",
     "docs": "typedoc --options typedoc.config.json"
   },
   "repository": {
