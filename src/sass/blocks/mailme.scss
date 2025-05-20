@@ -15,8 +15,9 @@ html[data-color-scheme='light'] {
 
 .mailme {
   --mailme-color: var(--color-def-white);
-  --mailme-btn-gap: 0.6rem;
-  --mailme-btn-underlay-gap: calc(var(--mailme-btn-gap) / 2);
+  --mailme-btn-gap-def: 0.6rem;
+  --mailme-btn-gap-hor: calc(var(--mailme-btn-gap-def) * 2);
+  --mailme-btn-underlay-gap: calc(var(--mailme-btn-gap-def) / 2);
 
   display: flex;
   flex-wrap: wrap;
@@ -29,7 +30,7 @@ html[data-color-scheme='light'] {
     $t-props: color, background-color, opacity;
     @include trans-config($t-props);
 
-    padding: var(--mailme-btn-gap);
+    padding: var(--mailme-btn-gap-def);
     text: {
       decoration: underline;
       underline-offset: 0.25em;
@@ -56,7 +57,7 @@ html[data-color-scheme='light'] {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: var(--mailme-btn-gap);
+    padding: var(--mailme-btn-gap-def) var(--mailme-btn-gap-hor);
     font-weight: 700;
     color: var(--ui-secondary);
     background-image: conic-gradient(
