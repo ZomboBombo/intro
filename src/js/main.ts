@@ -10,6 +10,7 @@ import initModals from './initializers/init-modals'
 import initSkills from './initializers/init-skills'
 import initWorkFilters from './initializers/init-work-filters'
 import initConsoleEasterEggs from './initializers/init-console-easter-eggs'
+import initCopyToClipboard from './initializers/init-copy-to-clipboard'
 
 /**
  * @function setupBuildVersion()
@@ -51,6 +52,7 @@ window.addEventListener('load', () => {
   initModals()
   initWorkFilters()
   initConsoleEasterEggs()
+  initCopyToClipboard()
 
   setupBuildVersion()
 })
