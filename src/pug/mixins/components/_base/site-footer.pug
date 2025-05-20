@@ -2,6 +2,8 @@ mixin site-footer(props = {})
   - const {pageId} = props
 
   footer.site-footer&attributes(attributes)
+    +mailme().site-footer__mailme
+
     nav.site-footer__nav
       menu.site-footer__nav-menu
         each navItem in DataMainNavigation          

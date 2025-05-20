@@ -3,7 +3,7 @@
 
 .site-footer {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   align-items: center;
   gap: 3.2rem;
   margin: 0;
@@ -12,6 +12,11 @@
     width: var(--s-bd-base);
     style: solid;
     color: var(--ui-secondary);
+  }
+
+  &__mailme {
+    width: 100%;
+    max-width: max-content;
   }
 
   &__nav-menu {
@@ -112,6 +117,14 @@
   @include media(w768) {
     flex-direction: column;
 
+    &__mailme {
+      order: 2;
+    }
+
+    &__nav {
+      order: 1;
+    }
+
     &__nav,
     &__nav-item {
       width: 100%;
@@ -132,6 +145,7 @@
     }
 
     &__extra-info {
+      order: 3;
       display: flex;
     }
   }
