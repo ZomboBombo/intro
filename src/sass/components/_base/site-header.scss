@@ -2,13 +2,15 @@
 @use '../../system/mixins' as *;
 @use '../../system/breakpoints' as *;
 
-:root {
-  --nm-gap: 0.2rem;
-  --nm-link-gap: 1.25rem;
-  --nm-brd-rad: calc(var(--nm-link-gap, 1.25rem) * 4);
+html[data-color-scheme='light'] {
+  .site-header {
+    --header-nl-color: var(--color-def-black);
+  }
 }
 
 .site-header {
+  --header-nl-color: var(--color-def-white);
+
   position: sticky;
   isolation: isolate;
   inset: 0;
@@ -65,7 +67,7 @@
   }
 
   &__nav-link {
-    $t-props: color, background-color;
+    $t-props: color, background-color, opacity;
     @include trans-config($t-props);
 
     display: flex;
@@ -73,12 +75,17 @@
     align-items: center;
     margin: 0;
     padding: var(--nm-link-gap) 5rem;
+    color: var(--header-nl-color);
     border-radius: var(--nm-brd-rad);
     -webkit-tap-highlight-color: var(--color-def-transparent);
 
-    &:where(:hover, :focus-visible) {
+    &:is(:hover, :focus-visible) {
       color: var(--ui-primary);
       background-color: var(--ui-secondary);
+    }
+
+    &:active {
+      opacity: 0.75;
     }
   }
 
