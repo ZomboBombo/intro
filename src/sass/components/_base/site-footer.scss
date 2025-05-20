@@ -4,6 +4,7 @@
 .site-footer {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
   gap: 3.2rem;
   margin: 0;
@@ -13,6 +14,7 @@
     style: solid;
     color: var(--ui-secondary);
   }
+  container-type: inline-size;
 
   &__mailme {
     width: 100%;
@@ -111,9 +113,14 @@
     width: max-content;
   }
 
-  /*
-    === Media ===
-  */
+  // ===[ MEDIA ]===
+  @container (width < 768px) {
+    &__mailme,
+    &__nav {
+      margin-inline: auto;
+    }
+  }
+
   @include media(w768) {
     flex-direction: column;
 
