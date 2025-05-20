@@ -1,0 +1,112 @@
+@use '../system/mixins' as *;
+@use '../system/breakpoints' as *;
+
+@property --mailme-glowing-brd-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+html[data-color-scheme='light'] {
+  .mailme {
+    --mailme-color: var(--color-def-black);
+  }
+}
+
+.mailme {
+  --mailme-color: var(--color-def-white);
+  --mailme-btn-gap: 0.6rem;
+  --mailme-btn-underlay-gap: calc(var(--mailme-btn-gap) / 2);
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--mailme-color);
+
+  a {
+    $t-props: color, background-color, opacity;
+    @include trans-config($t-props);
+
+    padding: var(--mailme-btn-gap);
+    text: {
+      decoration: underline;
+      underline-offset: 0.25em;
+    }
+    border-radius: 1em;
+
+    &:where(:hover, :focus-visible) {
+      text-decoration: none;
+      color: var(--ui-primary);
+      background-color: var(--ui-secondary);
+    }
+
+    &:active {
+      opacity: 0.75;
+    }
+  }
+
+  button {
+    $t-props: color, background-color, opacity;
+    @include trans-config($t-props);
+
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--mailme-btn-gap);
+    font-weight: 700;
+    color: var(--ui-secondary);
+    background-image: conic-gradient(
+      from var(--mailme-glowing-brd-angle),
+      var(--color-def-transparent),
+      var(--ui-secondary)
+    );
+    border-radius: 1em;
+    cursor: pointer;
+    animation: {
+      name: mailme-border-glowing;
+      duration: 6s;
+      timing-function: linear;
+      iteration-count: infinite;
+      fill-mode: forwards;
+    }
+
+    &::before {
+      @include trans-config(opacity);
+
+      content: '';
+      position: absolute;
+      inset: var(--mailme-btn-underlay-gap);
+      z-index: -1;
+      display: block;
+      background-color: var(--ui-primary);
+      border-radius: inherit;
+    }
+
+    &:where(:hover, :focus-visible) {
+      color: var(--ui-primary);
+      background-color: var(--ui-secondary);
+    }
+
+    &:where(:hover, :focus-visible)::before {
+      opacity: 0;
+    }
+
+    &:active {
+      opacity: 0.75;
+    }
+  }
+}
+
+@keyframes mailme-border-glowing {
+  0% {
+    --mailme-glowing-brd-angle: 0deg;
+  }
+
+  100% {
+    --mailme-glowing-brd-angle: 360deg;
+  }
+}

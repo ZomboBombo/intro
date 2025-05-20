@@ -1,0 +1,15 @@
+mixin mailme(preops = {})
+  p.mailme&attributes(attributes)
+    a(
+      href="mailto:sergey.novikov.zb@gmail.com"
+      title="Open using the «mailto»"
+      aria-label="Open using the «mailto»"
+    ) Email me
+
+    | at
+
+    button(
+      type="button"
+      title="Copy email addr to clipboard"
+      aria-label="Copy email addr to clipboard"
+    ) sergey.novikov.zb@gmail.com
