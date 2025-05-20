@@ -31,7 +31,7 @@
     --font-#{$name}: #{$value};
   }
 
-  // Fonts
+  // Nav-menues
   @each $name, $value in common-var.$nav-menues {
     --nm-#{$name}: #{$value};
   }
