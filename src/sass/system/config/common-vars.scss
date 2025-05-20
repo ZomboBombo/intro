@@ -57,6 +57,29 @@ $fonts: (
 );
 
 /*
+------------------------------------------------------------------------
+
+  ===[ OTHER ]===
+
+  Specific styles applied
+  in narrow project areas.
+
+------------------------------------------------------------------------
+*/
+
+/*
+  Nav-menues
+  ~~~
+  Used in different but similar
+  proj 'Nav-Menues'.
+*/
+$nav-menues: (
+  'gap': 0.2rem,
+  'link-gap': 1.25rem,
+  'brd-rad': calc(var(--nm-link-gap, 1.25rem) * 4)
+);
+
+/*
   Work-Cards
   ~~~
   Color schemes for the 'Work-Cards'.

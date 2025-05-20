@@ -31,6 +31,11 @@
     --font-#{$name}: #{$value};
   }
 
+  // Nav-menues
+  @each $name, $value in common-var.$nav-menues {
+    --nm-#{$name}: #{$value};
+  }
+
   // Colors
   // => [default]
   --color-def-white: hsl(0 0% 100%);
