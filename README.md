@@ -56,7 +56,7 @@ A short guide how to explore this repo:
 
   - `/sass/`: stylesheets made with _SCSS-syntax_:
 
-    - `/blocks/`: intended for _small semantic elements (blocks)_; currently is empty...
+    - `/blocks/`: intended for _small semantic elements (blocks)_.
 
     - `/components/`: main proj's components stylesheets.
 
@@ -140,7 +140,7 @@ A short guide how to explore this repo:
 
   - `/sass/`: таблицы стилей, сотворённые с помощью _SCSS-синтаксиса_:
 
-    - `/blocks/`: предназначается для _небольших смысловых элементов (блоков)_; в настоящее время пустует...
+    - `/blocks/`: предназначается для _небольших смысловых элементов (блоков)_.
 
     - `/components/`: стили для основных компонентов проекта.
 
