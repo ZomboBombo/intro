@@ -11,9 +11,7 @@
     min-width: max-content;
   }
 
-  /*
-    === Media ===
-  */
+  // ===[ MEDIA ]===
   @include media(w768) {
     width: 100%;
   }

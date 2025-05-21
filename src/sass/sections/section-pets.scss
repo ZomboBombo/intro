@@ -50,9 +50,7 @@
     }
   }
 
-  /*
-        === Media ===
-    */
+  // ===[ MEDIA ]===
   @include media(w1024) {
     &__title-box {
       row-gap: 2.4rem;

@@ -113,7 +113,7 @@
     width: max-content;
   }
 
-  // ===[ MEDIA ]===
+  // ===[ CONTAINER QUERIES ]===
   @container (width < 768px) {
     &__mailme,
     &__nav {
@@ -121,6 +121,7 @@
     }
   }
 
+  // ===[ MEDIA ]===
   @include media(w768) {
     flex-direction: column;
 

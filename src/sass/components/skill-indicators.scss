@@ -110,9 +110,7 @@
     border-radius: 0.25em;
   }
 
-  /*
-    === Media ===
-  */
+  // ===[ MEDIA ]===
   @include media(w1024) {
     &__btn {
       font-size: 4.8rem;
