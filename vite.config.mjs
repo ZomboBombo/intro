@@ -13,6 +13,18 @@ import imageminPngquant from 'imagemin-pngquant'
 // Custom Plugins
 import customStackSvgPlugin from './custom-vite-plugins/custom-stack-svg-plugin'
 
+// const makeWebpCb = (file) => {
+//   const isFavicon = file.includes('favicons')
+
+//   if (isFavicon) {
+//     return
+//   }
+
+//   console.log(file)
+
+//   return `${file.slice(0, file.lastIndexOf('.'))}.webp`
+// }
+
 export default {
   define: {
     __APP_TYPE__: JSON.stringify(appType),
@@ -61,7 +73,7 @@ export default {
         png: imageminPngquant({ quality: [0.8, 0.9] }),
       },
       makeWebp: {
-        formatFilePath: (file) => `${file.slice(0, file.lastIndexOf('.'))}.webp`,
+        formatFilePath: (filepath) => `${filepath.slice(0, filepath.lastIndexOf('.'))}.webp`,
         skipIfLargerThan: false,
         plugins: {
           jpg: imageminWebp({ quality: 80 }),
@@ -69,6 +81,7 @@ export default {
           png: imageminWebp({ quality: 80 }),
         },
       },
+      exclude: [/favicons/],
     }),
     vituum(),
     pug({
