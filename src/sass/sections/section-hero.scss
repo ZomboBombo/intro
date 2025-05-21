@@ -78,9 +78,7 @@
     z-index: 1;
   }
 
-  /*
-    === Container Queries ===
-  */
+  // ===[ CONTAINER QUERIES ]===
   @container (max-width: 1024px) {
     &__title {
       max-width: min-content;
@@ -91,9 +89,7 @@
     }
   }
 
-  /*
-    === Media ===
-  */
+  // ===[ MEDIA ]===
   @include media(w1024) {
     &__title {
       font-size: $fs-w1024;

@@ -94,9 +94,7 @@
     row-gap: 2.4rem;
   }
 
-  /*
-    === Media ===
-  */
+  // ===[ MEDIA ]===
   @include media(w768) {
     display: none;
   }

@@ -45,9 +45,7 @@
     color: var(--ui-primary);
   }
 
-  /*
-        === Media ===
-    */
+  // ===[ MEDIA ]===
   @include media(w1024) {
     width: 100%;
     min-width: auto;

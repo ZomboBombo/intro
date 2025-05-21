@@ -50,9 +50,7 @@
     @include square(var(--cs-switcher-icn-size));
   }
 
-  /*
-    === Media ===
-  */
+  // ===[ MEDIA ]===
   @include media(w768) {
     --cs-switcher-icn-size: 2.4rem;
   }

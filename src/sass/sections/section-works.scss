@@ -31,7 +31,7 @@
     flex-direction: column;
   }
 
-  // ===[ MEDIA ]===
+  // ===[ CONTAINER QUERIES ]===
   @container (width < 1152px) {
     &__header {
       flex-direction: column;
@@ -43,6 +43,7 @@
     }
   }
 
+  // ===[ MEDIA ]===
   @include media(w1152) {
     &__header {
       flex-direction: column;
@@ -53,6 +54,7 @@
       grid-template-columns: repeat(2, 1fr);
     }
 
+    // ===[ CONTAINER QUERIES ]===
     @container (width < 768px) {
       &__list {
         grid-template-columns: 1fr;

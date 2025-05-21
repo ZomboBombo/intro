@@ -61,7 +61,7 @@ export default {
         png: imageminPngquant({ quality: [0.8, 0.9] }),
       },
       makeWebp: {
-        formatFilePath: (file) => `${file.slice(0, file.lastIndexOf('.'))}.webp`,
+        formatFilePath: (filepath) => `${filepath.slice(0, filepath.lastIndexOf('.'))}.webp`,
         skipIfLargerThan: false,
         plugins: {
           jpg: imageminWebp({ quality: 80 }),
@@ -69,6 +69,7 @@ export default {
           png: imageminWebp({ quality: 80 }),
         },
       },
+      exclude: [/favicons/],
     }),
     vituum(),
     pug({

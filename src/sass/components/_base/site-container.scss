@@ -49,9 +49,7 @@
     }
   }
 
-  /*
-    === Media ===
-  */
+  // ===[ MEDIA ]===
   @include media(w1440) {
     border-radius: 0;
   }
