@@ -1,8 +1,16 @@
 * text eol=lf
 
+# Images
 *.png binary
 *.jpg binary
 *.jpeg binary
 *.webp binary
+
+# Fonts
 *.woff binary
 *.woff2 binary
+
+# Videos
+*.mp4 binary -text
+*.webm binary -text
+*.mov binary -text
