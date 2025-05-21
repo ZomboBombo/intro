@@ -13,18 +13,6 @@ import imageminPngquant from 'imagemin-pngquant'
 // Custom Plugins
 import customStackSvgPlugin from './custom-vite-plugins/custom-stack-svg-plugin'
 
-// const makeWebpCb = (file) => {
-//   const isFavicon = file.includes('favicons')
-
-//   if (isFavicon) {
-//     return
-//   }
-
-//   console.log(file)
-
-//   return `${file.slice(0, file.lastIndexOf('.'))}.webp`
-// }
-
 export default {
   define: {
     __APP_TYPE__: JSON.stringify(appType),
