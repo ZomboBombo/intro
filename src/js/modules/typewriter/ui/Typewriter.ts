@@ -1,4 +1,5 @@
 import * as _ from '../config'
+import { NullishHTMLElem } from '../../../_core/types'
 
 /**
  * @class
@@ -11,6 +12,7 @@ export default class Typewriter {
   private _textBlock: HTMLElement
   private _options: _.ITypewriterOptions
   private _delayCoeff: number
+  private _typewriterTimeoutsList: ReturnType<typeof setTimeout>[] = []
 
   /**
    * @constructor
@@ -47,11 +49,51 @@ export default class Typewriter {
       for (const [index, letter] of splitText.entries()) {
         const twTimeout: number = index * this._delayCoeff
 
-        setTimeout(() => {
-          this._textBlock.textContent += letter
-        }, twTimeout)
+        this._typewriterTimeoutsList.push(
+          setTimeout(() => {
+            this._textBlock.textContent += letter
+          }, twTimeout)
+        )
       }
     }
+
+    this._setupModalActionsObserver()
+  }
+
+  /**
+   * Private method: [_setupModalActionsObserver()].
+   * 
+   * @description Configures the logic for tracking state-changes of the 'Modal' inside which the 'Typewriter' instance is located.
+   * @returns {void}
+  */
+  private _setupModalActionsObserver(): void {
+    const parentModal: NullishHTMLElem = this._textBlock.closest('[data-modal="window"]')
+
+    if (!parentModal) {
+      return
+    }
+
+    const modalActionsObserverCb: MutationCallback = (mutationRecs: MutationRecord[]): void => {
+      const modalClassAttrMutation: MutationRecord | undefined = mutationRecs.find((mutation: MutationRecord) => mutation.attributeName === 'class')
+
+      if (!modalClassAttrMutation) {
+        return
+      }
+
+      const { target } = modalClassAttrMutation
+      const notActiveModal: boolean = !(target as HTMLElement).classList.contains('is-active')
+
+      if (notActiveModal) {
+        this._typewriterTimeoutsList.forEach((timeout) => clearTimeout(timeout))
+        modalActionsObserver.disconnect()
+      }
+    }
+
+    const modalActionsObserver = new MutationObserver(modalActionsObserverCb)
+    modalActionsObserver.observe(parentModal, {
+      attributes: true,
+      attributeOldValue: true,
+    })
   }
 
   /**
