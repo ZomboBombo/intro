@@ -17,7 +17,3 @@ node_modules/
 build/
 docs/
 npm-debug.*
-
-# Lock-files
-pnpm-lock.yaml
-yarn.lock
