@@ -1,0 +1,42 @@
+<script setup lang="ts">
+
+</script>
+
+<template>
+  <header>HEADER</header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer>FOOTER</footer>
+</template>
+
+<style scoped lang="scss">
+  /*
+    ===[ TEMPO STYLES]===
+
+    This is a temporary styles.
+    It'll be removed after real components will be added.
+  */
+  header,
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: {
+      size: 2.4rem;
+      weight: 700;
+    }
+    text-transform: uppercase;
+  }
+
+  header {
+    background-color: hsl(0 100% 50% / 0.5);
+  }
+
+  footer {
+    margin-block-start: auto;
+    background-color: hsl(220 100% 50% / 0.5);
+  }
+</style>
