@@ -15,14 +15,6 @@
   <AppLayoutSetup>
     <RouterView />
   </AppLayoutSetup>
-
-<!--  <BaseLayout v-if="$route.meta.layout === 'base'">-->
-<!--    <RouterView />-->
-<!--  </BaseLayout>-->
-
-<!--  <EmptyLayout v-if="$route.meta.layout === 'empty'">-->
-<!--    <RouterView />-->
-<!--  </EmptyLayout>-->
 </template>
 
 <style lang="scss">
