@@ -1,4 +1,6 @@
 <script lang="ts">
+  /* eslint-disable no-console */
+
   import { markRaw, watch } from 'vue'
   import { useRoute } from 'vue-router'
 
@@ -18,8 +20,14 @@
               const component = await import(/* @vite-ignore */`./${metaLayout}-layout/`)
 
               layout.value = component.default ?? BaseLayout
-            } catch (err) {
+            } catch (err: unknown) {
               layout.value = BaseLayout
+
+              console.error(`
+                Something went wrong while loading layout.
+                =---=
+                ${(err as Error).message}
+              `)
             }
           },
           { immediate: true },
