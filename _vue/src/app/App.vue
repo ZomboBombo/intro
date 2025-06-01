@@ -1,9 +1,20 @@
 <script setup lang="ts">
-  import HelloWorld from '@/entities/hello-world'
+  import AppLayoutSetup from './layouts/AppLayoutSetup.vue'
+  import RoutesData from './router/config/routes-data.ts'
 </script>
 
 <template>
-  <HelloWorld msg="Vite + Vue" />
+  <nav v-if="$route.name === 'Home'">
+    <ol>
+      <li v-for="{path, name} in RoutesData">
+        <RouterLink :to="path">{{ name }}</RouterLink>
+      </li>
+    </ol>
+  </nav>
+
+  <AppLayoutSetup>
+    <RouterView />
+  </AppLayoutSetup>
 </template>
 
 <style lang="scss">
