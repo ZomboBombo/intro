@@ -1,21 +1,11 @@
 <script setup lang="ts">
+  import RoutesData from '@/app/router/config/routes-data.ts'
 
+  const { path, name } = RoutesData.home
 </script>
 
 <template>
-  <ul>
-    <li>
-      <a href="/">Home</a>
-    </li>
-    <li>
-      <a href="/">Home</a>
-    </li>
-    <li>
-      <a href="/">Home</a>
-    </li>
-  </ul>
+  <RouterLink :to="path">{{ name }}</RouterLink>
 </template>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

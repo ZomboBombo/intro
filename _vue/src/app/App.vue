@@ -6,7 +6,7 @@
 <template>
   <nav v-if="$route.name === 'Home'">
     <ol>
-      <li v-for="{path, name} in RoutesData">
+      <li v-for="{ path, name } in RoutesData">
         <RouterLink :to="path">{{ name }}</RouterLink>
       </li>
     </ol>
