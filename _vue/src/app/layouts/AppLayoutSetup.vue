@@ -13,24 +13,27 @@
       const route = useRoute()
 
       watch(
-          () => route.meta,
-          async (meta) => {
-            try {
-              const metaLayout = meta?.layout ?? 'base'
-              const component = await import(/* @vite-ignore */`./${metaLayout}-layout/`)
+        () => route.meta,
+        async (meta) => {
+          try {
+            const metaLayoutName = meta?.layout ?? 'base'
+            const component = await import(
+              /* @vite-ignore */
+              `./${metaLayoutName}-layout/`
+            )
 
-              layout.value = component.default ?? BaseLayout
-            } catch (err: unknown) {
-              layout.value = BaseLayout
+            layout.value = component.default ?? BaseLayout
+          } catch (err: unknown) {
+            layout.value = BaseLayout
 
-              console.error(`
-                Something went wrong while loading layout.
-                =---=
-                ${(err as Error).message}
-              `)
-            }
-          },
-          { immediate: true },
+            console.error(`
+              Something went wrong while loading layout.
+              =---=
+              ${(err as Error).message}
+            `)
+          }
+        },
+        { immediate: true }
       )
 
       return { layout }

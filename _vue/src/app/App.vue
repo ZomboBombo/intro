@@ -1,13 +1,15 @@
 <script setup lang="ts">
   import AppLayoutSetup from './layouts/AppLayoutSetup.vue'
   import RoutesData from './router/config/routes-data.ts'
+
+  const HOME_NAME: string = RoutesData.home.name
 </script>
 
 <template>
-  <nav v-if="$route.name === 'Home'">
+  <nav v-if="$route.name === HOME_NAME">
     <ol>
-      <li v-for="{ path, name } in RoutesData">
-        <RouterLink :to="path">{{ name }}</RouterLink>
+      <li v-for="{ path, meta } in RoutesData">
+        <RouterLink :to="path">{{ meta.nameAlias }}</RouterLink>
       </li>
     </ol>
   </nav>

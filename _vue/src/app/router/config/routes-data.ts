@@ -1,16 +1,18 @@
 export default {
   home: {
     path: '/',
-    name: 'Home',
+    name: 'SN',
     meta: {
       layout: 'base',
+      nameAlias: 'Home',
     },
   },
   sitemap: {
     path: '/sitemap',
-    name: 'Sitemap',
+    name: 'SN: Sitemap',
     meta: {
       layout: 'empty',
+      nameAlias: 'Sitemap',
     },
-  }
+  },
 }
