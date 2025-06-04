@@ -3,11 +3,13 @@ import { routes } from '../config/routes'
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
 })
 
 router.beforeEach((to, _, next) => {
-  document.title = to.name as string
+  const title = to.meta.title ?? to.name
+
+  document.title = title as string
   next()
 })
 

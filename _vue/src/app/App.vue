@@ -8,8 +8,8 @@
 <template>
   <nav v-if="$route.name === HOME_NAME">
     <ol>
-      <li v-for="{ path, meta } in RoutesData">
-        <RouterLink :to="path">{{ meta.nameAlias }}</RouterLink>
+      <li v-for="{ path, name } in RoutesData">
+        <RouterLink :to="path">{{ name }}</RouterLink>
       </li>
     </ol>
   </nav>

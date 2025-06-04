@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import RoutesData from '@/app/router/config/routes-data.ts'
+  import RoutesData from '@app/router/config/routes-data'
 
   const { path, name } = RoutesData.home
 </script>
