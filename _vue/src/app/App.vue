@@ -2,16 +2,16 @@
   import AppLayoutSetup from './layouts/AppLayoutSetup.vue'
   import RoutesData from './router/config/routes-data.ts'
 
-  const HOME_NAME: string = RoutesData.home.name
+  const SITEMAP = RoutesData.sitemap
+  const SITEMAP_PATH: string = SITEMAP.path
+  const SITEMAP_NAME: string = SITEMAP.name
 </script>
 
 <template>
-  <nav v-if="$route.name === HOME_NAME">
-    <ol>
-      <li v-for="{ path, name } in RoutesData">
-        <RouterLink :to="path">{{ name }}</RouterLink>
-      </li>
-    </ol>
+  <nav>
+    <RouterLink v-if="$route.name !== SITEMAP_NAME" :to="SITEMAP_PATH">
+      {{ SITEMAP_NAME }}
+    </RouterLink>
   </nav>
 
   <AppLayoutSetup>

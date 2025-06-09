@@ -1,11 +1,9 @@
 <script setup lang="ts">
-  import RoutesData from '@app/router/config/routes-data'
-
-  const { path, name } = RoutesData.home
+  import SitemapNav from '@entities/sitemap-nav'
 </script>
 
 <template>
-  <RouterLink :to="path">{{ name }}</RouterLink>
+  <SitemapNav />
 </template>
 
 <style scoped lang="scss"></style>
