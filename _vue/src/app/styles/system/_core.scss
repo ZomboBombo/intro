@@ -1,0 +1,35 @@
+@use 'mixins' as *;
+
+:root {
+  color-scheme: dark light;
+  font-size: 62.5%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  scroll-behavior: smooth;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body,
+#app {
+  @include base-gradient-bg;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  min-height: 100dvh;
+  padding: 0;
+  font: {
+    family: 'Inconsolata', monospace, system-ui;
+    size: 1.6rem;
+  }
+  color: var(--color-def-white);
+}
