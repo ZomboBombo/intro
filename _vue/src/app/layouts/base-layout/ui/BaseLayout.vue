@@ -1,11 +1,9 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <header>HEADER</header>
 
-  <main>
+  <main class="site-main">
     <slot />
   </main>
 
@@ -13,11 +11,11 @@
 </template>
 
 <style scoped lang="scss">
-  /*
-    ===[ TEMPO STYLES]===
-
-    This is a temporary styles.
-    It'll be removed after real components will be added.
+  /**
+  * ===[ TEMPO STYLES]===
+  *
+  * This is a temporary styles.
+  * It'll be removed after real components will be added.
   */
   header,
   footer {

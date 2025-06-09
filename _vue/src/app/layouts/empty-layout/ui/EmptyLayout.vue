@@ -1,13 +1,9 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
- <main>
-   <slot />
- </main>
+  <main class="site-main">
+    <slot />
+  </main>
 </template>
 
-<style scoped lang="scss">
-
-</style>
+<style lang="scss"></style>
