@@ -23,6 +23,6 @@
   </nav>
 </template>
 
-<style lang="scss" module>
+<style module lang="scss">
   @forward './styles';
 </style>

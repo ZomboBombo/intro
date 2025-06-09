@@ -9,4 +9,14 @@
 /*
   ===[ 2. Base styles ]===
 */
-@forward 'styles/base/site-main';
+@forward 'styles/base';
+
+/*
+  ===[ 3. UI-styles ]===
+*/
+@forward 'styles/ui';
+
+/*
+  ===[ 4. Utility styles ]===
+*/
+@forward 'styles/utils';

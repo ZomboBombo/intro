@@ -1,9 +1,9 @@
 <script setup lang="ts">
-  import HelloWorld from '@entities/hello-world'
+  import UiTitle from '@entities/ui-title'
 </script>
 
 <template>
-  <HelloWorld msg="Vite + Vue" />
+  <UiTitle text="Home" />
 </template>
 
 <style scoped lang="scss"></style>
