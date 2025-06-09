@@ -15,4 +15,12 @@ export default {
       title: 'SN: Sitemap',
     },
   },
+  'ui-kit': {
+    path: '/ui-kit',
+    name: 'UI-kit',
+    meta: {
+      layout: 'empty',
+      title: 'SN: UI-kit',
+    },
+  },
 }
