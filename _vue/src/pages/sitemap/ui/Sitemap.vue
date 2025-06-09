@@ -1,21 +1,9 @@
 <script setup lang="ts">
-
+  import SitemapNav from '@entities/sitemap-nav'
 </script>
 
 <template>
-  <ul>
-    <li>
-      <a href="/">Home</a>
-    </li>
-    <li>
-      <a href="/">Home</a>
-    </li>
-    <li>
-      <a href="/">Home</a>
-    </li>
-  </ul>
+  <SitemapNav />
 </template>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

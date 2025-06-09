@@ -1,0 +1,47 @@
+.sitemap-nav {
+  --sm-nav-clr-primary: hsl(0 0% 50%);
+  --sm-nav-clr-secondary: hsl(0 0% 70%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+  padding: 6rem;
+
+  &__list {
+    display: grid;
+    row-gap: 0.6rem;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    background-color: var(--sm-nav-clr-primary);
+    border-radius: 0.6rem;
+    overflow: hidden;
+  }
+
+  &__item:nth-child(odd) &__link {
+    background-color: var(--sm-nav-clr-secondary);
+  }
+
+  &__link {
+    display: grid;
+    grid-template-columns: 1fr 24rem;
+    padding: 0.3rem 0.6rem;
+    font-size: 2.4rem;
+    text-decoration: none;
+    color: hsl(0 0% 0%);
+    background-color: var(--sm-nav-clr-primary);
+
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    span:last-child {
+      justify-content: start;
+    }
+  }
+}
