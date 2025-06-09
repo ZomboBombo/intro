@@ -1,7 +1,6 @@
-.sitemap-nav {
-  --sm-nav-clr-primary: hsl(0 0% 50%);
-  --sm-nav-clr-secondary: hsl(0 0% 70%);
+@use '@app/styles/system/mixins' as *;
 
+.sitemap-nav {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,28 +10,46 @@
 
   &__list {
     display: grid;
-    row-gap: 0.6rem;
+    row-gap: 0.2rem;
     width: 100%;
     margin: 0;
     padding: 0;
     list-style-type: none;
-    background-color: var(--sm-nav-clr-primary);
+    background-color: var(--ui-secondary);
+    border: 0.2rem solid var(--ui-secondary);
     border-radius: 0.6rem;
     overflow: hidden;
   }
 
-  &__item:nth-child(odd) &__link {
-    background-color: var(--sm-nav-clr-secondary);
+  &__item {
+    $t-props: color, background-color;
+    @include trans-config($t-props);
+
+    color: var(--ui-secondary);
+    background-color: var(--ui-primary);
+
+    &:has(a[href]:where(:hover, :focus-visible)) {
+      color: var(--ui-primary);
+      background-color: var(--ui-primary-shade-3);
+    }
+
+    &:nth-child(odd) {
+      color: var(--ui-primary);
+      background-color: var(--ui-secondary);
+    }
+
+    &:nth-child(odd):has(a[href]:where(:hover, :focus-visible)) {
+      background-color: var(--ui-secondary-shade-1);
+    }
   }
 
   &__link {
     display: grid;
     grid-template-columns: 1fr 24rem;
-    padding: 0.3rem 0.6rem;
+    padding: 0.9rem;
     font-size: 2.4rem;
     text-decoration: none;
-    color: hsl(0 0% 0%);
-    background-color: var(--sm-nav-clr-primary);
+    color: inherit;
 
     span {
       display: flex;

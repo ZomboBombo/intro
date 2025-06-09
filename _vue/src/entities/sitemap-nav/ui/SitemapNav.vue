@@ -1,16 +1,20 @@
 <script setup lang="ts">
-  import RoutesData from '@app/router/config/routes-data.ts'
+  import RoutesData from '@app/router/config/routes-data'
+
+  const RoutesWithoutSitemap = Object.entries(RoutesData).filter(
+    ([key, _]) => key !== 'sitemap'
+  )
 </script>
 
 <template>
-  <nav :class="smNav['sitemap-nav']">
-    <ol :class="smNav['sitemap-nav__list']">
+  <nav :class="$style['sitemap-nav']">
+    <ol :class="$style['sitemap-nav__list']">
       <li
-        v-for="{ path, name } in RoutesData"
-        :key="path"
-        :class="smNav['sitemap-nav__item']"
+        v-for="[key, { path, name }] in RoutesWithoutSitemap"
+        :key="key"
+        :class="$style['sitemap-nav__item']"
       >
-        <RouterLink :to="path" :class="smNav['sitemap-nav__link']">
+        <RouterLink :to="path" :class="$style['sitemap-nav__link']">
           <span>{{ name }}</span>
           <span>{{ path }}</span>
         </RouterLink>
@@ -19,6 +23,6 @@
   </nav>
 </template>
 
-<style lang="scss" module="smNav">
+<style lang="scss" module>
   @forward './styles';
 </style>
