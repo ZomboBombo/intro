@@ -1,39 +1,12 @@
-:root {
-  font-size: 62.5%;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color-scheme: dark light;
+/*
+  ===[ 1. System styles ]===
+*/
+@forward 'styles/system/reset';
+@forward 'styles/system/fonts';
+@forward 'styles/system/vars';
+@forward 'styles/system/core';
 
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-html {
-  box-sizing: border-box;
-}
-
-body,
-#app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100dvh;
-  margin: 0;
-  padding: 0;
-  font: {
-    family: system-ui, monospace;
-    size: 1.6rem;
-    weight: 400;
-  }
-  line-height: 1;
-}
-
-.site-main {
-  flex-grow: 1;
-  display: grid;
-}
+/*
+  ===[ 2. Base styles ]===
+*/
+@forward 'styles/base/site-main';
