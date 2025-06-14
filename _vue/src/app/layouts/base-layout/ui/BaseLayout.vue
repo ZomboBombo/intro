@@ -22,8 +22,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-block: 3rem;
     font: {
-      size: 2.4rem;
+      size: 4.8rem;
       weight: 700;
     }
     text-transform: uppercase;
