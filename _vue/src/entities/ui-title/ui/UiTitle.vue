@@ -1,16 +1,17 @@
 <script setup lang="ts">
-  type UiTitleLvlT = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  import type { UiTitleI } from '@entities/ui-title/config'
 
-  defineProps<{
-    text: string
-    lvl?: UiTitleLvlT
-  }>()
+  const { notHeading = false, tag, lvl = 'h1' } = defineProps<UiTitleI>()
+
+  const definedTag = tag ?? 'strong'
+  const definedComponent = notHeading || tag ? definedTag : lvl
+  const headingLevelCssMod = notHeading || tag ? '' : `ui-title--${lvl}`
 </script>
 
 <template>
   <component
-    :is="lvl ?? 'h1'"
-    :class="['ui-code', 'ui-title', `ui-title--${lvl ?? 'h1'}`]"
+    :is="definedComponent"
+    :class="['ui-code', 'ui-title', headingLevelCssMod]"
   >
     {{ text }}
   </component>
