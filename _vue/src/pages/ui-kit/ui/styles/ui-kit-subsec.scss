@@ -119,8 +119,8 @@
     }
 
     &:disabled {
-      background-color: var(--ui-primary-shade-2);
       color: var(--ui-secondary-trans025);
+      background-color: var(--ui-primary-shade-2);
       pointer-events: none;
     }
   }
