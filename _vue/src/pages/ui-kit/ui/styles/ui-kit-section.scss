@@ -1,0 +1,27 @@
+@use '@app/styles/system/mixins' as *;
+
+.ui-kit-section {
+  display: grid;
+  row-gap: 3.2rem;
+  padding: 2.4rem;
+  padding-block-end: 0;
+  background-color: var(--ui-secondary-shade-2);
+  border-radius: 1.8rem;
+  overflow: hidden;
+
+  &__title {
+    @include text-outline(var(--ui-primary-shade-1));
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.8rem 2.4rem;
+    font: {
+      size: 4.8rem;
+      weight: 700;
+    }
+    background-color: var(--ui-secondary-shade-1);
+    border: 0.2rem solid var(--color-def-white);
+    border-radius: 0.25em;
+  }
+}
