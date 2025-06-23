@@ -1,7 +1,7 @@
 <script lang="ts">
   /* eslint-disable no-console */
 
-  import { markRaw, watch } from 'vue'
+  import { ref, markRaw, watch } from 'vue'
   import { useRoute } from 'vue-router'
 
   import BaseLayout from './base-layout'
@@ -9,7 +9,7 @@
   export default {
     name: 'AppLayoutSetup',
     setup() {
-      const layout = markRaw(BaseLayout)
+      const layout = ref(markRaw(BaseLayout))
       const route = useRoute()
 
       watch(
@@ -22,9 +22,9 @@
               `./${metaLayoutName}-layout/`
             )
 
-            layout.value = component.default ?? BaseLayout
+            layout.value = markRaw(component.default ?? BaseLayout)
           } catch (err: unknown) {
-            layout.value = BaseLayout
+            layout.value = markRaw(BaseLayout)
 
             console.error(`
               Something went wrong while loading layout.
