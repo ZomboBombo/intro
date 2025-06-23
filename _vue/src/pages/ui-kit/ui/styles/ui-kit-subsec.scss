@@ -13,7 +13,7 @@
   }
 
   &:nth-child(even) {
-    background-color: var(--ui-secondary-shade-1);
+    background-color: var(--ui-secondary-shade-1-trans025);
     border: 0.2rem solid var(--ui-secondary-shade-1);
     border-radius: 2.4rem;
   }
@@ -27,7 +27,7 @@
     isolation: isolate;
 
     &::before {
-      @include fullwidth-bg(var(--ui-secondary-shade-3));
+      @include fullwidth-bg(var(--ui-secondary-shade-3-trans050));
 
       content: '';
       position: absolute;
@@ -53,7 +53,7 @@
       size: 3.2rem;
       weight: 700;
     }
-    border: 0.3rem solid var(--ui-secondary-shade-2);
+    border: 0.3rem solid var(--ui-secondary-shade-2-trans025);
     border-radius: 0.25em;
   }
 

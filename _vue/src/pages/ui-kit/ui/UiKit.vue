@@ -13,9 +13,9 @@
       return
     }
 
-    const treatedTargetText = target.textContent!.trim()
+    const trimmedTargetText = target.textContent!.trim()
 
-    navigator.clipboard.writeText(treatedTargetText)
+    navigator.clipboard.writeText(trimmedTargetText)
 
     copybtn.textContent = 'Copied!'
     copybtn.setAttribute('disabled', '')
@@ -28,10 +28,15 @@
 </script>
 
 <template>
-  <UiTitle text="UI-kit" is-centered-horizontal />
+  <hgroup class="ui-kit-head">
+    <UiTitle text="UI-kit" class="ui-kit-head__title" />
+    <p class="ui-kit-head__descr">
+      Page with all UI-components full info and examples.
+    </p>
+  </hgroup>
 
   <section class="ui-kit-section">
-    <h2 class="ui-kit-section__title">The &lt;UiTitle&gt; component</h2>
+    <h2 class="ui-kit-section__title">&lt;UiTitle&gt;</h2>
 
     <section
       v-for="[key, { descr, usage, output }] in UiTitleCodeExamples"
