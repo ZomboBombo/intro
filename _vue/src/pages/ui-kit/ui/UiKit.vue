@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import UiTitle from '@entities/ui-title'
-  import { UiTitleCodeExamples } from '../data'
+  import { UiKitData } from '../data'
 
   const onCopyCodeUsage = (e: MouseEvent): void => {
     e.preventDefault()
@@ -30,16 +30,21 @@
 <template>
   <hgroup class="ui-kit-head">
     <UiTitle text="UI-kit" class="ui-kit-head__title" />
+
     <p class="ui-kit-head__descr">
       Page with all UI-components full info and examples.
     </p>
   </hgroup>
 
-  <section class="ui-kit-section">
-    <h2 class="ui-kit-section__title">&lt;UiTitle&gt;</h2>
+  <section
+    v-for="[key, { name, data }] in UiKitData"
+    :key="key"
+    class="ui-kit-section"
+  >
+    <h2 class="ui-kit-section__title">&lt;{{ name }}&gt;</h2>
 
     <section
-      v-for="[key, { descr, usage, output }] in UiTitleCodeExamples"
+      v-for="[key, { descr, usage, output }] in data"
       :key="key"
       class="ui-kit-subsec"
     >
