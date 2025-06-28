@@ -22,7 +22,7 @@ export const UiTitleData: CodeExamplesDataT = {
     descr:
       'The `tag` attr will make component with your HTML-tag you want it to be. If you use the `tag` attr you can omit the `not-heading` attr.',
     usage:
-      '<UiTitle text="UiTitle" tag="span" /> or <UiTitle text="UiTitle" tag="span" /> or any other valid HTML-tag.',
+      '<UiTitle text="UiTitle" tag="span" /> or <UiTitle text="UiTitle" tag="div" /> or any other valid HTML-tag.',
     output:
       '<span class="ui-title">UiTitle</span> / <div class="ui-title">UiTitle</div>',
   },
