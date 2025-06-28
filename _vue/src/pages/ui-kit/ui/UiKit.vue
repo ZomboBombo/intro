@@ -1,6 +1,8 @@
 <script setup lang="ts">
+  import { toKebabCase } from '@shared/utils'
+  import UiKitNav from '@entities/ui-kit-nav'
   import UiTitle from '@entities/ui-title'
-  import { UiKitData } from '../data'
+  import { UiKitData, UiKitDataAnchors } from '../data'
 
   const onCopyCodeUsage = (e: MouseEvent): void => {
     e.preventDefault()
@@ -28,60 +30,68 @@
 </script>
 
 <template>
-  <hgroup class="ui-kit-head">
-    <UiTitle text="UI-kit" class="ui-kit-head__title" />
+  <div class="ui-kit">
+    <UiKitNav :anchors="UiKitDataAnchors" class="ui-kit__navigation" />
 
-    <p class="ui-kit-head__descr">
-      Page with all UI-components full info and examples.
-    </p>
-  </hgroup>
+    <div class="ui-kit__content">
+      <hgroup class="ui-kit-head">
+        <UiTitle text="UI-kit" class="ui-kit-head__title" />
 
-  <section
-    v-for="[key, { name, data }] in UiKitData"
-    :key="key"
-    class="ui-kit-section"
-  >
-    <h2 class="ui-kit-section__title">&lt;{{ name }}&gt;</h2>
-
-    <section
-      v-for="[key, { descr, usage, output }] in data"
-      :key="key"
-      class="ui-kit-subsec"
-    >
-      <hgroup class="ui-kit-subsec__heading">
-        <h3 class="ui-kit-subsec__title">{{ key }}</h3>
-        <p class="ui-kit-subsec__descr">{{ descr }}</p>
+        <p class="ui-kit-head__descr">
+          Page with all UI-components full info and examples.
+        </p>
       </hgroup>
 
-      <div class="ui-kit-subsec__example">
-        <strong class="ui-kit-subsec__example-title">Usage:</strong>
+      <section
+        v-for="[key, { name, data }] in UiKitData"
+        :key="key"
+        :id="key"
+        class="ui-kit-section"
+      >
+        <h2 class="ui-kit-section__title">&lt;{{ name }}&gt;</h2>
 
-        <pre class="ui-kit-subsec__example-demo">
-          <code>
-            {{ usage }}
-          </code>
+        <section
+          v-for="[key, { descr, usage, output }] in data"
+          :key="key"
+          :id="toKebabCase(key)"
+          class="ui-kit-subsec"
+        >
+          <hgroup class="ui-kit-subsec__heading">
+            <h3 class="ui-kit-subsec__title">{{ key }}</h3>
+            <p class="ui-kit-subsec__descr">{{ descr }}</p>
+          </hgroup>
 
-          <button
-              type="button"
-              class="ui-kit-subsec__example-copybtn"
-              title="Click to copy `usage fragment` to clipboard"
-              aria-label="Click to copy `usage fragment` to clipboard"
-              @click="onCopyCodeUsage"
-          >Copy</button>
-        </pre>
-      </div>
+          <div class="ui-kit-subsec__example">
+            <strong class="ui-kit-subsec__example-title">Usage:</strong>
 
-      <div class="ui-kit-subsec__example">
-        <strong class="ui-kit-subsec__example-title">Output:</strong>
+            <pre class="ui-kit-subsec__example-demo">
+            <code>
+              {{ usage }}
+            </code>
 
-        <pre class="ui-kit-subsec__example-demo">
-          <code>
-            {{ output }}
-          </code>
-        </pre>
-      </div>
-    </section>
-  </section>
+            <button
+                type="button"
+                class="ui-kit-subsec__example-copybtn"
+                title="Click to copy `usage fragment` to clipboard"
+                aria-label="Click to copy `usage fragment` to clipboard"
+                @click="onCopyCodeUsage"
+            >Copy</button>
+          </pre>
+          </div>
+
+          <div class="ui-kit-subsec__example">
+            <strong class="ui-kit-subsec__example-title">Output:</strong>
+
+            <pre class="ui-kit-subsec__example-demo">
+            <code>
+              {{ output }}
+            </code>
+          </pre>
+          </div>
+        </section>
+      </section>
+    </div>
+  </div>
 </template>
 
 <style scoped lang="scss">
