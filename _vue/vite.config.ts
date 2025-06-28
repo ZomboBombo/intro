@@ -4,7 +4,7 @@ import path from 'path'
 
 export default defineConfig({
   server: {
-    open: true,
+    open: '/sitemap',
     port: 9000,
   },
   resolve: {

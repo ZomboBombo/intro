@@ -48,23 +48,63 @@
   // => [ui]
   // => [ui-values]
   --ui-primary-hsl-value: 272 58% 6%;
+  --ui-primary-shade-1-hsl-value: 272 74% 6%;
+  --ui-primary-shade-2-hsl-value: 272 34% 15%;
+  --ui-primary-shade-3-hsl-value: 272 34% 35%;
   --ui-secondary-hsl-value: 260 90% 81%;
+  --ui-secondary-shade-1-hsl-value: 260 90% 71%;
+  --ui-secondary-shade-2-hsl-value: 260 90% 61%;
+  --ui-secondary-shade-3-hsl-value: 260 90% 55%;
   // => [ui-primary-colors]
   --ui-primary: hsl(var(--ui-primary-hsl-value));
   --ui-primary-trans050: hsl(var(--ui-primary-hsl-value) / 0.5);
   --ui-primary-trans025: hsl(var(--ui-primary-hsl-value) / 0.25);
-  --ui-primary-shade-1: hsl(272 74% 6%);
-  --ui-primary-shade-2: hsl(272 34% 15%);
-  --ui-primary-shade-3: hsl(272 34% 35%);
+  --ui-primary-shade-1: hsl(var(--ui-primary-shade-1-hsl-value));
+  --ui-primary-shade-1-trans050: hsl(var(--ui-primary-shade-1-hsl-value) / 0.5);
+  --ui-primary-shade-1-trans025: hsl(
+    var(--ui-primary-shade-1-hsl-value) / 0.25
+  );
+  --ui-primary-shade-2: hsl(var(--ui-primary-shade-2-hsl-value));
+  --ui-primary-shade-2-trans050: hsl(var(--ui-primary-shade-2-hsl-value) / 0.5);
+  --ui-primary-shade-2-trans025: hsl(
+    var(--ui-primary-shade-2-hsl-value) / 0.25
+  );
+  --ui-primary-shade-3: hsl(var(--ui-primary-shade-3-hsl-value));
+  --ui-primary-shade-3-trans050: hsl(var(--ui-primary-shade-3-hsl-value) / 0.5);
+  --ui-primary-shade-3-trans025: hsl(
+    var(--ui-primary-shade-3-hsl-value) / 0.25
+  );
   // => [ui-secondary-colors]
   --ui-secondary: hsl(var(--ui-secondary-hsl-value));
   --ui-secondary-trans050: hsl(var(--ui-secondary-hsl-value) / 0.5);
   --ui-secondary-trans025: hsl(var(--ui-secondary-hsl-value) / 0.25);
-  --ui-secondary-shade-1: hsl(260 90% 71%);
-  --ui-secondary-shade-2: hsl(260 90% 61%);
-  --ui-secondary-shade-3: hsl(260 90% 55%);
+  --ui-secondary-shade-1: hsl(var(--ui-secondary-shade-1-hsl-value));
+  --ui-secondary-shade-1-trans050: hsl(
+    var(--ui-secondary-shade-1-hsl-value) / 0.5
+  );
+  --ui-secondary-shade-1-trans025: hsl(
+    var(--ui-secondary-shade-1-hsl-value) / 0.25
+  );
+  --ui-secondary-shade-2: hsl(var(--ui-secondary-shade-2-hsl-value));
+  --ui-secondary-shade-2-trans050: hsl(
+    var(--ui-secondary-shade-2-hsl-value) / 0.5
+  );
+  --ui-secondary-shade-2-trans025: hsl(
+    var(--ui-secondary-shade-2-hsl-value) / 0.25
+  );
+  --ui-secondary-shade-3: hsl(var(--ui-secondary-shade-3-hsl-value));
+  --ui-secondary-shade-3-trans050: hsl(
+    var(--ui-secondary-shade-3-hsl-value) / 0.5
+  );
+  --ui-secondary-shade-3-trans025: hsl(
+    var(--ui-secondary-shade-3-hsl-value) / 0.25
+  );
   // => [ui-gradients]
-  --ui-gradient: linear-gradient(45deg, var(--ui-primary) 0%, var(--ui-primary-shade-1) 100%);
+  --ui-gradient: linear-gradient(
+    45deg,
+    var(--ui-primary) 0%,
+    var(--ui-primary-shade-1) 100%
+  );
   // => [ui-accent]
   --ui-accent-focus-outline: hsl(56 100% 50%);
   // => [ui-skills]

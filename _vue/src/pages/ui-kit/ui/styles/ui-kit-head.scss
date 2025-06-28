@@ -1,0 +1,17 @@
+.ui-kit-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1.2rem;
+  width: 100%;
+  height: auto;
+  margin-block-end: 4.8rem;
+
+  &__descr {
+    font: {
+      size: 4.8rem;
+      weight: 700;
+    }
+    text-align: center;
+  }
+}
