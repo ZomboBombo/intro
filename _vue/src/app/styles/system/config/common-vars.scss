@@ -1,0 +1,124 @@
+/*
+  Gaps
+*/
+$gaps: (
+  'def-ver': 1.25rem,
+  'def-hor': 2rem,
+  'section-ver': 12rem,
+  'site-container-def': 1rem
+);
+
+/*
+  Widths
+*/
+$widths: (
+  'min': 37.5rem,
+  'max': 192rem,
+  '520': 52rem,
+  '768': 76.8rem,
+  '1440': 144rem,
+  'card-min': 32rem
+);
+
+/*
+  Sizes
+*/
+$sizes: (
+  'border-base': 0.2rem,
+  'site-container-height-base': 98vh,
+  'site-container-height-min': 40rem
+);
+
+/*
+  Transitions
+*/
+$transitions: (
+  'fast': 0.15s,
+  'base': 0.3s,
+  'long': 0.5s
+);
+
+/*
+  Z-indexes
+*/
+$z-indexes: (
+  'header': 99,
+  'sidebar': 99,
+  'drops': 999,
+  'modals': 9999
+);
+
+/*
+  Fonts
+*/
+$fonts: (
+  'primary': "'Inconsolata', monospace, system-ui",
+  'special': "'Chivo-Var', monospace, system-ui"
+);
+
+/*
+------------------------------------------------------------------------
+
+  ===[ OTHER ]===
+
+  Specific styles applied
+  in narrow project areas.
+
+------------------------------------------------------------------------
+*/
+
+/*
+  Nav-menues
+  ~~~
+  Used in different but similar
+  proj 'Nav-Menues'.
+*/
+$nav-menues: (
+  'gap': 0.2rem,
+  'link-gap': 1.25rem,
+  'brd-rad': calc(var(--nm-link-gap, 1.25rem) * 4)
+);
+
+/*
+  Work-Cards
+  ~~~
+  Color schemes for the 'Work-Cards'.
+*/
+$work-cards: (
+  'prime': (
+    'text': hsl(71 100% 59%),
+    'bg': hsl(0 0% 3%)
+  ),
+  'vtt': (
+    'text': hsl(0 0% 100%),
+    'bg': hsl(217 91% 47%)
+  ),
+  'onlyme': (
+    'text': hsl(352 100% 42%),
+    'bg': hsl(0 0% 100%)
+  ),
+  'plonq': (
+    'text': hsl(0 0% 100%),
+    'bg': hsl(0 0% 5%)
+  ),
+  'askona': (
+    'text': hsl(0 0% 100%),
+    'bg': hsl(182 100% 37%)
+  ),
+  'pixel-art-app': (
+    'text': hsl(0 0% 100%),
+    'bg': hsl(271 76% 53%)
+  ),
+  'calorie-counter': (
+    'text': hsl(0 0% 100%),
+    'bg': hsl(275 67% 11%)
+  ),
+  'u-dice-roller': (
+    'text': hsl(40 11% 11%),
+    'bg': hsl(38 100% 50%)
+  ),
+  'u-quiz-app': (
+    'text': hsl(264 45% 84%),
+    'bg': hsl(270 84% 36%)
+  )
+);

@@ -1,0 +1,84 @@
+mixin work-card(props = {})
+  -
+    const {
+      preview,
+      name,
+      descr,
+      datetimes,
+      tags,
+      repoLink = false,
+      demoLink = false,
+      realLink = false,
+    } = props
+
+  article.work-card(
+    data-work-filters="work-card"
+    data-work-card-color-scheme=preview && preview.colorScheme
+  )&attributes(attributes)
+    span.work-card__preview(aria-hidden="true")= preview ? preview.text : 'Work-Preview'
+
+    .work-card__info
+      if datetimes
+        -
+          const isOnlyYear = datetimes.length === 1
+          const datetimeTooltip = isOnlyYear ? 'Year of project participation' : 'Years of project participation'
+
+        strong.work-card__time(
+          title=datetimeTooltip
+          aria-label=datetimeTooltip
+        )
+          if isOnlyYear
+            - const dtOnly = datetimes[0]
+
+            time(
+              datetime=dtOnly
+            )= dtOnly
+
+          else
+            - const [dtStart, dtEnd] = datetimes
+
+            time(
+              datetime=dtStart
+              aria-label="Project participation start date"
+            )= dtStart
+            | –
+            time(
+              datetime=dtEnd
+              aria-label="Project participation end date"
+            )= dtEnd
+
+      hgroup.work-card__head
+        h2.work-card__title= name
+        p.work-card__descr!= descr
+
+      menu.work-card__links-list
+        if repoLink
+          li
+            +link({
+              href: repoLink,
+              isExternal: true,
+              tooltip: `Go to the repository with the «${name}» sources`,
+              text: '> Goto repo',
+            }).work-card__link
+
+        if demoLink
+          li
+            +link({
+              href: demoLink,
+              isExternal: true,
+              tooltip: `Go to the «${name}» demonstration`,
+              text: '> Watch demo',
+            }).work-card__link
+
+        if realLink
+          li
+            +link({
+              href: realLink,
+              isExternal: true,
+              tooltip: `Open the «${name}» real project`,
+              text: '> Open Work',
+            }).work-card__link
+
+      ul.work-card__tags-list
+        each tag in tags
+          li.work-card__tag(data-work-filters="work-card-tag")= tag

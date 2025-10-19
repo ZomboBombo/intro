@@ -1,0 +1,103 @@
+@use 'config/common-vars.scss' as common-var;
+
+:root {
+  // Gaps
+  @each $name, $value in common-var.$gaps {
+    --gap-#{$name}: #{$value};
+  }
+
+  // Widths
+  @each $name, $value in common-var.$widths {
+    --w-#{$name}: #{$value};
+  }
+
+  // Sizes
+  @each $name, $value in common-var.$sizes {
+    --size-#{$name}: #{$value};
+  }
+
+  // Transitions
+  @each $name, $value in common-var.$transitions {
+    --transition-#{$name}: #{$value};
+  }
+
+  // Z-indexes
+  @each $name, $value in common-var.$z-indexes {
+    --z-#{$name}: #{$value};
+  }
+
+  // Fonts
+  @each $name, $value in common-var.$fonts {
+    --font-#{$name}: #{$value};
+  }
+
+  // Nav-menues
+  @each $name, $value in common-var.$nav-menues {
+    --nm-#{$name}: #{$value};
+  }
+
+  // Colors
+  // => [default]
+  --color-def-white: hsl(0 0% 100%);
+  --color-def-white-trans025: hsl(0 0% 100% / 0.25);
+  --color-def-white-trans050: hsl(0 0% 100% / 0.5);
+  --color-def-black: hsl(0 0% 0%);
+  --color-def-black-trans025: hsl(0 0% 0% / 0.25);
+  --color-def-transparent: hsl(0 0% 100% / 0);
+  //
+  // => [ui]
+  // => [ui-values]
+  --ui-primary-hsl-value: 272 58% 6%;
+  --ui-secondary-hsl-value: 260 90% 81%;
+  // => [ui-primary-colors]
+  --ui-primary: hsl(var(--ui-primary-hsl-value));
+  --ui-primary-trans050: hsl(var(--ui-primary-hsl-value) / 0.5);
+  --ui-primary-trans025: hsl(var(--ui-primary-hsl-value) / 0.25);
+  --ui-primary-shade-1: hsl(272 74% 6%);
+  --ui-primary-shade-2: hsl(272 34% 15%);
+  --ui-primary-shade-3: hsl(272 34% 35%);
+  // => [ui-secondary-colors]
+  --ui-secondary: hsl(var(--ui-secondary-hsl-value));
+  --ui-secondary-trans050: hsl(var(--ui-secondary-hsl-value) / 0.5);
+  --ui-secondary-trans025: hsl(var(--ui-secondary-hsl-value) / 0.25);
+  --ui-secondary-shade-1: hsl(260 90% 71%);
+  --ui-secondary-shade-2: hsl(260 90% 61%);
+  --ui-secondary-shade-3: hsl(260 90% 55%);
+  // => [ui-gradients]
+  --ui-gradient: linear-gradient(45deg, var(--ui-primary) 0%, var(--ui-primary-shade-1) 100%);
+  // => [ui-accent]
+  --ui-accent-focus-outline: hsl(56 100% 50%);
+  // => [ui-skills]
+  --ui-skill-html: hsl(12 78% 52%);
+  --ui-skill-html-interact: hsl(12 78% 42%);
+  --ui-skill-css: hsl(274 55% 41%);
+  --ui-skill-css-interact: hsl(274 55% 61%);
+  --ui-skill-js: hsl(52 84% 63%);
+  --ui-skill-js-interact: hsl(42 84% 63%);
+  --ui-skill-flutter: hsl(194 98% 63%);
+  --ui-skill-flutter-interact: hsl(194 98% 43%);
+
+  // ===[ MEDIA ]===
+  @media only screen and (max-width: 1023px) {
+    --gap-section-ver: 6rem;
+  }
+
+  @media only screen and (max-width: 420px) {
+    --w-card-min: 24rem;
+  }
+}
+
+// ===[ COLOR SCHEME ]===
+html[data-color-scheme='light'] {
+  // => [ui-values]
+  --ui-primary-hsl-value: 260 90% 81%;
+  --ui-secondary-hsl-value: 272 58% 6%;
+  // => [ui-primary-colors]
+  --ui-primary-shade-1: hsl(260 90% 71%);
+  --ui-primary-shade-2: hsl(260 90% 61%);
+  --ui-primary-shade-3: hsl(260 90% 55%);
+  // => [ui-secondary-colors]
+  --ui-secondary-shade-1: hsl(272 74% 6%);
+  --ui-secondary-shade-2: hsl(272 34% 15%);
+  --ui-secondary-shade-3: hsl(272 34% 35%);
+}

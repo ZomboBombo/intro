@@ -1,0 +1,249 @@
+@use '../../system/vars' as *;
+@use '../../system/mixins' as *;
+@use '../../system/breakpoints' as *;
+
+html[data-color-scheme='light'] {
+  .site-header {
+    --header-nl-color: var(--color-def-black);
+  }
+}
+
+.site-header {
+  --header-nl-color: var(--color-def-white);
+
+  position: sticky;
+  isolation: isolate;
+  inset: 0;
+  bottom: auto;
+  z-index: var(--z-header);
+  display: none;
+  margin: 0;
+  padding: var(--gap-def-ver) var(--gap-def-hor);
+  background-color: var(--ui-primary);
+  border-bottom: 0.2rem solid var(--ui-secondary);
+
+  &__logo {
+    $t-props: color;
+    @include trans-config($t-props);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: max-content;
+    margin: 0;
+    padding: 0;
+    color: var(--ui-secondary);
+
+    &:where(:hover, :focus-visible) {
+      scale: 1.01;
+      color: var(--ui-secondary-shade-1);
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3.2rem;
+  }
+
+  &__nav-list {
+    @include trans-config(transform, var(--transition-long));
+    @include reset-list;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25em;
+    font-size: 3.2rem;
+    margin: 0;
+    padding: var(--nm-gap);
+    border-block: 0.2rem solid var(--ui-secondary);
+    border-radius: var(--nm-brd-rad);
+  }
+
+  &__nav-item:not(:last-child) {
+    border-block-end: 1px solid var(--ui-secondary);
+  }
+
+  &__nav-link {
+    $t-props: color, background-color, opacity;
+    @include trans-config($t-props);
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: 0;
+    padding: var(--nm-link-gap) 5rem;
+    color: var(--header-nl-color);
+    border-radius: var(--nm-brd-rad);
+    -webkit-tap-highlight-color: var(--color-def-transparent);
+
+    &:is(:hover, :focus-visible) {
+      color: var(--ui-primary);
+      background-color: var(--ui-secondary);
+    }
+
+    &:active {
+      opacity: 0.75;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    column-gap: 1.6rem;
+  }
+
+  &__burger {
+    $t-props: background-color, opacity;
+    @include trans-config($t-props);
+    @include square(6.4rem);
+
+    position: relative;
+    isolation: isolate;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 0;
+    background-color: var(--ui-primary);
+    border: 0.2rem solid var(--ui-secondary);
+    border-radius: 0.8rem;
+    cursor: pointer;
+    -webkit-tap-highlight-color: var(--color-def-transparent);
+
+    &[aria-pressed='true'] {
+      &::before {
+        rotate: 45deg;
+      }
+      &::after {
+        rotate: -45deg;
+      }
+      &::before,
+      &::after {
+        box-shadow: none;
+      }
+    }
+
+    &::before,
+    &::after {
+      $t-props: rotate, box-shadow;
+      @include trans-config($t-props);
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      z-index: 1;
+      width: 80%;
+      height: 0.2rem;
+      background-color: var(--ui-secondary);
+      border-radius: 0.8rem;
+    }
+
+    &::before {
+      box-shadow: 0 1.2rem 0 0 var(--ui-secondary);
+    }
+
+    &::after {
+      box-shadow: 0 -1.2rem 0 0 var(--ui-secondary);
+    }
+
+    &:where(:hover, :focus-visible) {
+      background-color: var(--ui-secondary-trans025);
+    }
+
+    &:active {
+      opacity: 0.75;
+
+      &::before,
+      &::after {
+        rotate: 0deg;
+        box-shadow: 0 0 0 0 var(--ui-secondary);
+      }
+    }
+
+    @include media-touch-hover(#{&}) {
+      background-color: var(--ui-secondary-trans025);
+
+      &::before {
+        box-shadow: 0 0.7rem 0 0 var(--ui-secondary);
+      }
+
+      &::after {
+        box-shadow: 0 -0.7rem 0 0 var(--ui-secondary);
+      }
+    }
+  }
+
+  // ===[ MEDIA ]===
+  @include media(w768) {
+    display: block;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: var(--ui-primary);
+    }
+
+    &__logo {
+      width: 4rem;
+      height: 4rem;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__nav-list {
+      position: absolute;
+      inset: 0;
+      top: 100%;
+      transform: translateY(-100%);
+      z-index: -2;
+      height: max-content;
+      flex-direction: column;
+      align-items: start;
+      gap: 0;
+      border-radius: 0;
+      background-color: var(--ui-primary-trans050);
+      backdrop-filter: blur(1.2rem);
+
+      &.is-opened {
+        transform: translateY(0);
+      }
+    }
+
+    &__nav-item {
+      width: 100%;
+    }
+
+    &__nav-link {
+      padding-block: {
+        start: 2.5rem;
+        end: 2.5rem;
+      }
+      border-radius: 0;
+    }
+
+    &__burger {
+      display: flex;
+    }
+  }
+
+  @include media(w520) {
+    &__nav {
+      justify-content: start;
+    }
+
+    &__controls {
+      width: 100%;
+    }
+  }
+}

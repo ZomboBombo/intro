@@ -1,0 +1,127 @@
+@use '@app/styles/system/mixins' as *;
+
+.ui-kit-subsec {
+  position: relative;
+  display: grid;
+  row-gap: 3.2rem;
+  padding: 1.8rem;
+  padding-block-start: 3.6rem;
+  font-size: 2.4rem;
+
+  &:last-child {
+    padding-block-end: 2.4rem;
+  }
+
+  &:nth-child(even) {
+    background-color: var(--ui-secondary-shade-1-trans025);
+    border: 0.2rem solid var(--ui-secondary-shade-1);
+    border-radius: 2.4rem;
+  }
+
+  &:nth-child(even) &__title {
+    background-color: var(--ui-secondary-shade-1);
+  }
+
+  &:nth-child(odd) {
+    position: relative;
+    isolation: isolate;
+
+    &::before {
+      @include fullwidth-bg(var(--ui-secondary-shade-3-trans050));
+
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+    }
+  }
+
+  &:nth-child(odd) &__title {
+    background-color: var(--ui-secondary-shade-3);
+  }
+
+  &__title {
+    @include text-outline(var(--ui-primary-shade-1));
+
+    position: absolute;
+    top: 0;
+    right: 4.8rem;
+    transform: translateY(-50%);
+    z-index: 1;
+    padding: 0.6rem 1.2rem;
+    font: {
+      size: 3.2rem;
+      weight: 700;
+    }
+    border: 0.3rem solid var(--ui-secondary-shade-2-trans025);
+    border-radius: 0.25em;
+  }
+
+  &__descr {
+    font-size: 3.2rem;
+    padding-block-end: 1.2rem;
+    border-block-end: 0.2rem solid var(--color-def-white);
+  }
+
+  &__example {
+    display: grid;
+    row-gap: 1.6rem;
+    align-items: center;
+  }
+
+  &__example-title {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  &__example-demo {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: max-content;
+    margin: 0;
+    padding: 0;
+    color: var(--ui-secondary);
+    background-color: var(--ui-primary);
+    border: 0.2rem solid var(--ui-secondary);
+    border-radius: 0.25em;
+    overflow: hidden;
+  }
+
+  &__example-demo code {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 1.8rem;
+    line-height: 1;
+    white-space: wrap;
+  }
+
+  &__example-copybtn {
+    $t-props: color, background-color, opacity;
+    @include trans-config($t-props);
+
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2rem 2.4rem;
+    cursor: pointer;
+    outline: 0.2rem solid var(--ui-secondary);
+
+    &:where(:hover, :focus-visible) {
+      color: var(--color-def-white);
+      background-color: var(--ui-primary-shade-3);
+    }
+
+    &:active {
+      opacity: 0.75;
+    }
+
+    &:disabled {
+      color: var(--ui-secondary-trans025);
+      background-color: var(--ui-primary-shade-2);
+      pointer-events: none;
+    }
+  }
+}

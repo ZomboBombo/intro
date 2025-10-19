@@ -1,0 +1,195 @@
+@use 'sass:map';
+@use 'vars' as *;
+
+/*
+  <...> основной градиентный "background" сайта
+*/
+@mixin base-gradient-bg($bg-color: var(--ui-primary), $bg-gradient: var(--ui-gradient)) {
+  background: {
+    color: $bg-color;
+    image: $bg-gradient;
+    repeat: no-repeat;
+    position: center center;
+  }
+}
+
+/*
+  <...> стиль для базового "border" элемента
+*/
+@mixin base-border($border-type: '') {
+  @if ($border-type != '') {
+    border-#{$border-type}: {
+      width: var(--size-border-base);
+      style: solid;
+      color: var(--ui-secondary);
+      radius: calc(var(--size-border-base) * 4);
+    }
+  } @else {
+    border: {
+      width: var(--size-border-base);
+      style: solid;
+      color: var(--ui-secondary);
+      radius: calc(var(--size-border-base) * 4);
+    }
+  }
+}
+
+/*
+  <...> для сброса стилей списков
+*/
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/*
+  <...> для настроек плавности интерактивных элементов
+*/
+@mixin trans-config($t-props, $t-dur: 0.15s, $t-timing-func: ease) {
+  transition: {
+    property: $t-props;
+    duration: $t-dur;
+    timing-function: $t-timing-func;
+  }
+}
+
+/*
+  <...> для изображений внутри <picture>
+*/
+@mixin pictured-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/*
+  <...> для добавления фона на всю ширину
+  для блоков, находящизся внутри семантических
+  wrapper-блоков на странице.
+*/
+@mixin fullwidth-bg($bg-color) {
+  background-color: $bg-color;
+  box-shadow: 0 0 0 100vmax $bg-color;
+  clip-path: inset(0 -100vmax);
+}
+
+/*
+  <...> для установки "квадратного" размера
+*/
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+/*
+  <...> для "outline" по контуру текста
+*/
+@mixin text-outline($color, $outlineWidth: 1px, $shadowSpreadRad: 0) {
+  $negativeOutlineWidth: calc(-1 * $outlineWidth);
+
+  text-shadow:
+    $negativeOutlineWidth $negativeOutlineWidth $shadowSpreadRad $color,
+    $outlineWidth $negativeOutlineWidth $shadowSpreadRad $color,
+    $outlineWidth $outlineWidth $shadowSpreadRad $color,
+    $negativeOutlineWidth $outlineWidth $shadowSpreadRad $color;
+}
+
+/*
+  [SPECIAL]
+  <...> для установки высоты блока,
+  зависимой от base-размеров 'site-container'
+*/
+@mixin base-container-content-height {
+  min-height: calc(var(--size-site-container-height-min) - var(--size-border-base) * 2);
+  max-height: calc(var(--size-site-container-height-base) - var(--size-border-base) * 2);
+}
+
+/*
+  [SPECIAL]
+  <...> для улучшения UX после :hover
+  на тач-устройствах
+*/
+@mixin media-touch-hover($element) {
+  @media (hover: hover) {
+    #{$element}:is(:hover, :focus-visible) {
+      @content;
+    }
+  }
+
+  @media (hover: none) {
+    #{$element}:active {
+      @content;
+    }
+  }
+}
+
+/*
+  [SPECIAL]
+  <...> для добавления '@keyframes'
+  для компонента 'ui-loader()'
+*/
+@mixin ui-loader-keyframes($props) {
+  $animationName: map.get($props, animationName);
+  $tileShiftPrimary: map.get($props, tileShiftPrimary);
+  $tileShiftSecondary: if(map.get($props, tileShiftSecondary) != null, map.get($props, tileShiftSecondary), 0);
+  $isReflected: if(map.get($props, isReflected) != null, map.get($props, isReflected), 'false');
+
+  @if ($isReflected == 'true') {
+    @keyframes #{$animationName} {
+      0%,
+      100% {
+        translate: 0 0;
+      }
+
+      10%,
+      50% {
+        translate: $tileShiftPrimary $tileShiftSecondary;
+      }
+
+      20%,
+      70% {
+        translate: $tileShiftSecondary $tileShiftPrimary;
+      }
+
+      30%,
+      60% {
+        translate: (-$tileShiftSecondary) (-$tileShiftPrimary);
+      }
+
+      40%,
+      80% {
+        translate: (-$tileShiftPrimary) (-$tileShiftSecondary);
+      }
+    }
+  } @else {
+    @keyframes #{$animationName} {
+      0%,
+      100% {
+        translate: 0 0;
+      }
+
+      10%,
+      50% {
+        translate: $tileShiftSecondary $tileShiftPrimary;
+      }
+
+      20%,
+      70% {
+        translate: $tileShiftPrimary $tileShiftSecondary;
+      }
+
+      30%,
+      60% {
+        translate: (-$tileShiftPrimary) (-$tileShiftSecondary);
+      }
+
+      40%,
+      80% {
+        translate: (-$tileShiftSecondary) (-$tileShiftPrimary);
+      }
+    }
+  }
+}

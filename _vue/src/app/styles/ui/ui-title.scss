@@ -1,0 +1,24 @@
+@use 'sass:map';
+
+$ui-title-font-sizes: (
+  'h1': 'clamp(4.2rem, 9.3vw, 18rem)',
+  'h2': 'clamp(3.6rem, 8.9vw, 17.1rem)',
+  'h3': 'clamp(3rem, 8.4vw, 16.2rem)',
+  'h4': 'clamp(2.4rem, 7.9vw, 15.3rem)',
+  'h5': 'clamp(1.8rem, 7.5vw, 14.4rem)',
+  'h6': 'clamp(1.2rem, 7.1vw, 13.5rem)',
+);
+
+.ui-title {
+  font-weight: 700;
+
+  @each $key, $val in $ui-title-font-sizes {
+    &--#{$key} {
+      font-size: #{$val};
+    }
+  }
+
+  &--centered-horizontal {
+    margin-inline: auto;
+  }
+}

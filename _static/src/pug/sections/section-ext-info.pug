@@ -1,0 +1,22 @@
+mixin section-ext-info(props = {})
+  section.section-ext-info(
+    data-hero-tags="descr-list-parent"
+  )&attributes(attributes)
+    h2.sr-only Extended info about me
+
+    ul.section-ext-info__descr-list(data-hero-tags="descr-list")
+      each tagDescr, index in DataHeroTagDescrs
+        -
+          const { id, descr } = tagDescr
+          const { name, shortName } = DataHeroTags[index]
+
+        li.section-ext-info__descr-item(data-hero-tags="descr-item")
+          strong.section-ext-info__descr-title(
+            data-hero-tags="descr-title"
+            data-short-name=shortName || ''
+          )= `${name}: `
+
+          p.section-ext-info__descr(
+            id=id
+            data-hero-tags="descr-text"
+          )= descr

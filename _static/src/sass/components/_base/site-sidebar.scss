@@ -1,0 +1,101 @@
+@use '../../system/vars' as *;
+@use '../../system/mixins' as *;
+@use '../../system/breakpoints' as *;
+
+.site-sidebar {
+  @include trans-config(transform, var(--transition-base));
+  @include base-gradient-bg;
+
+  position: sticky;
+  isolation: isolate;
+  top: 0;
+  transform: translateX(-100%);
+  z-index: var(--z-sidebar);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  min-width: max-content;
+  height: 100%;
+  max-height: 100dvh;
+  padding: 1rem 1.6rem;
+  border-inline-end: var(--size-border-base) solid var(--ui-secondary);
+
+  &.is-open {
+    transform: translateX(0);
+  }
+
+  &__nav-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.4rem;
+  }
+
+  &__nav-link {
+    $t-props: color, background-color, opacity;
+    @include trans-config($t-props);
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: 0;
+    font-size: 3.2rem;
+    line-height: 1;
+    color: var(--ui-secondary);
+    padding: var(--nm-link-gap) 5rem;
+    border: 0.2rem solid var(--ui-secondary);
+    border-radius: var(--nm-brd-rad);
+    -webkit-tap-highlight-color: var(--color-def-transparent);
+
+    &:where(:hover, :focus-visible) {
+      color: var(--ui-primary);
+      background-color: var(--ui-secondary);
+    }
+
+    &:active {
+      opacity: 0.75;
+    }
+  }
+
+  &__trigger {
+    $t-props: color, background-color;
+    @include trans-config($t-props);
+
+    position: absolute;
+    top: var(--gap-site-container-def);
+    left: 100%;
+    z-index: 1;
+    padding: 0.8rem;
+    color: var(--ui-secondary);
+    background-color: var(--ui-primary);
+    border: {
+      width: 0.2rem;
+      style: solid;
+      color: var(--ui-secondary);
+      top-right-radius: 1.2rem;
+      bottom-right-radius: 1.2rem;
+    }
+    cursor: pointer;
+
+    &:where(:hover, :focus-visible) {
+      color: var(--ui-secondary-shade-1);
+      background-color: var(--ui-primary-shade-1);
+    }
+
+    &:active {
+      color: var(--ui-primary);
+      background-color: var(--ui-secondary);
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.4rem;
+  }
+
+  // ===[ MEDIA ]===
+  @include media(w768) {
+    display: none;
+  }
+}

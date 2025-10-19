@@ -1,0 +1,177 @@
+@use '@app/styles/system/mixins' as *;
+
+.ui-kit-nav {
+  $uk-nav-gap-def: 2.4rem;
+  $uk-nav-timing-def: 0.6s;
+
+  position: sticky;
+  top: $uk-nav-gap-def;
+  z-index: 1;
+  padding: var(--gap-site-container-def);
+  border: 0.2rem solid var(--ui-secondary);
+  border-radius: 1.2rem;
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.2rem;
+  }
+
+  &__item {
+    @include trans-config(grid-template-rows, $uk-nav-timing-def);
+
+    display: grid;
+    grid-template-rows: auto 0fr;
+    grid-auto-rows: max-content;
+    row-gap: 0.6rem;
+  }
+
+  &__item:has(input[type='checkbox']:checked) {
+    grid-template-rows: auto 1fr;
+  }
+
+  &__item-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 0.6rem;
+  }
+
+  &__link {
+    $t-props: color, opacity;
+    @include trans-config($t-props);
+
+    font: {
+      size: 4.8rem;
+      weight: 700;
+    }
+
+    &:where(:hover, :focus-visible) {
+      color: var(--ui-secondary);
+    }
+
+    &:focus-visible {
+      outline: 0.2rem solid var(--ui-accent-focus-outline);
+      border-radius: 0.25em;
+    }
+
+    &:active {
+      opacity: 0.75;
+    }
+  }
+
+  &__sublinks-state-controller {
+    $t-props: scale, opacity;
+    @include trans-config($t-props);
+    @include square(3.2rem);
+
+    position: relative;
+    isolation: isolate;
+    background-color: var(--ui-secondary);
+    border-radius: 50%;
+    cursor: pointer;
+    animation: {
+      name: sublinks-state-controller-initial;
+      duration: $uk-nav-timing-def;
+      timing-function: ease;
+    }
+
+    &::before,
+    &::after {
+      @include trans-config(rotate, $uk-nav-timing-def);
+
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      z-index: 1;
+      display: block;
+      width: 60%;
+      height: 0.6rem;
+      background-color: var(--ui-primary);
+    }
+
+    &::after {
+      rotate: 90deg;
+    }
+
+    &:has(input[type='checkbox']:checked) {
+      animation-name: sublinks-state-controller-pressed;
+
+      &::after {
+        rotate: 0deg;
+      }
+    }
+
+    &:hover {
+      scale: 1.1;
+      opacity: 0.9;
+    }
+
+    &:focus-visible,
+    &:has(input[type='checkbox']:focus-visible) {
+      outline: 0.2rem solid var(--ui-accent-focus-outline);
+    }
+
+    &:active {
+      opacity: 0.6;
+    }
+  }
+
+  &__item-content {
+    overflow: hidden;
+  }
+
+  &__sublinks {
+    width: 25dvw;
+    min-width: 32rem;
+    padding: calc($uk-nav-gap-def / 2);
+    padding-inline-start: $uk-nav-gap-def;
+    border-block-start: 0.1rem solid var(--ui-secondary);
+  }
+
+  &__sublink {
+    $t-props: color, background-color, opacity;
+    @include trans-config($t-props);
+
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-inline: calc($uk-nav-gap-def / 4);
+    font: {
+      size: 2.4rem;
+      weight: 400;
+    }
+    border-radius: 0.25em;
+
+    &:where(:hover, :focus-visible) {
+      color: var(--ui-primary);
+      background-color: var(--ui-secondary);
+    }
+
+    &:active {
+      opacity: 0.75;
+    }
+  }
+}
+
+@keyframes sublinks-state-controller-initial {
+  from {
+    rotate: 0deg;
+  }
+
+  to {
+    rotate: 180deg;
+  }
+}
+
+@keyframes sublinks-state-controller-pressed {
+  from {
+    rotate: 180deg;
+  }
+
+  to {
+    rotate: 0deg;
+  }
+}
