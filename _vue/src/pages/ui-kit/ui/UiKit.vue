@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import { useTemplateRef, onMounted } from 'vue'
   import { toKebabCase } from '@shared/utils'
   import UiKitNav from '@entities/ui-kit-nav'
   import UiTitle from '@entities/ui-title'
@@ -27,6 +28,26 @@
       copybtn.removeAttribute('disabled')
     }, 1800)
   }
+
+  const progressBarRef = useTemplateRef('progress-bar')
+
+  onMounted(() => {
+    const progressBar = progressBarRef.value
+    const progressIndicator: HTMLOutputElement =
+      progressBar?.querySelector('output')!
+    let progressCounter = 0
+
+    const progressWorkCycle = setInterval(() => {
+      progressBar!.value = progressCounter
+      progressIndicator.textContent = progressCounter.toString()
+      progressCounter++
+
+      const isReachedMax =
+        progressBar!.value >= Number(progressBar!.getAttribute('max'))
+
+      isReachedMax && clearInterval(progressWorkCycle)
+    }, 100)
+  })
 </script>
 
 <template>
@@ -41,6 +62,20 @@
           Page with all UI-components full info and examples.
         </p>
       </hgroup>
+
+      <section class="ui-kit-section">
+        <h2 class="ui-kit-section__title">&lt;UiProgress&gt;</h2>
+
+        <progress
+          ref="progress-bar"
+          id="ui-progress"
+          class="ui-progress"
+          max="100"
+        >
+          <output>0</output>
+          %
+        </progress>
+      </section>
 
       <section
         v-for="[key, { name, data }] in UiKitData"
@@ -65,28 +100,24 @@
             <strong class="ui-kit-subsec__example-title">Usage:</strong>
 
             <pre class="ui-kit-subsec__example-demo">
-            <code>
-              {{ usage }}
-            </code>
+              <code>{{ usage }}</code>
 
-            <button
-                type="button"
-                class="ui-kit-subsec__example-copybtn"
-                title="Click to copy `usage fragment` to clipboard"
-                aria-label="Click to copy `usage fragment` to clipboard"
-                @click="onCopyCodeUsage"
-            >Copy</button>
-          </pre>
+              <button
+                  type="button"
+                  class="ui-kit-subsec__example-copybtn"
+                  title="Click to copy `usage fragment` to clipboard"
+                  aria-label="Click to copy `usage fragment` to clipboard"
+                  @click="onCopyCodeUsage"
+              >Copy</button>
+            </pre>
           </div>
 
           <div class="ui-kit-subsec__example">
             <strong class="ui-kit-subsec__example-title">Output:</strong>
 
             <pre class="ui-kit-subsec__example-demo">
-            <code>
-              {{ output }}
-            </code>
-          </pre>
+              <code>{{ output }}</code>
+            </pre>
           </div>
         </section>
       </section>
@@ -96,4 +127,9 @@
 
 <style scoped lang="scss">
   @forward './styles';
+
+  .ui-progress {
+    position: relative;
+    min-height: 6rem;
+  }
 </style>
