@@ -5,7 +5,16 @@ import { debounce } from '../../../utils/decorators'
  * @module WorkFilters
 */
 export default class WorkFilters {
+  private static DataSelectors = {
+    WORK_FILTER_ID: '[data-work-filter-id]',
+    TRIGGER: '[data-work-filters="trigger"]',
+    INPUT: '[data-work-filters="input"]',
+    WORK_CARD: '[data-work-filters="work-card"]',
+    WORK_CARD_TAG: '[data-work-filters="work-card-tag"]',
+  }
+
   private _parent: HTMLElement
+  private _inputs: NodeListOf<HTMLInputElement>
   private _cards: NodeListOf<HTMLElement>
 
   /**
@@ -14,17 +23,18 @@ export default class WorkFilters {
   */
   constructor(workFiltersParent: HTMLElement) {
     this._parent = workFiltersParent
+    this._inputs = this._parent.querySelectorAll(WorkFilters.DataSelectors.INPUT)
   }
 
   /**
    * @description Initiates the 'WorkFilters' logic.
    * @returns {void}
   */
-  public init(): void {
+  init(): void {
     this._parent.addEventListener('change', this._onChangeFilterDebounced)
     this._parent.addEventListener('reset', this._onResetFilters)
 
-    this._cards = document.querySelectorAll('[data-work-filters="work-card"]')
+    this._cards = document.querySelectorAll(WorkFilters.DataSelectors.WORK_CARD)
   }
 
   /**
@@ -41,12 +51,29 @@ export default class WorkFilters {
   }
 
   /**
+   * Private method: [_changeInputsState()].
+  */
+  private _changeInputsState() {
+    return {
+      selectInput: (input: HTMLInputElement): void => {
+        input.setAttribute('aria-checked', 'true')
+      },
+
+      resetInputs: (): void => {
+        this._inputs.forEach((input: HTMLInputElement) => {
+          input.setAttribute('aria-checked', 'false')
+        })
+      },
+    }
+  }
+
+  /**
    * Private method: [_getCardTags()].
    * @param {HTMLElement} card
    * @returns {string[]}
   */
   private _getCardTags(card: HTMLElement): string[] {
-    const tags: NodeListOf<HTMLElement> = card.querySelectorAll('[data-work-filters="work-card-tag"]')
+    const tags: NodeListOf<HTMLElement> = card.querySelectorAll(WorkFilters.DataSelectors.WORK_CARD_TAG)
 
     return Array.from(tags).map((tag: HTMLElement) => tag.textContent!)
   }
@@ -83,6 +110,16 @@ export default class WorkFilters {
   }
 
   /**
+   * Private method: [_updateInputs()].
+   * @param {HTMLInputElement} input
+   * @returns {void}
+  */
+  private _updateInputs(input: HTMLInputElement): void {
+    this._changeInputsState().resetInputs()
+    this._changeInputsState().selectInput(input)
+  }
+
+  /**
    * @callback
    * Private callback: [_onChangeFilter]
    *
@@ -90,9 +127,11 @@ export default class WorkFilters {
    * @returns {void}
   */
   private _onChangeFilter = (e: Event): void => {
-    const currTrigger: HTMLLabelElement = (e.target as HTMLElement).closest('[data-work-filters="trigger"]')!
+    const currTrigger: HTMLLabelElement = (e.target as HTMLElement).closest(WorkFilters.DataSelectors.TRIGGER)!
     const currFilterId: string = currTrigger.dataset.workFilterId!
+    const currInput: HTMLInputElement = currTrigger.querySelector(WorkFilters.DataSelectors.INPUT)!
 
+    this._updateInputs(currInput)
     this._filterCards(currFilterId)
   }
 

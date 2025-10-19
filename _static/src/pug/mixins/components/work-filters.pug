@@ -24,10 +24,11 @@ mixin work-filters(props = {})
             data-work-filters="trigger"
             data-work-filter-id=id
           )= text
-            input.visually-hidden(
+            input.sr-only(
               type="radio"
               name="work-filters"
               title=`Sort by «${label}»`
               aria-label=`Sort by «${label}»`
-              aria-selected="false"
+              aria-checked="false"
+              data-work-filters="input"
             )
