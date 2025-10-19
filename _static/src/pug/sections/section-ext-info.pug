@@ -2,7 +2,7 @@ mixin section-ext-info(props = {})
   section.section-ext-info(
     data-hero-tags="descr-list-parent"
   )&attributes(attributes)
-    h2.visually-hidden Extended info about me
+    h2.sr-only Extended info about me
 
     ul.section-ext-info__descr-list(data-hero-tags="descr-list")
       each tagDescr, index in DataHeroTagDescrs

@@ -10,7 +10,7 @@
   margin: 0;
   padding: var(--gap-def-ver) var(--gap-def-hor);
   border-block-start: {
-    width: var(--s-bd-base);
+    width: var(--size-border-base);
     style: solid;
     color: var(--ui-secondary);
   }
@@ -62,7 +62,7 @@
     &::before,
     &::after {
       $t-props: transform;
-      @include trans-config($t-props, var(--trans-base));
+      @include trans-config($t-props, var(--transition-base));
 
       content: attr(data-value);
       position: absolute;

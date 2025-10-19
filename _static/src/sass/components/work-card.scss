@@ -133,7 +133,7 @@ html[data-color-scheme='light'] {
 
   &__link {
     $t-props: padding, color, opacity;
-    @include trans-config($t-props, var(--trans-base));
+    @include trans-config($t-props, var(--transition-base));
 
     position: relative;
     isolation: isolate;
@@ -143,7 +143,7 @@ html[data-color-scheme='light'] {
 
     &::before {
       $t-props: width;
-      @include trans-config($t-props, var(--trans-base));
+      @include trans-config($t-props, var(--transition-base));
 
       content: '';
       position: absolute;

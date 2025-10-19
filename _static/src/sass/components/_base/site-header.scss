@@ -48,7 +48,7 @@ html[data-color-scheme='light'] {
   }
 
   &__nav-list {
-    @include trans-config(transform, var(--trans-long));
+    @include trans-config(transform, var(--transition-long));
     @include reset-list;
 
     display: flex;

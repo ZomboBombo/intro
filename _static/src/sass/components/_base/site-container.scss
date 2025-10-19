@@ -3,7 +3,7 @@
 
 .site-container {
   @include base-border;
-  @include trans-config(grid-template-columns, var(--trans-base));
+  @include trans-config(grid-template-columns, var(--transition-base));
 
   position: relative;
   contain: paint;

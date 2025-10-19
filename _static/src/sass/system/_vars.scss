@@ -13,12 +13,12 @@
 
   // Sizes
   @each $name, $value in common-var.$sizes {
-    --s-#{$name}: #{$value};
+    --size-#{$name}: #{$value};
   }
 
   // Transitions
   @each $name, $value in common-var.$transitions {
-    --trans-#{$name}: #{$value};
+    --transition-#{$name}: #{$value};
   }
 
   // Z-indexes

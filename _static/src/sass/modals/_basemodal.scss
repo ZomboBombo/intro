@@ -7,7 +7,7 @@
   --trigger-total-space-y: calc(var(--trigger-size) + var(--trigger-outer-gap) * 2);
 
   $t-props: z-index, opacity, backdrop-filter;
-  @include trans-config($t-props, var(--trans-long));
+  @include trans-config($t-props, var(--transition-long));
 
   position: fixed;
   inset: 0;
@@ -33,7 +33,7 @@
 
   &__close-trigger {
     $t-props: transform, scale, opacity;
-    @include trans-config($t-props, var(--trans-long));
+    @include trans-config($t-props, var(--transition-long));
     @include square(var(--trigger-size));
 
     position: absolute;

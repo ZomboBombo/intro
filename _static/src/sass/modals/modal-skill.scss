@@ -3,7 +3,7 @@
 
 // [START]: Outer Modal Styles
 .basemodal.is-active .modal-skill {
-  transition-delay: var(--trans-long);
+  transition-delay: var(--transition-long);
   transform: translateY(0);
 }
 // [END]: Outer Modal Styles
@@ -12,7 +12,7 @@
   --modal-skill-brd-rad: 1.2rem;
 
   $t-props: transform;
-  @include trans-config($t-props, var(--trans-long));
+  @include trans-config($t-props, var(--transition-long));
 
   transform: translateY(100%);
   width: 100%;

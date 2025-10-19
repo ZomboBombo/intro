@@ -4,7 +4,7 @@
 </script>
 
 <template>
-  <UiTitle text="Sitemap" class="visually-hidden" />
+  <UiTitle text="Sitemap" class="sr-only" />
   <SitemapNav />
 </template>
 

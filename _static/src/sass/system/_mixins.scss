@@ -19,17 +19,17 @@
 @mixin base-border($border-type: '') {
   @if ($border-type != '') {
     border-#{$border-type}: {
-      width: var(--s-bd-base);
+      width: var(--size-border-base);
       style: solid;
       color: var(--ui-secondary);
-      radius: calc(var(--s-bd-base) * 4);
+      radius: calc(var(--size-border-base) * 4);
     }
   } @else {
     border: {
-      width: var(--s-bd-base);
+      width: var(--size-border-base);
       style: solid;
       color: var(--ui-secondary);
-      radius: calc(var(--s-bd-base) * 4);
+      radius: calc(var(--size-border-base) * 4);
     }
   }
 }
@@ -103,8 +103,8 @@
   зависимой от base-размеров 'site-container'
 */
 @mixin base-container-content-height {
-  min-height: calc(var(--s-site-container-height-min) - var(--s-bd-base) * 2);
-  max-height: calc(var(--s-site-container-height-base) - var(--s-bd-base) * 2);
+  min-height: calc(var(--size-site-container-height-min) - var(--size-border-base) * 2);
+  max-height: calc(var(--size-site-container-height-base) - var(--size-border-base) * 2);
 }
 
 /*

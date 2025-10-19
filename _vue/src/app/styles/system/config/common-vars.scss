@@ -5,7 +5,7 @@ $gaps: (
   'def-ver': 1.25rem,
   'def-hor': 2rem,
   'section-ver': 12rem,
-  'site-container-def': 1rem,
+  'site-container-def': 1rem
 );
 
 /*
@@ -17,16 +17,16 @@ $widths: (
   '520': 52rem,
   '768': 76.8rem,
   '1440': 144rem,
-  'card-min': 32rem,
+  'card-min': 32rem
 );
 
 /*
   Sizes
 */
 $sizes: (
-  'bd-base': 0.2rem,
+  'border-base': 0.2rem,
   'site-container-height-base': 98vh,
-  'site-container-height-min': 40rem,
+  'site-container-height-min': 40rem
 );
 
 /*
@@ -35,7 +35,7 @@ $sizes: (
 $transitions: (
   'fast': 0.15s,
   'base': 0.3s,
-  'long': 0.5s,
+  'long': 0.5s
 );
 
 /*
@@ -45,7 +45,7 @@ $z-indexes: (
   'header': 99,
   'sidebar': 99,
   'drops': 999,
-  'modals': 9999,
+  'modals': 9999
 );
 
 /*
@@ -53,7 +53,7 @@ $z-indexes: (
 */
 $fonts: (
   'primary': "'Inconsolata', monospace, system-ui",
-  'special': "'Chivo-Var', monospace, system-ui",
+  'special': "'Chivo-Var', monospace, system-ui"
 );
 
 /*
@@ -76,7 +76,7 @@ $fonts: (
 $nav-menues: (
   'gap': 0.2rem,
   'link-gap': 1.25rem,
-  'brd-rad': calc(var(--nm-link-gap, 1.25rem) * 4),
+  'brd-rad': calc(var(--nm-link-gap, 1.25rem) * 4)
 );
 
 /*
@@ -87,38 +87,38 @@ $nav-menues: (
 $work-cards: (
   'prime': (
     'text': hsl(71 100% 59%),
-    'bg': hsl(0 0% 3%),
+    'bg': hsl(0 0% 3%)
   ),
   'vtt': (
     'text': hsl(0 0% 100%),
-    'bg': hsl(217 91% 47%),
+    'bg': hsl(217 91% 47%)
   ),
   'onlyme': (
     'text': hsl(352 100% 42%),
-    'bg': hsl(0 0% 100%),
+    'bg': hsl(0 0% 100%)
   ),
   'plonq': (
     'text': hsl(0 0% 100%),
-    'bg': hsl(0 0% 5%),
+    'bg': hsl(0 0% 5%)
   ),
   'askona': (
     'text': hsl(0 0% 100%),
-    'bg': hsl(182 100% 37%),
+    'bg': hsl(182 100% 37%)
   ),
   'pixel-art-app': (
     'text': hsl(0 0% 100%),
-    'bg': hsl(271 76% 53%),
+    'bg': hsl(271 76% 53%)
   ),
   'calorie-counter': (
     'text': hsl(0 0% 100%),
-    'bg': hsl(275 67% 11%),
+    'bg': hsl(275 67% 11%)
   ),
   'u-dice-roller': (
     'text': hsl(40 11% 11%),
-    'bg': hsl(38 100% 50%),
+    'bg': hsl(38 100% 50%)
   ),
   'u-quiz-app': (
     'text': hsl(264 45% 84%),
-    'bg': hsl(270 84% 36%),
-  ),
+    'bg': hsl(270 84% 36%)
+  )
 );

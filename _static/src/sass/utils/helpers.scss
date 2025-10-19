@@ -1,6 +1,5 @@
-@use "../system/vars" as *;
-@use "../system/mixins" as *;
-
+@use '../system/vars' as *;
+@use '../system/mixins' as *;
 
 .is-hidden {
   /* stylelint-disable-next-line declaration-no-important */
@@ -8,7 +7,7 @@
 }
 
 // === Класс для доступного сокрытия элементов ===
-.visually-hidden {
+.sr-only {
   position: absolute;
   width: 1px;
   height: 1px;

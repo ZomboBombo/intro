@@ -4,10 +4,7 @@
 /*
   <...> основной градиентный "background" сайта
 */
-@mixin base-gradient-bg(
-  $bg-color: var(--ui-primary),
-  $bg-gradient: var(--ui-gradient)
-) {
+@mixin base-gradient-bg($bg-color: var(--ui-primary), $bg-gradient: var(--ui-gradient)) {
   background: {
     color: $bg-color;
     image: $bg-gradient;
@@ -22,17 +19,17 @@
 @mixin base-border($border-type: '') {
   @if ($border-type != '') {
     border-#{$border-type}: {
-      width: var(--s-bd-base);
+      width: var(--size-border-base);
       style: solid;
       color: var(--ui-secondary);
-      radius: calc(var(--s-bd-base) * 4);
+      radius: calc(var(--size-border-base) * 4);
     }
   } @else {
     border: {
-      width: var(--s-bd-base);
+      width: var(--size-border-base);
       style: solid;
       color: var(--ui-secondary);
-      radius: calc(var(--s-bd-base) * 4);
+      radius: calc(var(--size-border-base) * 4);
     }
   }
 }
@@ -108,16 +105,8 @@
 @mixin ui-loader-keyframes($props) {
   $animationName: map.get($props, animationName);
   $tileShiftPrimary: map.get($props, tileShiftPrimary);
-  $tileShiftSecondary: if(
-    map.get($props, tileShiftSecondary) != null,
-    map.get($props, tileShiftSecondary),
-    0
-  );
-  $isReflected: if(
-    map.get($props, isReflected) != null,
-    map.get($props, isReflected),
-    'false'
-  );
+  $tileShiftSecondary: if(map.get($props, tileShiftSecondary) != null, map.get($props, tileShiftSecondary), 0);
+  $isReflected: if(map.get($props, isReflected) != null, map.get($props, isReflected), 'false');
 
   @if ($isReflected == 'true') {
     @keyframes #{$animationName} {
@@ -182,8 +171,8 @@
   зависимой от base-размеров 'site-container'
 */
 @mixin base-container-content-height {
-  min-height: calc(var(--s-site-container-height-min) - var(--s-bd-base) * 2);
-  max-height: calc(var(--s-site-container-height-base) - var(--s-bd-base) * 2);
+  min-height: calc(var(--size-site-container-height-min) - var(--size-border-base) * 2);
+  max-height: calc(var(--size-site-container-height-base) - var(--size-border-base) * 2);
 }
 
 /*
